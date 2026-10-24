@@ -511,3 +511,17 @@ export interface SmogShieldSummary {
   accessibilityDescription: string;
 }
 
+export interface FuelSavingsSummary {
+  totalRupeesSavedVsScooter: number;
+  totalRupeesSavedVsAuto: number;
+  totalRupeesSavedVsCar: number;
+  totalMetroFareSpent: number;
+  netEconomicSavings: number;
+  petrolLitersAvoided: number;
+  puneCulturalSavingEquivalent: string;
+  savingsPersona: string;
+  savingsPersonaMarathi: string;
+  shareableSavingsText: string;
+  accessibilityDescription: string;
+}
+

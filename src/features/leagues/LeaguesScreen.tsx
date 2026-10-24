@@ -64,6 +64,8 @@ import { SegmentVelocityCard } from './SegmentVelocityCard';
 import { calculateSegmentVelocity } from './segmentVelocity';
 import { SmogShieldCard } from './SmogShieldCard';
 import { calculateSmogShield } from './smogShield';
+import { FuelSavingsCard } from './FuelSavingsCard';
+import { calculateFuelSavings } from './fuelSavings';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -164,6 +166,7 @@ export default function LeaguesScreen() {
   const stationRadius = calculateStationRadius(relevantJourneys);
   const segmentVelocity = calculateSegmentVelocity(relevantJourneys);
   const smogShield = calculateSmogShield(relevantJourneys);
+  const fuelSavings = calculateFuelSavings(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -378,6 +381,9 @@ export default function LeaguesScreen() {
 
         {/* Commuter Smog Shield & AQI Exposure Protection */}
         <SmogShieldCard summary={smogShield} />
+
+        {/* Commuter Rupee Fuel Savings & Economic ROI */}
+        <FuelSavingsCard summary={fuelSavings} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
