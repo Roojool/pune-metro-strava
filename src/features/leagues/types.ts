@@ -377,11 +377,32 @@ export interface ConcourseStepsSummary {
   accessibilityDescription: string;
 }
 
+export type TrophyRarity = 'bronze' | 'silver' | 'gold' | 'obsidian';
 
+export interface CommuterTrophy {
+  id: string;
+  title: string;
+  marathiTitle: string;
+  description: string;
+  criteriaLabel: string;
+  rarity: TrophyRarity;
+  iconName: string;
+  isUnlocked: boolean;
+  unlockedAtFormatted?: string;
+  currentValue: number;
+  targetValue: number;
+  progressPercent: number;
+}
 
-
-
-
-
-
+export interface TrophyCabinetSummary {
+  trophies: CommuterTrophy[];
+  unlockedCount: number;
+  totalTrophies: number;
+  completionPercent: number;
+  cabinetScore: number;
+  cabinetRankTitle: string;
+  cabinetRankMarathi: string;
+  shareableShowcaseText: string;
+  accessibilityDescription: string;
+}
 
