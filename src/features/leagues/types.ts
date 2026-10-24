@@ -119,3 +119,35 @@ export interface HabitMultiplierInfo {
   bonusPercentageText: string;
   fairPlayNotice: string;
 }
+
+export interface WeekendChallenge {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  targetCount: number;
+  currentProgress: number;
+  rewardXp: number;
+  rewardKcal: number;
+  isCompleted: boolean;
+  badgeTag: string;
+  remainingTimeText: string;
+}
+
+export interface PersonalBestRecord {
+  id: string;
+  title: string;
+  value: number;
+  unit: string;
+  subtitle: string;
+  achievedOn: string;
+}
+
+export interface PersonalBestsSummary {
+  records: PersonalBestRecord[];
+  favoriteCorridor: string;
+  totalLifetimeBurnKcal: number;
+  uniqueStationsVisited: number;
+  headline: string;
+  accessibilitySummary: string;
+}

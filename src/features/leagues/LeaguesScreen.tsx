@@ -28,6 +28,10 @@ import { RivalDuelCard } from './RivalDuelCard';
 import { calculateDivisionStanding } from './divisions';
 import { calculateRivalDuelDetail } from './rivalDuel';
 import { calculateHabitMultiplier } from './habitScoring';
+import { WeekendChallengeCard } from './WeekendChallengeCard';
+import { PersonalBestsCard } from './PersonalBestsCard';
+import { calculateWeekendChallenges } from './weekendChallenges';
+import { calculatePersonalBests } from './personalBests';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -110,6 +114,8 @@ export default function LeaguesScreen() {
   const divisionStanding = calculateDivisionStanding(rank, board.length, board, metric, points);
   const rivalDuel = calculateRivalDuelDetail(current, board, metric);
   const habitInfo = calculateHabitMultiplier(streak);
+  const weekendChallenges = calculateWeekendChallenges(relevantJourneys);
+  const personalBests = calculatePersonalBests(journeys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -263,6 +269,9 @@ export default function LeaguesScreen() {
           progress={puneMilestoneProgress}
           totalCalories={burnSummary.calories}
         />
+
+        {/* All-Time Personal Bests & Commuter Records */}
+        <PersonalBestsCard summary={personalBests} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
@@ -617,6 +626,9 @@ export default function LeaguesScreen() {
                 </Card>
               );
             })}
+
+            {/* Weekend Pune Metro Transit Missions */}
+            <WeekendChallengeCard challenges={weekendChallenges} />
 
             {/* Top Pune Metro Corridor Active Burn */}
             <CorridorBurnCard corridors={topCorridors} />
