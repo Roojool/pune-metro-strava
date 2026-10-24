@@ -1,4 +1,4 @@
-import type { Journey, LineId } from '@/domain/models';
+import type { Journey, LineId } from '../../domain/models';
 import { SAMPLE_LEAGUE } from './sampleLeague';
 import type {
   BurnSummary,
