@@ -4,6 +4,11 @@
 tracker, XP league and route community. One Expo SDK 57 application for web,
 Android and iOS. Public repository: https://github.com/Roojool/pune-metro-strava.
 
+**[Open the web demo](https://roojool.github.io/pune-metro-strava/)** ·
+[Five paste-ready developer prompts](team-prompts/) · [Verified team status](TEAM_STATUS.md)
+
+![MetroQuest activity dashboard with schematic route map](docs/screenshots/home-desktop.png)
+
 ## Run
 
 Node 24 LTS and npm are recommended. No external API keys required.
