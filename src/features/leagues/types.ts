@@ -638,5 +638,37 @@ export interface TrafficReliefSummary {
   accessibilityDescription: string;
 }
 
+export type AcousticTier = 'acoustic_seeker' | 'zen_commuter' | 'decibel_shield_master' | 'silent_corridor_champion';
+
+export interface PuneQuietHaven {
+  id: string;
+  name: string;
+  marathiName: string;
+  ambientDecibels: number;
+  description: string;
+  unlockedAtMinutes: number;
+  isUnlocked: boolean;
+}
+
+export interface AcousticWellnessSummary {
+  quietTransitMinutes: number;
+  roadNoiseMinutesAvoided: number;
+  averageCoachDba: number;
+  roadwayPeakDba: number;
+  decibelReductionDba: number;
+  acousticEnergyReductionPercent: number;
+  peacefulZoneScore: number;
+  acousticTier: AcousticTier;
+  tierTitle: string;
+  tierTitleMarathi: string;
+  unlockedHavens: PuneQuietHaven[];
+  nextTierMinutes: number;
+  progressPercent: number;
+  wellnessTip: string;
+  shareableAcousticText: string;
+  accessibilityDescription: string;
+}
+
+
 
 

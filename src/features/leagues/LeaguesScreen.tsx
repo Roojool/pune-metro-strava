@@ -74,6 +74,8 @@ import { TreeOffsetCard } from './TreeOffsetCard';
 import { calculateTreeOffset } from './treeOffset';
 import { TrafficReliefCard } from './TrafficReliefCard';
 import { calculateTrafficRelief } from './trafficRelief';
+import { AcousticWellnessCard } from './AcousticWellnessCard';
+import { calculateAcousticWellness } from './acousticWellness';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -179,6 +181,7 @@ export default function LeaguesScreen() {
   const commuterAudit = calculateCommuterAudit(relevantJourneys);
   const treeOffset = calculateTreeOffset(relevantJourneys);
   const trafficRelief = calculateTrafficRelief(relevantJourneys);
+  const acousticWellness = calculateAcousticWellness(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -408,6 +411,9 @@ export default function LeaguesScreen() {
 
         {/* Pune Road Traffic Relief & Arterial Decongestant */}
         <TrafficReliefCard summary={trafficRelief} />
+
+        {/* Pune Acoustic Wellness & Decibel Noise Shield */}
+        <AcousticWellnessCard summary={acousticWellness} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
