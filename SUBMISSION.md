@@ -98,3 +98,16 @@ Passport and Community fixes in [TEAM_STATUS.md](TEAM_STATUS.md).
 boundary. [LICENSE-NOTE.md](LICENSE-NOTE.md) preserves all-rights-reserved status.
 This prepares submission copy; it does not claim a form has been submitted or
 that the project meets undisclosed event requirements.
+
+## Submission assets
+
+Repo paths for Loops House / pitch / social:
+
+- Hero banner: `docs/submission-assets/metroquest-hero-banner.jpg`
+- Social square: `docs/submission-assets/metroquest-social-square.jpg`
+- Demo clip: `docs/submission-assets/metroquest-demo.mp4`
+- Pitch script: `docs/submission-assets/01-pitch-script.md`
+- Loops form copy: `docs/submission-assets/02-loops-form-copy.md`
+- Judge Q&A: `docs/submission-assets/03-judge-qa.md`
+
+Live demo: https://roojool.github.io/pune-metro-strava/
