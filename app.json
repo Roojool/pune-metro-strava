@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "MetroQuest Pune",
+    "slug": "metroquest-pune",
+    "scheme": "metroquest",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.metroquest"
+    },
+    "android": {
+      "package": "com.example.metroquest"
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
