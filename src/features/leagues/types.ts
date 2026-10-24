@@ -466,3 +466,32 @@ export interface StationRadiusSummary {
   accessibilityDescription: string;
 }
 
+export interface MetroSegment {
+  id: string;
+  title: string;
+  marathiTitle: string;
+  line: LineId | 'interchange';
+  fromStationId: string;
+  toStationId: string;
+  distanceKm: number;
+  standardMinutes: number;
+  roadMinutes: number;
+  timesTraversed: number;
+  isCompleted: boolean;
+  isLocalLegend: boolean;
+  bestPaceMinPerKm?: number;
+  totalMinutesSaved: number;
+}
+
+export interface SegmentVelocitySummary {
+  totalSegmentsCompleted: number;
+  localLegendCrownsCount: number;
+  totalTimeSavedMinutes: number;
+  segments: MetroSegment[];
+  favoriteSegment: string;
+  segmentPersona: string;
+  segmentPersonaMarathi: string;
+  shareableSegmentsText: string;
+  accessibilityDescription: string;
+}
+

@@ -60,6 +60,8 @@ import { PeakFlowCard } from './PeakFlowCard';
 import { calculatePeakFlow } from './peakFlow';
 import { StationRadiusCard } from './StationRadiusCard';
 import { calculateStationRadius } from './stationRadius';
+import { SegmentVelocityCard } from './SegmentVelocityCard';
+import { calculateSegmentVelocity } from './segmentVelocity';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -158,6 +160,7 @@ export default function LeaguesScreen() {
   const trophyCabinet = calculateTrophyCabinet(journeys, streak, points);
   const peakFlow = calculatePeakFlow(relevantJourneys);
   const stationRadius = calculateStationRadius(relevantJourneys);
+  const segmentVelocity = calculateSegmentVelocity(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -366,6 +369,9 @@ export default function LeaguesScreen() {
 
         {/* Station Neighborhood Walking Catchments */}
         <StationRadiusCard summary={stationRadius} />
+
+        {/* Strava Segment Velocity & Local Legends */}
+        <SegmentVelocityCard summary={segmentVelocity} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
