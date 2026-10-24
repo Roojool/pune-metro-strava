@@ -3,6 +3,10 @@
 Read `C:\Users\roojo\.codex\RTK.md` on this Windows workstation and use native RTK commands where supported.
 
 Read `TEAM_STATUS.md` and your exact `team-prompts/0N-*.md` before editing.
+Read INTEGRATION_BOARD.md and docs/TEAM_CONTINUATION.md for the current handoff.
+A PR is a checkpoint: continue owned verification/review fixes, synchronize after
+merge, and run npm run verify:e2e before reporting end-to-end completion.
+Never launch a second editing agent/runner inside an active editor's checkout.
 Shared contracts freeze at 14:18 IST on 2026-10-24; only the lead may change them.
 Human branches are `feature/core-integration`, `feature/journey-tracking`,
 `feature/passport-stats`, `feature/gamification`, `feature/community-web`.

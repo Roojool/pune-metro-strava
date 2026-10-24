@@ -1,155 +1,164 @@
-# Developer 1 — lead and integration
+# Developer 1 — Lead / integration: continuing integration prompt
 
-## Mission and context
-Deliver MetroQuest, Strava for Metro, in the revised one-hour five-human sprint.
-One Expo SDK 57 / TypeScript / Expo Router / React Native Web app supports Android,
-iOS and web. Pune commuters manually record rides, collect stations, earn local
-XP and interact with a local demo community. No API keys are needed. This is
-self-reported local demo data, not verified travel or a live multi-user platform.
+EXECUTE in your own checkout. This prompt replaces the earlier one-shot sprint
+prompt. Creating a pull request does not finish this assignment.
 
-Repository: https://github.com/Roojool/pune-metro-strava (PUBLIC).
-Primary branch: main. Your assigned branch: `feature/core-integration`.
-Lead: Roojool / Developer 1. Human roles 2-5: prathadox, chetanpujari5105,
-mangeshraut712, atharvamhaske. Invitations were sent; see TEAM_STATUS.md.
-AI workers are helpers, not substitutes for human access.
+You are Roojool (this active session). Repository: Roojool/pune-metro-strava (PUBLIC).
+Assigned branch: `feature/core-integration`.
+You own: app/**, src/components/**, src/theme.ts, src/domain/**, src/data/**, src/state/**, tests/**, scripts/**, docs/**, assets/**, package/config/CI files, root documentation and team-prompts/**.
 
-## Exact ownership and collision rules
-You own: app/**; assets/**; docs/**; app.config.js; src/components/**; src/theme.ts; src/domain/**; src/data/**; src/state/**; tests/**; package.json; package-lock.json; app.json; tsconfig*.json; .github/**; scripts/**; all root documentation and team-prompts/**
+## Your concrete assignment
+Own the shared shell/contracts/state, integration board and merge queue. Review feature PRs in parallel with helpers in separate worktrees. Merge exact reviewed commits sequentially after required checks pass. Re-run the real root production browser flow after integration. Resolve shared blockers once, keep main runnable, and publish the verified web build.
 
-Read shared files but do not edit files outside this list. Do not create a second
-copy of a shared model, repository, scoring method or station dataset. Only
-Developer 1 changes package versions, route wrappers, CI, root navigation and
-shared interfaces. Request a concrete shared change in your PR or issue instead.
-Do not use a shared checkout for concurrent workers.
+## Out of scope and fallback
+Outside your owned paths requires lead coordination. No background tracking,
+OAuth, ticketing, server rankings, invented fares or dependency/config changes
+by feature owners. Keep the last deployed working screens and demo-v0.1 baseline. Integrate passing fixes only; report missing teammate work without fabricating completion.
 
-| Human | Assigned branch | Ownership |
-| --- | --- | --- |
-| 1 | feature/core-integration | Shared core + integration |
-| 2 | feature/journey-tracking | src/features/journey/** |
-| 3 | feature/passport-stats | src/features/passport/** |
-| 4 | feature/gamification | src/features/leagues/** |
-| 5 | feature/community-web | src/features/community/** |
+## Product and current state
+MetroQuest is Strava for Pune Metro: ONE Expo SDK 57 + TypeScript + Expo Router +
+React Native Web application for Android, iOS and web. The integrated demo
+already runs. Do not build another app or duplicate working features.
+Public source: https://github.com/Roojool/pune-metro-strava
+Live app: https://roojool.github.io/pune-metro-strava/
+Baseline tag: demo-v0.1. Hosted full-flow and Android API 36 / Expo Go 57.0.9 tests
+passed. iPhone runtime and native share completion have not been tested.
 
-AI implementation branches use `ai/*` with separate worktrees. TEAM_STATUS.md
-records active reservations. Never have a human and AI simultaneously own the
-same feature: if its reservation is active, inspect/report/verify only until the
-lead hands it back, then update from integrated main. Do not push over an AI's
-branch. Human feature branches remain distinct and are not claimed as AI workers.
-If you invoke further coding subagents, give each a different worktree/branch
-and disjoint named files within your ownership. You remain responsible for
-integration. Do not delegate shared files.
+The product uses manual, self-reported rides and device-local AsyncStorage.
+Other league profiles and seeded posts are samples. Maps are schematic, not GPS.
+Fare is unavailable; distance/time/savings/CO2e are clearly labeled estimates.
+No API keys, background GPS, separate Next.js app or backend provisioning.
 
-## Frozen shared interfaces
-Read src/domain/models.ts, src/domain/metro.ts, src/data/pune.ts and
-src/state/AppState.tsx before editing. Contracts freeze at minute 20.
-All User, MetroLine, Station, Journey, JourneyCandidate, Achievement, Challenge,
-LeaderboardEntry, Community, CommunityPost and TravelStatistics types live in
-src/domain/models.ts.
+## One shared ownership map
+| Developer | Person | Assigned human branch | Exclusive responsibility |
+| --- | --- | --- | --- |
+| 1 | Roojool (this active session) | `feature/core-integration` | Shared core/config/CI/tests/docs |
+| 2 | prathadox | `feature/journey-tracking` | src/features/journey/** only |
+| 3 | chetanpujari5105 | `feature/passport-stats` | src/features/passport/** only |
+| 4 | mangeshraut712 | `feature/gamification` | src/features/leagues/** only |
+| 5 | atharvamhaske | `feature/community-web` | src/features/community/** only |
 
-Use `useApp()` from `@/state/AppState`:
-- journeys, visitedIds, totalJourneys, totalKm, totalSavings, totalCo2, points
-- weeklyJourneys (rolling seven days), monthlyJourneys (India month), activeDays, streak
-- achievements, challenges, communities, joined, posts, user, ready, storageError
-- addJourney(from:string,to:string): Promise<MutationResult>
-- addPost(communityId:string,body:string): Promise<MutationResult>
-- toggleLike(postId:string): Promise<MutationResult>
-- toggleCommunity(communityId:string): Promise<MutationResult>
-- updateProfile(name:string,privateProfile:boolean): Promise<MutationResult>
-- resetDemo(): Promise<MutationResult>
+Only the lead edits shared files. Every concurrent coding worker uses a separate
+checkout/worktree and branch. Never run two editing agents in one checkout.
+If delegating, assign disjoint named files inside your ownership. AI helper
+branches are ai/*; humans keep the five feature/* branches. Do not rewrite,
+force-push or delete another worker's branch. Prompt 1 is already active in the
+lead session; never launch a second shared-file writer.
 
-MutationResult is `{ok:boolean;message:string}`. Await mutations, display failures,
-disable duplicate submits, and never report saved before success. Do not write
-AsyncStorage directly. Store hydration completes when ready is true.
-Journey fields: id, from, to, at, kilometers, minutes, fare:number|null, saved,
-co2Kg, points, stationIds, source:'manual'. fare=null means unavailable, not zero.
-Only from/to count as collected; intermediate stationIds describe the route.
+## Frozen contracts — read, reuse, do not duplicate
+Read AGENTS.md, README.md, INTEGRATION_BOARD.md, TEAM_STATUS.md, your feature,
+src/domain/models.ts, src/domain/metro.ts, src/data/pune.ts and src/state/AppState.tsx.
+GitHub PR/check status and fetched origin/main are authoritative; the board is a
+timestamped coordination snapshot. Never assume that an unpushed task is absent.
 
-Dataset exports: STATIONS, OPEN_STATIONS, LINES, LINE_NAMES, getStationName.
-Domain exports: routeBetween, journeyStatistics, savingsEstimate,
-environmentalEstimate, calculateXp, unlockAchievements, weeklyChallenges,
-rankLeaderboard, networkCompletion. Use them; don't duplicate calculations.
+All types come from @/domain/models:
+User, MetroLine, Station, Journey, JourneyCandidate, Achievement, Challenge,
+LeaderboardEntry, Community, CommunityPost, TravelStatistics, MutationResult.
+Journey: id/from/to/at/kilometers/minutes/fare:number|null/saved/co2Kg/points/
+stationIds/source:'manual'. Only from/to count as collected. Null fare is unknown.
 
-## Features to implement
-EXECUTE now. Latest main already includes an integrated implementation. Inspect
-it, verify your acceptance criteria, and fix gaps within your owned files.
-Do not stop at a plan or rebuild working features. The demo is already live;
-your immediate job is owned verification and small fixes. Continue independent work
-when a shared change is blocked; report concrete errors to the lead.
+useApp() from @/state/AppState provides:
+journeys, visitedIds, totalJourneys, totalKm, totalSavings, totalCo2, points,
+monthlyJourneys, weeklyJourneys, activeDays, streak, achievements, challenges,
+communities, joined, posts, user, ready, storageError.
+Mutations return Promise<MutationResult> with ok/message:
+addJourney(from,to), addPost(communityId,body), toggleLike(postId),
+toggleCommunity(id), updateProfile(name,privateProfile), resetDemo().
+Await them; show failures; never write AsyncStorage directly.
 
-Maintain the working app shell, five Expo Router tabs, responsive sidebar, profile/privacy controls, network data, central calculations, persistent repository, tests and CI. Review and integrate four feature PRs. Own all shared exports. Validate the critical journey → passport → leagues → community → reload flow. Keep main runnable and publish demo instructions.
+Dataset: STATIONS, OPEN_STATIONS, LINES, LINE_NAMES, getStationName.
+Domain: routeBetween, journeyStatistics, calculateXp, unlockAchievements,
+weeklyChallenges, rankLeaderboard, leaderboardScore, networkCompletion,
+savingsEstimate, environmentalEstimate. Do not recalculate scores in features.
+Use @/components/UI and @/theme. Feather icons, orange/charcoal/white activity UI,
+Purple/Aqua route colors, 48px controls, readable text, responsive wrapping.
+Preserve accessibility, validation and visible demo/estimate labels.
 
-## Explicitly out of scope
-Do not edit src/features/** while a feature worker owns it. No backend provisioning, GPS, OAuth, ticketing or store release.
+## Required continuation protocol — a PR is a checkpoint
+1. SYNC: confirm your own checkout and assigned branch; fetch and normally merge
+   origin/main. Inspect current code and the live integration board. Preserve
+   existing commits and local changes; never reset, force-push or self-merge.
+2. ONE OWNED TASK: reproduce a missing acceptance criterion or bug, then make
+   the smallest fix in owned files. If no fix is needed, verify the implementation;
+   do not invent features or an empty PR merely to keep busy.
+3. CHECK + SUBMIT: run typecheck, tests and web export. Push a focused PR to main
+   with exact scope, test evidence and limitations. Mention the matching issue
+   from TEAM_STATUS. Update the PR description if its scope changes.
+4. REVIEW WINDOW: after marking the PR ready, stop routine edits on that PR
+   while the lead reviews its exact commit. Continue read-only empty/error/
+   mobile/persistence checks in your own checkout. Poll PR/check/review status
+   every 30–45 seconds. Fix failed checks or concrete requested changes, then
+   push once and return to review. A green CI run alone is not integration.
+5. AFTER MERGE: fetch and normally merge latest origin/main into your branch.
+   Run npm run verify:e2e. This performs typecheck/tests/export and the actual
+   PCMC → Civil Court → Passport → Leagues → Purple post → reaction → reload →
+   profile → five mobile tabs browser scenario. Inspect output/e2e-result.json.
+6. CONTINUE ON FAILURE: fix reproducible failures within ownership and submit a
+   follow-up PR; return to step 4. Shared failures go to the lead with exact
+   command/error/main SHA. Continue independent verification while blocked.
+7. DONE ONLY WHEN: your work is on main (or no change was needed), your checkout
+   is synchronized and clean, no owned PR remains open, and the actual E2E command
+   passes against that integrated code. Report the evidence and stop honestly.
+   An auth/permission problem, failed check or unmerged PR is a blocker, not PASS.
 
-## UI and UX
-Use shared theme and components from @/components/UI: Page, Heading, Card, Pill,
-Action, Stat, SectionTitle, Progress, Notice, Icon, styles. Icon uses Feather
-names; no extra icon dependency. Strava-inspired orange/charcoal/white with Purple/Aqua route
-accents, rounded cards, clear hierarchy, readable text and 48px buttons.
-Every interaction needs an accessibilityRole/label and visible feedback.
-Support 390px mobile and wide web with flex wrapping and useWindowDimensions.
-Avoid browser-only APIs in universal modules. Never hide sample-data labels.
-Do not expose exact commute history in a share summary without explicit consent.
-Light mode is the MVP; dark mode is post-MVP.
+Work in 10-minute slices. Optional product scope is frozen; focus on integration,
+accessibility, regressions, persistence and demo reliability. Do not stop merely
+because you opened a PR, and do not add speculative features after a clean pass.
+Never claim iOS/physical-device tests or live social behavior without evidence.
 
-## Setup and verification commands
-```powershell
+## Automation for a stopped agent (human launches it)
+Node 24, npm, gh and authenticated Codex CLI are prerequisites. In a separate
+terminal on that developer's OWN machine, after the existing editing agent has
+stopped, use the role command below. Never start a second CLI editor from inside
+an already-running coding agent. The bounded runner re-prompts Codex, waits for
+reviewed merges and runs the real E2E gate. It keeps normal sandbox/approval
+boundaries, uses existing credentials and never self-merges or bypasses CI.
+See docs/TEAM_CONTINUATION.md. If it is not on your branch yet, fetch/merge main;
+an already-running agent can follow this protocol directly without the runner.
+
+## Definitions of done and reporting
+- Existing Expo routes import the default feature components; no broken imports.
+- Empty, valid, invalid, loading and failed-save states remain usable.
+- Logging updates all screens through shared state and survives reload/restart.
+- No secrets, real commute schedules, new API keys or unsupported native APIs.
+- Typecheck/tests/export and real browser checks have actual evidence.
+- Keep PRs reviewable. The lead reviews/merges sequentially while QA is parallel.
+- Report branch, exact commit, PR URL, commands/results, integrated main SHA,
+  E2E result path and untested limits. Never report someone else's local work done.
+- If blocked >5 minutes, report the concrete error and smallest lead action needed.
+  Do not silently edit another owner's file or repeatedly retry a permission failure.
+
+
+## Your setup, verification and delivery commands
+```sh
 git clone https://github.com/Roojool/pune-metro-strava.git
 cd pune-metro-strava
 git fetch origin
 git switch feature/core-integration
 git merge origin/main
+gh auth status
 npm ci
 npm run typecheck
 npm test
-npm run web
 npm run export:web
+npm run web
 ```
-If already cloned, reuse your own checkout. Never run a reset or force push to
-match another worker. Expo starts on 8081 unless occupied. Keep the terminal open.
-Native: npm run start, open SDK-57-compatible Expo Go on the same Wi-Fi.
-On Windows iOS testing requires a physical iPhone; do not claim it passed otherwise.
 
-## Deadline and timeboxes
-Latest user instruction: one-hour delivery sprint from 14:15 to 15:15 IST on
-2026-10-24. This replaces the original 120-minute deadline. Contracts are already
-frozen. Spend at most 5 minutes reading/setup, 10 minutes verifying/fixing and 5
-minutes verifying. Commit, push and open your PR by 15:00 IST. Stop optional
-features at 14:50 IST. Lead integrates and tests through 15:10; final handoff by
-15:15. If starting late, fix blockers and complete the existing feature only.
-## Definition of done and integration
-- Implemented behavior works in the owned module and existing route wrapper.
-- TypeScript, domain tests and web export pass with actual result recorded.
-- First launch and empty state work; a ride updates every screen via shared state.
-- Reload keeps journeys/posts/reactions/profile state on the same device/origin.
-- Verify the affected part of PCMC → Civil Court → Passport → Leagues → Purple
-  discussion → create local post → reload.
-- No broken imports, silent save errors, false verified claims or new API keys.
-- Shared config changes are lead-only; no unrelated formatting.
-- PR description lists behavior, owned files, commands/results, screenshots when
-  available, limitations and the relevant issue. Do not claim device tests you
-  did not run.
-
-## Commit and PR commands
-```powershell
-git add <only-your-owned-paths>
-git commit -m "feat: implement core-integration demo"
+After implementing, stage ONLY owned paths, commit with feat:/fix:/test:, and:
+```sh
 git push -u origin feature/core-integration
-gh pr create --repo Roojool/pune-metro-strava --base main --head feature/core-integration --title "feat: Developer 1 — lead and integration" --body-file <your-pr-description-file>
+gh pr create --repo Roojool/pune-metro-strava --base main --head feature/core-integration --title "fix: describe the owned change" --body-file YOUR-PR-BODY.md
 ```
-Use a real UTF-8 file for multiline PR text. Include the matching issue from
-TEAM_STATUS.md. Lead reviews every PR, runs checks, then squash merges one at a
-time. Feature workers must not self-merge. As lead, inspect each diff and successful checks before squash merging. Never force-push or bypass failures.
+Use a real UTF-8 file for multiline PR bodies. Keep following the continuation
+protocol after this command; do not finish your turn at PR creation.
 
-## Blockers and fallback
-If blocked for more than 5 minutes, report in your GitHub issue: exact error,
-command, affected file, what you tried and the smallest requested shared change.
-Continue independent UI work; don't change a frozen contract yourself.
-Keep the committed functional fallback feature screens. Merge only passing work; leave missing enhancements in issues.
-Report completion with branch, commit SHA, PR URL, tests actually run, and
-remaining limits. Human contributors must report availability; no assumption
-that the lead can control another computer.
+## Lead execution here
+This role is already being executed by the active lead. Do not create another
+Prompt 1 editing session. Own the shared merge queue and INTEGRATION_BOARD.md.
+Use parallel read-only reviewers with isolated worktrees. For each candidate,
+read its full diff and connected callers, check required CI on the exact head,
+resolve shared blockers, squash-merge only that reviewed head, update the board,
+then verify integrated main with npm run verify:e2e. Do not bypass branch checks.
+Keep polling for all four human workstreams; do not fabricate absent PRs.
+The role runner below is for Developers 2–5; the lead stays in this session.
 
-
-## Revised one-hour handoff (latest user instruction)
-Repository visibility is now PUBLIC. The hard deadline is 2026-10-24 15:15 IST, revised at 14:15. Finish verification or blocker-fix PRs by 15:00, stop optional scope 14:50, integration/testing by 15:10, final delivery 15:15. These times override older 120-minute template times above. UI must be Strava-inspired: orange #FC4C02, charcoal/white, prominent schematic route map, estimated duration/distance and ride activity summaries. No separate web app, API keys, fabricated GPS tracks or invented fares. Your ownership remains unchanged. Work continuously in your assigned branch until done; after reporting a blocker continue independent fixes. Check TEAM_STATUS and AI reservation handoff before editing. All five prompts are standalone for separate AI sessions on each human developer checkout.
