@@ -265,5 +265,32 @@ export interface VerticalAscentSummary {
   accessibilityDescription: string;
 }
 
+export interface MonthDayActivity {
+  dayOfMonth: number;
+  dateStr: string;
+  dayOfWeekShort: string;
+  ridesCount: number;
+  caloriesBurned: number;
+  isToday: boolean;
+  isActive: boolean;
+}
+
+export interface MonthlyHabitMatrixSummary {
+  monthName: string;
+  year: number;
+  totalMonthRides: number;
+  totalMonthCalories: number;
+  activeDaysCount: number;
+  daysInMonth: number;
+  consistencyPercentage: number;
+  currentStreakDays: number;
+  longestStreakDays: number;
+  days: MonthDayActivity[];
+  habitStatusTitle: string;
+  habitStatusSubtitle: string;
+  accessibilityDescription: string;
+}
+
+
 
 

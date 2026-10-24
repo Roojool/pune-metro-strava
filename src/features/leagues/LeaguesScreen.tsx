@@ -42,6 +42,8 @@ import { CleanAirSavingsCard } from './CleanAirSavingsCard';
 import { calculateCleanAirMetrics } from './cleanAirSavings';
 import { VerticalAscentCard } from './VerticalAscentCard';
 import { calculateVerticalAscent } from './verticalAscent';
+import { MonthlyHabitMatrixCard } from './MonthlyHabitMatrixCard';
+import { calculateMonthlyHabitMatrix } from './monthlyHabitMatrix';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -131,6 +133,7 @@ export default function LeaguesScreen() {
   const weeklyConsistency = calculateWeeklyConsistency(relevantJourneys);
   const cleanAirMetrics = calculateCleanAirMetrics(relevantJourneys);
   const verticalAscent = calculateVerticalAscent(relevantJourneys);
+  const monthlyHabitMatrix = calculateMonthlyHabitMatrix(relevantJourneys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -299,6 +302,9 @@ export default function LeaguesScreen() {
 
         {/* Station Concourse Vertical Climb */}
         <VerticalAscentCard summary={verticalAscent} />
+
+        {/* Monthly Calendar Habit Matrix */}
+        <MonthlyHabitMatrixCard summary={monthlyHabitMatrix} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
