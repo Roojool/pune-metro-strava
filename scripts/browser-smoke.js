@@ -41,10 +41,10 @@ async (page) => {
   await navigate('Leagues');
   await page.getByText('UNLOCKED', { exact: true }).locator('..').getByText('First stop', { exact: true }).waitFor();
   await page.getByText('Pune Explorer · you', { exact: true }).waitFor();
-  await page.getByRole('button', { name: 'Friends demo league', exact: true }).click();
+  await page.getByRole('button', { name: /^Friends (?:sample )?demo league$/ }).click();
   await page.getByText('Friends preview', { exact: true }).waitFor();
-  await page.getByRole('button', { name: 'Route demo league', exact: true }).click();
-  await page.getByRole('button', { name: 'Aqua Line league', exact: true }).click();
+  await page.getByRole('button', { name: /^Route (?:sample )?demo league$/ }).click();
+  await page.getByRole('button', { name: /^Aqua Line (?:sample demo )?league$/ }).click();
   await page.getByText('Aqua Line league', { exact: true }).waitFor();
 
   await navigate('Community');
