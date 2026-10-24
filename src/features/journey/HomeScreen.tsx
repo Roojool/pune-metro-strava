@@ -1,5 +1,6 @@
+import { Text } from '@/components/Typography';
 import React, { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useApp } from '@/state/AppState';
 import { Action, Card, Heading, Icon, Notice, Page, Pill, Progress, SectionTitle, Stat, styles } from '@/components/UI';
@@ -47,11 +48,11 @@ export default function HomeScreen() {
 
     <Card style={[local.hero, { flexDirection: wide ? 'row' : 'column', padding: wide ? 28 : 22 }]}>
       <View style={{ flex: 1, gap: 15, justifyContent: 'center' }}>
-        <Pill text={journeys.length ? 'LATEST SELF-REPORTED RIDE' : 'SAMPLE ROUTE · NOT A LOGGED RIDE'} color="#3D322C" ink="#FFA37A" />
+        <Pill text={journeys.length ? 'LATEST RIDE' : 'SUGGESTED ROUTE'} color="#153523" ink="#00CD6B" />
         <Text accessibilityRole="header" style={[local.heroTitle, !wide && { fontSize: 30, lineHeight: 35, letterSpacing: -0.8 }]}>Make every ride count.</Text>
         <Text style={local.heroBody}>{getStationName(activity.stationIds[0])} → {getStationName(activity.stationIds[activity.stationIds.length - 1])}</Text>
         <View style={{ flexDirection: 'row', gap: 25, flexWrap: 'wrap' }}><View style={{ gap: 5 }}><Text style={local.activityNumber}>{activity.kilometers.toFixed(1)}<Text style={local.activityUnit}> km</Text></Text><Text style={local.activityCaption}>Estimated distance</Text></View><View style={{ gap: 5 }}><Text style={local.activityNumber}>{activity.minutes}<Text style={local.activityUnit}> min</Text></Text><Text style={local.activityCaption}>Estimated duration</Text></View>{journeys[0] ? <View style={{ gap: 5 }}><Text style={local.activityNumber}>+{journeys[0].points}<Text style={local.activityUnit}> XP</Text></Text><Text style={local.activityCaption}>Ride earned</Text></View> : null}</View>
-        <Text style={{ color: '#B8C2C8', fontSize: 11 }}>Manual logging · no GPS recording</Text>
+        <Text style={{ color: '#B8C2C8', fontSize: 11 }}>Manually logged activity</Text>
       </View>
       <View style={{ width: wide ? 360 : '100%', maxWidth: 440, alignSelf: 'center' }}><RouteMap stationIds={activity.stationIds} /></View>
     </Card>
@@ -71,12 +72,12 @@ export default function HomeScreen() {
         <View style={[styles.row, { justifyContent: 'space-between', flexWrap: 'wrap' }]}><Text style={styles.muted}>{100 - points % 100} XP to level {level + 1}</Text><Text style={styles.muted}>{streak} day{streak === 1 ? '' : 's'} in your streak</Text></View>
         <Pressable accessibilityRole="button" accessibilityLabel="Explore leagues and achievements" onPress={() => nav.navigate('/leagues')} style={({ pressed }) => [local.textLink, { opacity: pressed ? 0.65 : 1 }]}><Text style={local.linkText}>Find your next milestone</Text><Icon name="arrow-up-right" size={16} /></Pressable>
       </Card>
-      <Card style={{ flex: 1, gap: 14, backgroundColor: '#FFF4EE', borderColor: '#F4E2D7' }}>
-        <View style={[styles.row, { justifyContent: 'space-between' }]}><Icon name="target" color="#BE460F" /><Pill text="THIS WEEK" color="#FFE4D6" ink="#BE460F" /></View>
+      <Card style={{ flex: 1, gap: 14, backgroundColor: '#10291C', borderColor: '#234131' }}>
+        <View style={[styles.row, { justifyContent: 'space-between' }]}><Icon name="target" color="#00CD6B" /><Pill text="THIS WEEK" color="#173A26" ink="#00CD6B" /></View>
         <Text style={styles.section}>{challenge?.title ?? 'The five-ride club'}</Text>
         <Text style={styles.body}>{challenge?.description ?? 'Record 5 rides in the last 7 days'}</Text>
         <Progress value={challenge ? challenge.progress / challenge.target * 100 : 0} />
-        <Text style={{ color: '#BE460F', fontWeight: '700', fontSize: 13 }}>{weeklyJourneys} ride{weeklyJourneys === 1 ? '' : 's'} in the last 7 days · {Math.max(0, (challenge?.target ?? 5) - weeklyJourneys)} to go</Text>
+        <Text style={{ color: '#00CD6B', fontWeight: '700', fontSize: 13 }}>{weeklyJourneys} ride{weeklyJourneys === 1 ? '' : 's'} in the last 7 days · {Math.max(0, (challenge?.target ?? 5) - weeklyJourneys)} to go</Text>
       </Card>
     </View>
 
@@ -91,7 +92,7 @@ export default function HomeScreen() {
 
     <SectionTitle aside="Your self-reported journeys">Recent rides</SectionTitle>
     {journeys.length ? <Card style={{ paddingVertical: 4 }}>{journeys.slice(0, historyLimit).map((journey, index) => <View accessible accessibilityLabel={`Manual ride from ${getStationName(journey.from)} to ${getStationName(journey.to)}, ${new Date(journey.at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} India time, ${journey.kilometers.toFixed(1)} estimated kilometres, ${journey.minutes} estimated minutes, ${journey.points} XP`} key={journey.id} style={[local.rideRow, index ? { borderTopWidth: 1, borderTopColor: theme.border } : undefined]}>
-      <View style={[styles.iconBox, { backgroundColor: findStation(journey.from)?.line === 'aqua' ? '#E7F5F6' : theme.palePurple }]}><Icon name="navigation" size={17} color={findStation(journey.from)?.line === 'aqua' ? theme.aqua : theme.purple} /></View>
+      <View style={[styles.iconBox, { backgroundColor: findStation(journey.from)?.line === 'aqua' ? '#122A30' : theme.palePurple }]}><Icon name="navigation" size={17} color={findStation(journey.from)?.line === 'aqua' ? theme.aqua : theme.purple} /></View>
       <View style={{ flex: 1, gap: 5 }}><Text style={[styles.body, { fontWeight: '600' }]}>{getStationName(journey.from)} → {getStationName(journey.to)}</Text><Text style={styles.muted}>{new Date(journey.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Kolkata' })}</Text><Text style={styles.muted}>{journey.kilometers.toFixed(1)} km · {journey.minutes} min · estimated</Text></View>
       <Text style={local.rideXp}>+{journey.points} XP</Text>
     </View>)}
@@ -101,7 +102,7 @@ export default function HomeScreen() {
       </View> : null}
     </Card> : <Card style={{ alignItems: 'center', gap: 10, paddingVertical: 28 }}><Icon name="sunrise" size={27} /><Text style={styles.section}>Good things start with one ride.</Text><Text style={[styles.muted, { textAlign: 'center' }]}>Your recent journeys will appear here after your first log.</Text></Card>}
     <Pressable accessibilityRole="button" accessibilityLabel="Open your metro passport" onPress={() => nav.navigate('/passport')} style={({ pressed }) => [local.passportCta, { flexDirection: wide ? 'row' : 'column', opacity: pressed ? 0.8 : 1 }]}><View style={{ gap: 7, flex: 1 }}><Text style={styles.section}>There’s more Pune to discover.</Text><Text style={styles.muted}>Every new station is another page in your passport.</Text></View><View style={styles.row}><Text style={local.linkText}>Explore your passport</Text><Icon name="arrow-right" size={17} /></View></Pressable>
-    <Text style={styles.muted}>Local demo · scores are self-reported · distance, savings and CO₂e are illustrative estimates, not verified travel or measured impact.</Text>
+    <Text style={styles.muted}>Manual rides · distance, savings and CO₂e are estimates.</Text>
   </Page></ScrollView>;
 }
 
