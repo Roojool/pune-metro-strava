@@ -123,4 +123,35 @@ export interface RivalDuelComparison {
   duelInsight: string;
 }
 
+export type LeagueZoneType = 'promotion' | 'safe' | 'relegation';
+
+export interface LeagueTierZoneSummary {
+  userZone: LeagueZoneType;
+  userRank: number;
+  totalParticipants: number;
+  promotionCutoffRank: number;
+  relegationCutoffRank: number;
+  deficitToPromotion: number;
+  bufferFromRelegation: number;
+  zoneTitle: string;
+  zoneDescription: string;
+  zoneColor: string;
+  zoneBadge: string;
+}
+
+export interface VisualShareCardConfig {
+  userName: string;
+  rank: number;
+  totalParticipants: number;
+  leagueTitle: string;
+  points: number;
+  calories: number;
+  level: number;
+  levelTitle: string;
+  milestoneTitle: string;
+  streakDays: number;
+  lineId?: LineId;
+}
+
+
 

@@ -8,6 +8,8 @@ import type {
   CommuterBurnTier,
   DailyBurnActivity,
   EnrichedLeaderboardEntry,
+  LeagueTierZoneSummary,
+  LeagueZoneType,
   LevelProgress,
   RivalDuelComparison,
   RivalMatchup,
@@ -662,5 +664,81 @@ export function calculateRivalDuel(
     duelInsight,
   };
 }
+
+/**
+ * Computes promotion and relegation zones across weekly league leaderboards.
+ * Encourages active commuter habit retention through structured competitive tiers.
+ */
+export function calculateLeagueZones(
+  rankedBoard: EnrichedLeaderboardEntry[],
+  userId = 'you',
+  metric: ScoringMetric = 'xp'
+): LeagueTierZoneSummary {
+  const totalParticipants = Math.max(1, rankedBoard.length);
+  const userIndex = rankedBoard.findIndex(e => e.id === userId);
+  const userRank = userIndex >= 0 ? userIndex + 1 : totalParticipants;
+
+  // Promotion cutoff: Top ~28% (ranks 1 and 2 in standard demo league of 6-7 riders)
+  const promotionCutoffRank = Math.max(1, Math.min(2, Math.ceil(totalParticipants * 0.28)));
+  // Relegation cutoff: Bottom 2 riders in boards with > 3 members
+  const relegationCutoffRank = totalParticipants > 3 ? totalParticipants - 1 : totalParticipants + 1;
+
+  let userZone: LeagueZoneType = 'safe';
+  if (userRank <= promotionCutoffRank) {
+    userZone = 'promotion';
+  } else if (userRank >= relegationCutoffRank && totalParticipants > 3) {
+    userZone = 'relegation';
+  }
+
+  const getVal = (e: EnrichedLeaderboardEntry): number => {
+    if (metric === 'calories') return e.caloriesBurned;
+    if (metric === 'eco') return e.co2SavedKg;
+    return e.points;
+  };
+
+  const userVal = userIndex >= 0 ? getVal(rankedBoard[userIndex]) : 0;
+
+  const promotionThresholdEntry = rankedBoard[promotionCutoffRank - 1];
+  const promotionThresholdVal = promotionThresholdEntry ? getVal(promotionThresholdEntry) : 0;
+  const deficitToPromotion =
+    userZone === 'promotion' ? 0 : Math.max(0, promotionThresholdVal - userVal);
+
+  const relegationThresholdEntry = rankedBoard[relegationCutoffRank - 1];
+  const relegationThresholdVal = relegationThresholdEntry ? getVal(relegationThresholdEntry) : 0;
+  const bufferFromRelegation =
+    userZone === 'relegation' ? 0 : Math.max(0, userVal - relegationThresholdVal);
+
+  let zoneTitle = 'Safe Zone';
+  let zoneDescription = 'Holding steady. Consistent transit maintains your league standing.';
+  let zoneColor = '#159CAC';
+  let zoneBadge = '🛡️ SAFE ZONE';
+
+  if (userZone === 'promotion') {
+    zoneTitle = 'Promotion Tier';
+    zoneDescription = 'Pacing at the top! On track for promotion to the next commuter tier.';
+    zoneColor = '#00CD6B';
+    zoneBadge = '▲ PROMOTION TIER';
+  } else if (userZone === 'relegation') {
+    zoneTitle = 'Relegation Warning';
+    zoneDescription = 'At risk of dropping a tier. Log a ride to climb back to safety.';
+    zoneColor = '#FFC6B0';
+    zoneBadge = '▼ RELEGATION RISK';
+  }
+
+  return {
+    userZone,
+    userRank,
+    totalParticipants,
+    promotionCutoffRank,
+    relegationCutoffRank,
+    deficitToPromotion: Math.round(deficitToPromotion * 10) / 10,
+    bufferFromRelegation: Math.round(bufferFromRelegation * 10) / 10,
+    zoneTitle,
+    zoneDescription,
+    zoneColor,
+    zoneBadge,
+  };
+}
+
 
 

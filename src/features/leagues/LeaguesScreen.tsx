@@ -12,6 +12,7 @@ import type { LeagueScope, ScoringMetric } from './types';
 import {
   calculateActiveBurnStreak,
   calculateBurnSummary,
+  calculateLeagueZones,
   calculateLevelProgress,
   calculateRivalDuel,
   calculateRivalMatchup,
@@ -30,6 +31,8 @@ import { generateLeagueShareSummary, handleLeagueShare } from './share';
 import { RouteBurnSimulator } from './RouteBurnSimulator';
 import { BurnStreakMatrixCard } from './BurnStreakMatrixCard';
 import { RivalDuelCard } from './RivalDuelCard';
+import { VisualCommuterCard } from './VisualCommuterCard';
+import type { VisualShareCardConfig } from './types';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -112,6 +115,20 @@ export default function LeaguesScreen() {
   const rivalMatchup = calculateRivalMatchup(current, board, metric);
   const levelProgress = calculateLevelProgress(points);
   const topCorridors = getTopBurnCorridors(relevantJourneys);
+  const leagueZones = calculateLeagueZones(board, 'you', metric);
+  const visualCardConfig: VisualShareCardConfig = {
+    userName: displayName,
+    rank,
+    totalParticipants: board.length,
+    leagueTitle,
+    points: currentScore,
+    calories: burnSummary.calories,
+    level: levelProgress.level,
+    levelTitle: levelProgress.title,
+    milestoneTitle: puneMilestoneProgress.currentMilestone.name,
+    streakDays: activeStreakSummary.currentStreak,
+    lineId: scope === 'Route' ? line : undefined,
+  };
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -438,15 +455,28 @@ export default function LeaguesScreen() {
 
             {/* Main Leaderboard Table Card */}
             <Card style={{ padding: 0, overflow: 'hidden' }}>
-              <View style={{ padding: 20, gap: 5, borderBottomWidth: 1, borderBottomColor: theme.border }}>
-                <View style={[styles.row, { justifyContent: 'space-between', flexWrap: 'wrap' }]}>
+              <View style={{ padding: 20, gap: 8, borderBottomWidth: 1, borderBottomColor: theme.border }}>
+                <View style={[styles.row, { justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }]}>
                   <Text accessibilityRole="header" style={[styles.section, { flexShrink: 1 }]}>
                     {leagueTitle}
                   </Text>
-                  <Pill text="SAMPLE LEAGUE" ink="#AD79FF" />
+                  <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center' }}>
+                    <Pill
+                      text={leagueZones.zoneBadge}
+                      color={
+                        leagueZones.userZone === 'promotion'
+                          ? '#173A26'
+                          : leagueZones.userZone === 'relegation'
+                          ? '#302019'
+                          : '#122A30'
+                      }
+                      ink={leagueZones.zoneColor}
+                    />
+                    <Pill text="SAMPLE LEAGUE" ink="#AD79FF" />
+                  </View>
                 </View>
                 <Text style={styles.muted}>
-                  You + {samples.length} fictional profiles · ranked by {metric === 'calories' ? 'active commute burn' : metric === 'eco' ? 'CO₂ saved' : 'XP'}
+                  {leagueZones.zoneDescription} · Ranked by {metric === 'calories' ? 'active commute burn' : metric === 'eco' ? 'CO₂ saved' : 'XP'}
                 </Text>
               </View>
 
@@ -591,6 +621,9 @@ export default function LeaguesScreen() {
                 {shareNotice ? <Notice>{shareNotice}</Notice> : null}
               </View>
             </Card>
+
+            {/* Official Digital Commuter Card Badge */}
+            <VisualCommuterCard config={visualCardConfig} />
           </View>
 
           {/* Right Column: Weekly Challenge + Fair Play */}
