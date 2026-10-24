@@ -72,7 +72,8 @@ rankLeaderboard, networkCompletion. Use them; don't duplicate calculations.
 ## Features to implement
 EXECUTE now. Latest main already includes an integrated implementation. Inspect
 it, verify your acceptance criteria, and fix gaps within your owned files.
-Do not stop at a plan or rebuild working features. Continue independent work
+Do not stop at a plan or rebuild working features. The demo is already live;
+your immediate job is owned verification and small fixes. Continue independent work
 when a shared change is blocked; report concrete errors to the lead.
 
 Polish Purple/Aqua/Pune community selection and route discussion view. Show clearly labeled sample posts, create a local post, react/unreact, join/leave and display helpful save/error states. Use shared posts, joined, addPost, toggleLike and toggleCommunity. Trim/validate post text, 1–500 characters. Show commuter identity initials and clear demo labels. Make the feature usable at 390px and 1440px, with clear touch targets and explicit Share action for a privacy-conscious social summary.
@@ -112,8 +113,8 @@ On Windows iOS testing requires a physical iPhone; do not claim it passed otherw
 ## Deadline and timeboxes
 Latest user instruction: one-hour delivery sprint from 14:15 to 15:15 IST on
 2026-10-24. This replaces the original 120-minute deadline. Contracts are already
-frozen. Spend at most 5 minutes reading/setup, 20 minutes implementing and 5
-minutes verifying. Commit, push and open your PR by 14:40 IST. Stop optional
+frozen. Spend at most 5 minutes reading/setup, 10 minutes verifying/fixing and 5
+minutes verifying. Commit, push and open your PR by 15:00 IST. Stop optional
 features at 14:50 IST. Lead integrates and tests through 15:10; final handoff by
 15:15. If starting late, fix blockers and complete the existing feature only.
 ## Definition of done and integration
@@ -151,4 +152,4 @@ that the lead can control another computer.
 
 
 ## Revised one-hour handoff (latest user instruction)
-Repository visibility is now PUBLIC. The hard deadline is 2026-10-24 15:15 IST, revised at 14:15. Finish feature PRs by 14:40, stop optional scope 14:50, integration/testing by 15:10, final delivery 15:15. These times override older 120-minute template times above. UI must be Strava-inspired: orange #FC4C02, charcoal/white, prominent schematic route map, estimated duration/distance and ride activity summaries. No separate web app, API keys, fabricated GPS tracks or invented fares. Your ownership remains unchanged. Work continuously in your assigned branch until done; after reporting a blocker continue independent fixes. Check TEAM_STATUS and AI reservation handoff before editing. All five prompts are standalone for separate AI sessions on each human developer checkout.
+Repository visibility is now PUBLIC. The hard deadline is 2026-10-24 15:15 IST, revised at 14:15. Finish verification or blocker-fix PRs by 15:00, stop optional scope 14:50, integration/testing by 15:10, final delivery 15:15. These times override older 120-minute template times above. UI must be Strava-inspired: orange #FC4C02, charcoal/white, prominent schematic route map, estimated duration/distance and ride activity summaries. No separate web app, API keys, fabricated GPS tracks or invented fares. Your ownership remains unchanged. Work continuously in your assigned branch until done; after reporting a blocker continue independent fixes. Check TEAM_STATUS and AI reservation handoff before editing. All five prompts are standalone for separate AI sessions on each human developer checkout.
