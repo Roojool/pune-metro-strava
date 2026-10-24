@@ -111,3 +111,7 @@ Repo paths for Loops House / pitch / social:
 - Judge Q&A: `docs/submission-assets/03-judge-qa.md`
 
 Live demo: https://roojool.github.io/pune-metro-strava/
+
+## Submitter handoff
+
+See [docs/submission-assets/READY-FOR-SUBMITTER.md](docs/submission-assets/READY-FOR-SUBMITTER.md) — paste fields + asset links. Teammate submits; do not double-submit.
