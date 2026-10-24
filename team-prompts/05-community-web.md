@@ -1,7 +1,7 @@
 # Developer 5 — community, social and web
 
 ## Mission and context
-Build MetroQuest, “Strava for Metro,” in a strict 120-minute five-human sprint.
+Deliver MetroQuest, Strava for Metro, in the revised one-hour five-human sprint.
 One Expo SDK 57 / TypeScript / Expo Router / React Native Web app supports Android,
 iOS and web. Pune commuters manually record rides, collect stations, earn local
 XP and interact with a local demo community. No API keys are needed. This is
@@ -9,8 +9,9 @@ self-reported local demo data, not verified travel or a live multi-user platform
 
 Repository: https://github.com/Roojool/pune-metro-strava (PUBLIC).
 Primary branch: main. Your assigned branch: `feature/community-web`.
-Lead: Roojool / Developer 1. Four human usernames are pending; invitation commands
-are in CONTRIBUTING.md. AI workers are helpers, not substitutes for human access.
+Lead: Roojool / Developer 1. Human roles 2-5: prathadox, chetanpujari5105,
+mangeshraut712, atharvamhaske. Invitations were sent; see TEAM_STATUS.md.
+AI workers are helpers, not substitutes for human access.
 
 ## Exact ownership and collision rules
 You own: src/features/community/** only. Required export: CommunityScreen.tsx, default React component. Web polish is limited to this feature; send shared-layout suggestions to Developer 1.
@@ -69,6 +70,11 @@ environmentalEstimate, calculateXp, unlockAchievements, weeklyChallenges,
 rankLeaderboard, networkCompletion. Use them; don't duplicate calculations.
 
 ## Features to implement
+EXECUTE now. Latest main already includes an integrated implementation. Inspect
+it, verify your acceptance criteria, and fix gaps within your owned files.
+Do not stop at a plan or rebuild working features. Continue independent work
+when a shared change is blocked; report concrete errors to the lead.
+
 Polish Purple/Aqua/Pune community selection and route discussion view. Show clearly labeled sample posts, create a local post, react/unreact, join/leave and display helpful save/error states. Use shared posts, joined, addPost, toggleLike and toggleCommunity. Trim/validate post text, 1–500 characters. Show commuter identity initials and clear demo labels. Make the feature usable at 390px and 1440px, with clear touch targets and explicit Share action for a privacy-conscious social summary.
 
 ## Explicitly out of scope

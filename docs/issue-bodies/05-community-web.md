@@ -8,7 +8,7 @@ Polish Purple/Aqua/Pune community selection and route discussion view. Show clea
 
 Complete standalone instructions: https://github.com/Roojool/pune-metro-strava/blob/main/team-prompts/05-community-web.md
 
-Acceptance: typecheck, domain tests and web export pass; demonstrate affected flow; sample labels/accessibility retained; no edits outside ownership. Deadline: 2026-10-24 15:08 IST (optional feature freeze). Shared contracts freeze 14:18 IST. See TEAM_STATUS.md for AI reservations; never edit a reserved feature until lead handoff.
+Acceptance: typecheck, domain tests and web export pass; demonstrate affected flow; sample labels/accessibility retained; no edits outside ownership. Deadline: 2026-10-24 14:50 IST (optional feature freeze). Shared contracts freeze 14:18 IST. AI reservations are released; merge latest main and continue only within your owned folder.
 
 Out of scope: No edits to profile, Home, sidebar, shared UI, package config, data fixtures outside owned folder, state, navigation, moderation service or live chat. No claims of real connected users.
 Fallback: Keep the local Purple Line feed, composer and reactions. Reuse shared cards/buttons instead of custom social features.

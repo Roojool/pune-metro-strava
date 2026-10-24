@@ -15,6 +15,12 @@ same URL/port to preserve browser storage. No API keys required.
 
 ## Two-minute story
 
+Automated browser proof is in `scripts/browser-smoke.js`. On a fresh Playwright
+CLI session it checks all five tabs, the complete journey/passport/XP flow,
+community post/like/join, profile saving, reload persistence and mobile layout.
+See TEAM_STATUS.md for commands and actual outcomes. The saved screenshot in
+README is from the running app, not a mockup.
+
 1. Start on Home. Fresh installations begin with zero journeys and XP.
 2. Tap Log a ride. Default origin PCMC and destination Civil Court are ready;
    choose/search different open stations if desired.

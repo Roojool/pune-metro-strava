@@ -1,7 +1,7 @@
 # Developer 1 — lead and integration
 
 ## Mission and context
-Build MetroQuest, “Strava for Metro,” in a strict 120-minute five-human sprint.
+Deliver MetroQuest, Strava for Metro, in the revised one-hour five-human sprint.
 One Expo SDK 57 / TypeScript / Expo Router / React Native Web app supports Android,
 iOS and web. Pune commuters manually record rides, collect stations, earn local
 XP and interact with a local demo community. No API keys are needed. This is
@@ -9,11 +9,12 @@ self-reported local demo data, not verified travel or a live multi-user platform
 
 Repository: https://github.com/Roojool/pune-metro-strava (PUBLIC).
 Primary branch: main. Your assigned branch: `feature/core-integration`.
-Lead: Roojool / Developer 1. Four human usernames are pending; invitation commands
-are in CONTRIBUTING.md. AI workers are helpers, not substitutes for human access.
+Lead: Roojool / Developer 1. Human roles 2-5: prathadox, chetanpujari5105,
+mangeshraut712, atharvamhaske. Invitations were sent; see TEAM_STATUS.md.
+AI workers are helpers, not substitutes for human access.
 
 ## Exact ownership and collision rules
-You own: app/**; src/components/**; src/theme.ts; src/domain/**; src/data/**; src/state/**; tests/**; package.json; package-lock.json; app.json; tsconfig*.json; .github/**; scripts/**; all root documentation and team-prompts/**
+You own: app/**; assets/**; docs/**; app.config.js; src/components/**; src/theme.ts; src/domain/**; src/data/**; src/state/**; tests/**; package.json; package-lock.json; app.json; tsconfig*.json; .github/**; scripts/**; all root documentation and team-prompts/**
 
 Read shared files but do not edit files outside this list. Do not create a second
 copy of a shared model, repository, scoring method or station dataset. Only
@@ -69,6 +70,11 @@ environmentalEstimate, calculateXp, unlockAchievements, weeklyChallenges,
 rankLeaderboard, networkCompletion. Use them; don't duplicate calculations.
 
 ## Features to implement
+EXECUTE now. Latest main already includes an integrated implementation. Inspect
+it, verify your acceptance criteria, and fix gaps within your owned files.
+Do not stop at a plan or rebuild working features. Continue independent work
+when a shared change is blocked; report concrete errors to the lead.
+
 Maintain the working app shell, five Expo Router tabs, responsive sidebar, profile/privacy controls, network data, central calculations, persistent repository, tests and CI. Review and integrate four feature PRs. Own all shared exports. Validate the critical journey → passport → leagues → community → reload flow. Keep main runnable and publish demo instructions.
 
 ## Explicitly out of scope
@@ -118,7 +124,7 @@ features at 14:50 IST. Lead integrates and tests through 15:10; final handoff by
 - Verify the affected part of PCMC → Civil Court → Passport → Leagues → Purple
   discussion → create local post → reload.
 - No broken imports, silent save errors, false verified claims or new API keys.
-- No root config changes or unrelated formatting.
+- Shared config changes are lead-only; no unrelated formatting.
 - PR description lists behavior, owned files, commands/results, screenshots when
   available, limitations and the relevant issue. Do not claim device tests you
   did not run.
@@ -132,7 +138,7 @@ gh pr create --repo Roojool/pune-metro-strava --base main --head feature/core-in
 ```
 Use a real UTF-8 file for multiline PR text. Include the matching issue from
 TEAM_STATUS.md. Lead reviews every PR, runs checks, then squash merges one at a
-time. Do not self-merge, force-push, bypass failing checks or push directly to main.
+time. Feature workers must not self-merge. As lead, inspect each diff and successful checks before squash merging. Never force-push or bypass failures.
 
 ## Blockers and fallback
 If blocked for more than 5 minutes, report in your GitHub issue: exact error,

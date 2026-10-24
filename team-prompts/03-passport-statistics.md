@@ -1,7 +1,7 @@
 # Developer 3 — passport and statistics
 
 ## Mission and context
-Build MetroQuest, “Strava for Metro,” in a strict 120-minute five-human sprint.
+Deliver MetroQuest, Strava for Metro, in the revised one-hour five-human sprint.
 One Expo SDK 57 / TypeScript / Expo Router / React Native Web app supports Android,
 iOS and web. Pune commuters manually record rides, collect stations, earn local
 XP and interact with a local demo community. No API keys are needed. This is
@@ -9,8 +9,9 @@ self-reported local demo data, not verified travel or a live multi-user platform
 
 Repository: https://github.com/Roojool/pune-metro-strava (PUBLIC).
 Primary branch: main. Your assigned branch: `feature/passport-stats`.
-Lead: Roojool / Developer 1. Four human usernames are pending; invitation commands
-are in CONTRIBUTING.md. AI workers are helpers, not substitutes for human access.
+Lead: Roojool / Developer 1. Human roles 2-5: prathadox, chetanpujari5105,
+mangeshraut712, atharvamhaske. Invitations were sent; see TEAM_STATUS.md.
+AI workers are helpers, not substitutes for human access.
 
 ## Exact ownership and collision rules
 You own: src/features/passport/** only. Required export: PassportScreen.tsx, default React component.
@@ -69,6 +70,11 @@ environmentalEstimate, calculateXp, unlockAchievements, weeklyChallenges,
 rankLeaderboard, networkCompletion. Use them; don't duplicate calculations.
 
 ## Features to implement
+EXECUTE now. Latest main already includes an integrated implementation. Inspect
+it, verify your acceptance criteria, and fix gaps within your owned files.
+Do not stop at a plan or rebuild working features. Continue independent work
+when a shared change is blocked; report concrete errors to the lead.
+
 Build a polished Metro Passport with Purple/Aqua line selector and a touchable station explorer. Differentiate collected, unvisited and unavailable Range Hill. Count only boarding/exit stations. Show completion from OPEN_STATIONS, total journeys, estimated kilometers, current-month summary, illustrative savings/CO2e and attractive progress cards. Use shared repository totals and domain networkCompletion. Provide explicit share action with a previewable stats layout that does not reveal routes or dates; React Native Share is sufficient.
 
 ## Explicitly out of scope

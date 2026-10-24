@@ -1,63 +1,80 @@
-# Sprint team status
+# MetroQuest handoff and verification
 
-Original start: 2026-10-24 13:58 IST. Revised one-hour delivery sprint:
-**14:15–15:15 IST**. User now explicitly requires a PUBLIC repository and
-Strava-inspired orange activity/map UI. These replace the earlier private/
-120-minute delivery requirements.
-Four human developers retain their own branches and GitHub access. AI workers
-are separate helpers; no claim that humans have begun work or tested devices.
+Original start: 2026-10-24 13:58 IST. Revised one-hour window: **14:15–15:15 IST**.
+The repository is PUBLIC by the latest user instruction. The Strava-inspired
+orange activity UI includes a schematic map, estimated time/distance and ride summaries.
 
-| Human | GitHub | Branch | Exclusive feature ownership | Status |
-| --- | --- | --- | --- | --- |
-| 1 Lead | Roojool | feature/core-integration | app/, shared core/config/CI/docs | Active |
-| 2 Journey | prathadox | feature/journey-tracking | src/features/journey/ | Prompt ready; availability unconfirmed |
-| 3 Passport | chetanpujari5105 | feature/passport-stats | src/features/passport/ | Prompt ready; availability unconfirmed |
-| 4 Leagues | mangeshraut712 | feature/gamification | src/features/leagues/ | Prompt ready; availability unconfirmed |
-| 5 Community | atharvamhaske | feature/community-web | src/features/community/ | Prompt ready; availability unconfirmed |
+## Five human developers
 
-AI reservations will be listed here before work starts. While a feature is
-reserved to an AI helper, its human owner should inspect, test or review rather
-than change the same files; after lead integration the human merges latest main
-and continues. No AI worker pushes to a human branch. The lead alone performs
-shared edits and merges. Features must not edit each other's directories.
+| Role | GitHub | Human branch | Exclusive ownership | Issue | Feature PR |
+| --- | --- | --- | --- | --- | --- |
+| 1 Lead | Roojool | feature/core-integration | app/, shared core/config/tests/CI/docs/assets | [#1](https://github.com/Roojool/pune-metro-strava/issues/1) | [#6](https://github.com/Roojool/pune-metro-strava/pull/6), [#11](https://github.com/Roojool/pune-metro-strava/pull/11) |
+| 2 Journey | prathadox | feature/journey-tracking | src/features/journey/** | [#2](https://github.com/Roojool/pune-metro-strava/issues/2) | [#9](https://github.com/Roojool/pune-metro-strava/pull/9) |
+| 3 Passport | chetanpujari5105 | feature/passport-stats | src/features/passport/** | [#3](https://github.com/Roojool/pune-metro-strava/issues/3) | [#7](https://github.com/Roojool/pune-metro-strava/pull/7) |
+| 4 Leagues | mangeshraut712 | feature/gamification | src/features/leagues/** | [#4](https://github.com/Roojool/pune-metro-strava/issues/4) | [#10](https://github.com/Roojool/pune-metro-strava/pull/10) |
+| 5 Community | atharvamhaske | feature/community-web | src/features/community/** | [#5](https://github.com/Roojool/pune-metro-strava/issues/5) | [#8](https://github.com/Roojool/pune-metro-strava/pull/8) |
 
-## GitHub setup
+All four write-access invitations were sent. Acceptance and availability are not
+assumed. Exactly five standalone prompts in team-prompts/ include full context,
+ownership, shared APIs, commands, acceptance, PR steps, deadlines and fallbacks.
+Each person can paste one into a separate AI session on their own checkout.
 
-Public repo: https://github.com/Roojool/pune-metro-strava. Baseline: 90c4602.
-All five human feature branches originate from that same working baseline.
-Write-access invitations sent to all four supplied usernames; acceptance pending.
+## AI reservations released
 
-| Role | Issue | Prompt |
-| --- | --- | --- |
-| Lead | [#1](https://github.com/Roojool/pune-metro-strava/issues/1) | team-prompts/01-lead-integration.md |
-| Journey | [#2](https://github.com/Roojool/pune-metro-strava/issues/2) | team-prompts/02-journey-tracking.md |
-| Passport | [#3](https://github.com/Roojool/pune-metro-strava/issues/3) | team-prompts/03-passport-statistics.md |
-| Leagues | [#4](https://github.com/Roojool/pune-metro-strava/issues/4) | team-prompts/04-leaderboards-gamification.md |
-| Community | [#5](https://github.com/Roojool/pune-metro-strava/issues/5) | team-prompts/05-community-web.md |
+Three helpers used separate journey/passport/community worktrees and ai/* branches.
+The lead implemented Leagues sequentially on ai/gamification-demo. Feature PRs
+#7–#10 passed checks and were squash merged sequentially. No helpers edited
+another feature or shared checkout. Humans were not counted as AI workers.
 
-## Active AI reservations
+All four feature reservations are now **released to the human owners**. Fetch
+and merge latest origin/main before editing. Verify and improve the existing
+implementation instead of rebuilding it. Shared files remain lead-only.
+PR #11 resolves static hydration/responsive dimensions and accessible tab labels.
 
-| Worker | Branch | Separate worktree | Exclusive files |
-| --- | --- | --- | --- |
-| Journey helper | ai/journey-demo | ../metroquest-workers/journey | src/features/journey/** |
-| Passport helper | ai/passport-demo | ../metroquest-workers/passport | src/features/passport/** |
-| Community helper | ai/community-demo | ../metroquest-workers/community | src/features/community/** |
-| Lead (root) | feature/core-integration | current project checkout | Shared core, root files, src/features/leagues/** temporary reservation |
+## Checks actually performed
 
-Human Developers 2–5: inspect/test/review while your feature is reserved. Lead
-will record handoff when these implementations merge. Your feature branch is
-untouched by AI workers. This avoids simultaneous human/AI file ownership.
+| Check | Result |
+| --- | --- |
+| npm install | PASS, compatible SDK 57 dependencies + lockfile |
+| npm ci in GitHub Actions | PASS on merged feature PRs |
+| TypeScript | PASS |
+| Automated tests | PASS, 11 tests covering domain/persistence/search/share privacy/Pages config |
+| Expo Doctor | PASS, 21/21 |
+| Expo development server | PASS, http://localhost:8081 |
+| Production web export | PASS, five tabs and log route |
+| Android/iOS bundle exports | PASS for both; hardware testing is separate |
+| Production browser first launch | PASS after hydration fix, no console errors/warnings |
+| Journey → Passport → Leagues | PASS, 1 ride, 2/28 endpoint stamps, 50 XP and First stop achievement |
+| Duration/distance UI | PASS, illustrative default 28 min / 13.4 km |
+| Duplicate logging | PASS, immediate repeat rejected by one-minute guard |
+| Community | PASS, local post/reaction/join persist through reload; whitespace rejected |
+| Profile | PASS, edited display name persists through reload |
+| Mobile/desktop | PASS, all five tabs at 390px, no document overflow; desktop at 1440px |
+| Full browser smoke | PASS, zero page/console errors; scripted local quick log 421ms, not a human timing study |
+| Sharing | Aggregate-only privacy tests PASS; native chooser completion not tested |
+| Android real device/emulator | NOT TESTED, adb found no device |
+| iPhone/iOS simulator | NOT TESTED, none available on this Windows machine |
+| Hosted release | Pages configured; final hosted verification recorded before delivery |
 
-## Baseline checks
+Re-run in a fresh Playwright CLI session on Home after serving a production
+export with `npx expo serve --port 8090`:
 
-- npm install: passed (578 initial packages; SDK-compatible storage/icons added).
-- TypeScript: passed after removing obsolete baseUrl setting.
-- Domain tests: 6 passed.
-- Expo static web export: passed, all five tabs plus log route.
-- Expo dev server: running at http://localhost:8081; browser rendered Home.
-- Expo Doctor: obsolete newArchEnabled removed; recheck pending.
-- Browser critical interaction scenario: pending after feature integration.
-- Android: adb available, no device/emulator attached. Not tested.
-- iOS: no iPhone connected/tested. Not tested.
-- CI: workflow scope approved, .github/workflows/check.yml published; PR checks running.
-- Web deployment: not deployed; local server is available.
+```sh
+playwright-cli -s=metroquest-qa open http://localhost:8090/
+playwright-cli -s=metroquest-qa run-code --filename=scripts/browser-smoke.js
+```
+
+The script creates clearly labeled local QA activity; no remote social post is
+sent. Browser artifacts are in ignored output/playwright/. An early hydration
+issue and test locator ambiguities were diagnosed and fixed before the final pass.
+
+## Links
+
+- Source: https://github.com/Roojool/pune-metro-strava
+- App: https://roojool.github.io/pune-metro-strava/
+- CI: https://github.com/Roojool/pune-metro-strava/actions
+- Local Expo: http://localhost:8081
+- Local production: http://localhost:8090
+
+No API keys, verified GPS trips, real public ranks or live multi-user feed are
+claimed. KNOWN_LIMITATIONS.md records assumptions, risks and post-MVP work.
