@@ -607,4 +607,36 @@ export interface TreeOffsetSummary {
   accessibilityDescription: string;
 }
 
+export interface PuneChokePoint {
+  id: string;
+  name: string;
+  marathiName: string;
+  roadName: string;
+  bypassStations: string[];
+  peakDelayMinutes: number;
+  bypassCount: number;
+  isBypassed: boolean;
+}
+
+export type DecongestionTier = 'chowk_cruiser' | 'flyover_skipper' | 'grid_unclogger' | 'flow_master' | 'traffic_legend';
+
+export interface TrafficReliefSummary {
+  roadKmTraveledAvoided: number;
+  trafficSignalMinutesSaved: number;
+  roadSpaceOccupancySqMHours: number;
+  chokePointsBypassedCount: number;
+  totalChokePoints: number;
+  chokePoints: PuneChokePoint[];
+  decongestionTier: DecongestionTier;
+  tierTitle: string;
+  tierTitleMarathi: string;
+  dominantChokePointBypassed: string;
+  nextTierKm: number;
+  progressPercent: number;
+  congestionReliefTip: string;
+  shareableTrafficText: string;
+  accessibilityDescription: string;
+}
+
+
 
