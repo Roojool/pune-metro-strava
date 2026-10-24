@@ -18,9 +18,11 @@ import {
   rankByMetric,
 } from './scoring';
 import { WhoBurnedMoreCard } from './WhoBurnedMoreCard';
-import { calculatePuneMilestoneProgress } from './puneBurnEquivalents';
+import { calculatePuneMilestoneProgress, getTopBurnCorridors } from './puneBurnEquivalents';
 import { PuneMilestonesCard } from './PuneMilestonesCard';
 import { filterJourneysByLine, getLineEmptyStateGuidance, sanitizeParticipantName } from './edgeCases';
+import { CorridorBurnCard } from './CorridorBurnCard';
+import { generateLeagueShareSummary, handleLeagueShare } from './share';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -52,6 +54,8 @@ export default function LeaguesScreen() {
   const [line, setLine] = useState<LineId>('purple');
   const [metric, setMetric] = useState<ScoringMetric>('xp');
   const [showXpDetails, setShowXpDetails] = useState(false);
+  const [shareNotice, setShareNotice] = useState<string | null>(null);
+  const [isSharing, setIsSharing] = useState(false);
   const wide = useWindowDimensions().width >= 1180;
 
   if (!ready || storageError) {
@@ -97,6 +101,7 @@ export default function LeaguesScreen() {
   const puneMilestoneProgress = calculatePuneMilestoneProgress(burnSummary.calories);
   const rivalMatchup = calculateRivalMatchup(current, board, metric);
   const levelProgress = calculateLevelProgress(points);
+  const topCorridors = getTopBurnCorridors(relevantJourneys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -521,6 +526,29 @@ export default function LeaguesScreen() {
                     : 'Sample scores are fixed; your score updates with each eligible local ride.'}
                 </Text>
                 <Text style={styles.muted}>Equal scores are ordered by secondary performance and name.</Text>
+                <Action
+                  label={isSharing ? 'Opening share options…' : 'Share my league standing'}
+                  secondary
+                  icon="share-2"
+                  disabled={isSharing}
+                  onPress={async () => {
+                    setIsSharing(true);
+                    const summary = generateLeagueShareSummary({
+                      rank,
+                      totalParticipants: board.length,
+                      leagueTitle,
+                      points: currentScore,
+                      caloriesBurned: burnSummary.calories,
+                      level: levelProgress.level,
+                      milestoneName: puneMilestoneProgress.currentMilestone.name,
+                      isZeroState: relevantJourneys.length === 0,
+                    });
+                    const res = await handleLeagueShare(summary);
+                    setShareNotice(res.message);
+                    setIsSharing(false);
+                  }}
+                />
+                {shareNotice ? <Notice>{shareNotice}</Notice> : null}
               </View>
             </Card>
           </View>
@@ -565,6 +593,9 @@ export default function LeaguesScreen() {
                 </Card>
               );
             })}
+
+            {/* Top Pune Metro Corridor Active Burn */}
+            <CorridorBurnCard corridors={topCorridors} />
 
             <Card style={{ gap: 12, backgroundColor: '#261E1B', borderColor: '#4D3730' }}>
               <Icon name="shield" color="#FFC6B0" />
