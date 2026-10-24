@@ -1,6 +1,9 @@
 # Sprint team status
 
-Start: 2026-10-24 13:58 IST. Hard deadline: 15:58 IST.
+Original start: 2026-10-24 13:58 IST. Revised one-hour delivery sprint:
+**14:15–15:15 IST**. User now explicitly requires a PUBLIC repository and
+Strava-inspired orange activity/map UI. These replace the earlier private/
+120-minute delivery requirements.
 Four human developers retain their own branches and GitHub access. AI workers
 are separate helpers; no claim that humans have begun work or tested devices.
 
@@ -18,4 +21,43 @@ than change the same files; after lead integration the human merges latest main
 and continues. No AI worker pushes to a human branch. The lead alone performs
 shared edits and merges. Features must not edit each other's directories.
 
-Issue, PR and invitation results are recorded after repository publication.
+## GitHub setup
+
+Public repo: https://github.com/Roojool/pune-metro-strava. Baseline: 90c4602.
+All five human feature branches originate from that same working baseline.
+Write-access invitations sent to all four supplied usernames; acceptance pending.
+
+| Role | Issue | Prompt |
+| --- | --- | --- |
+| Lead | [#1](https://github.com/Roojool/pune-metro-strava/issues/1) | team-prompts/01-lead-integration.md |
+| Journey | [#2](https://github.com/Roojool/pune-metro-strava/issues/2) | team-prompts/02-journey-tracking.md |
+| Passport | [#3](https://github.com/Roojool/pune-metro-strava/issues/3) | team-prompts/03-passport-statistics.md |
+| Leagues | [#4](https://github.com/Roojool/pune-metro-strava/issues/4) | team-prompts/04-leaderboards-gamification.md |
+| Community | [#5](https://github.com/Roojool/pune-metro-strava/issues/5) | team-prompts/05-community-web.md |
+
+## Active AI reservations
+
+| Worker | Branch | Separate worktree | Exclusive files |
+| --- | --- | --- | --- |
+| Journey helper | ai/journey-demo | ../metroquest-workers/journey | src/features/journey/** |
+| Passport helper | ai/passport-demo | ../metroquest-workers/passport | src/features/passport/** |
+| Community helper | ai/community-demo | ../metroquest-workers/community | src/features/community/** |
+| Lead (root) | feature/core-integration | current project checkout | Shared core, root files, src/features/leagues/** temporary reservation |
+
+Human Developers 2–5: inspect/test/review while your feature is reserved. Lead
+will record handoff when these implementations merge. Your feature branch is
+untouched by AI workers. This avoids simultaneous human/AI file ownership.
+
+## Baseline checks
+
+- npm install: passed (578 initial packages; SDK-compatible storage/icons added).
+- TypeScript: passed after removing obsolete baseUrl setting.
+- Domain tests: 6 passed.
+- Expo static web export: passed, all five tabs plus log route.
+- Expo dev server: running at http://localhost:8081; browser rendered Home.
+- Expo Doctor: obsolete newArchEnabled removed; recheck pending.
+- Browser critical interaction scenario: pending after feature integration.
+- Android: adb available, no device/emulator attached. Not tested.
+- iOS: no iPhone connected/tested. Not tested.
+- CI: workflow scope approved, .github/workflows/check.yml published; PR checks running.
+- Web deployment: not deployed; local server is available.
