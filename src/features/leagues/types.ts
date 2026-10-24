@@ -251,4 +251,19 @@ export interface CleanAirMetrics {
   accessibilitySummary: string;
 }
 
+export interface VerticalAscentSummary {
+  totalVerticalMeters: number;
+  totalStairFlights: number;
+  totalStationSteps: number;
+  deepestStationTraversed: string;
+  maxSingleRideMeters: number;
+  landmarkEquivalentName: string;
+  landmarkEquivalentMeters: number;
+  landmarkRatio: number;
+  climberRankTitle: string;
+  climberRankSubtitle: string;
+  accessibilityDescription: string;
+}
+
+
 

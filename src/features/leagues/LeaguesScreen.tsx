@@ -40,6 +40,8 @@ import { WeeklyConsistencyCard } from './WeeklyConsistencyCard';
 import { calculateWeeklyConsistency } from './weeklyConsistency';
 import { CleanAirSavingsCard } from './CleanAirSavingsCard';
 import { calculateCleanAirMetrics } from './cleanAirSavings';
+import { VerticalAscentCard } from './VerticalAscentCard';
+import { calculateVerticalAscent } from './verticalAscent';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -128,6 +130,7 @@ export default function LeaguesScreen() {
   const leagueBadges = calculateLeagueBadges(journeys);
   const weeklyConsistency = calculateWeeklyConsistency(relevantJourneys);
   const cleanAirMetrics = calculateCleanAirMetrics(relevantJourneys);
+  const verticalAscent = calculateVerticalAscent(relevantJourneys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -293,6 +296,9 @@ export default function LeaguesScreen() {
 
         {/* Pune Clean Air Initiative & Eco Savings */}
         <CleanAirSavingsCard metrics={cleanAirMetrics} />
+
+        {/* Station Concourse Vertical Climb */}
+        <VerticalAscentCard summary={verticalAscent} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
