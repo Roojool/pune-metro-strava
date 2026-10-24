@@ -574,3 +574,37 @@ export interface CommuterAuditSummary {
   accessibilityDescription: string;
 }
 
+export type PuneTreeSpeciesId = 'peepal' | 'neem' | 'banyan' | 'tamarind' | 'gulmohar';
+
+export interface PuneTreeSpecies {
+  id: PuneTreeSpeciesId;
+  name: string;
+  marathiName: string;
+  botanicalName: string;
+  annualCo2AbsorptionKg: number;
+  icon: string;
+  significance: string;
+  puneHabitat: string;
+}
+
+export type TreeCanopyTier = 'sapling' | 'grove' | 'forest_guardian' | 'canopy_champion' | 'biosphere_patron';
+
+export interface TreeOffsetSummary {
+  kgCo2Saved: number;
+  treeYearsSequestered: number;
+  treeDaysSequestered: number;
+  oxygenGeneratedLiters: number;
+  biodiversityScore: number;
+  activeTier: TreeCanopyTier;
+  tierTitle: string;
+  tierTitleMarathi: string;
+  featuredTree: PuneTreeSpecies;
+  treesAdoptedCount: number;
+  nextTierTargetKg: number;
+  progressToNextTierPercent: number;
+  ecologicalTip: string;
+  shareableTreeText: string;
+  accessibilityDescription: string;
+}
+
+

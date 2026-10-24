@@ -70,6 +70,8 @@ import { IntermodalTransitCard } from './IntermodalTransitCard';
 import { calculateIntermodalTransit } from './intermodalTransit';
 import { CommuterAuditCard } from './CommuterAuditCard';
 import { calculateCommuterAudit } from './commuterAudit';
+import { TreeOffsetCard } from './TreeOffsetCard';
+import { calculateTreeOffset } from './treeOffset';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -173,6 +175,7 @@ export default function LeaguesScreen() {
   const fuelSavings = calculateFuelSavings(relevantJourneys);
   const intermodalTransit = calculateIntermodalTransit(relevantJourneys);
   const commuterAudit = calculateCommuterAudit(relevantJourneys);
+  const treeOffset = calculateTreeOffset(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -396,6 +399,9 @@ export default function LeaguesScreen() {
 
         {/* Commuter Fair Play & Leaderboard Integrity Audit */}
         <CommuterAuditCard summary={commuterAudit} />
+
+        {/* Pune Urban Forest & Tree Carbon Offset */}
+        <TreeOffsetCard summary={treeOffset} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
