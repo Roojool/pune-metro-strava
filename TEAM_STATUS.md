@@ -63,6 +63,33 @@ PR #11 resolves static hydration/responsive dimensions and accessible tab labels
 Live GitHub checks and fetched main override this timestamped snapshot. Local
 unpublished teammate changes cannot be inferred from GitHub activity.
 
+## Completed follow-up integration — 2026-10-24 16:29 IST
+
+All published human work in this pass is integrated: Prathadox #23, Chetan #26,
+Mangesh #16/#24 and README/screenshots #21. The lead's #25/#28 fix the shared
+browser checks and Passport's browser-sharing success result. No teammate branch
+was reset or force-pushed.
+
+At the user's explicit request, AGY `gemini-3.8-flash-high` with high effort
+completed Community in a separate `ai/community-gemini` worktree. PR #29 adds
+loading/storage recovery access, post validation/privacy tests and correct
+browser void-success/native dismissal handling for the community share card.
+An independent reviewer verified the exact owned diff; required CI passed on
+head `8d68f75e742efad102eaf4eccf4e894bbfe8857b` before merge. The helper stopped
+editing. The temporary Community reservation is released; Atharva's human branch
+was untouched.
+
+The merged application tree at `368b488` exactly matches the tested combined
+preview `86bb149c03c1af1cddcff19ac3a905581831cf1b` (Git diff exited zero).
+Actual checks: typecheck, 24 tests, production web export, full browser flow
+(563ms automated log, one ride, two stamps, 50 XP, all persistence checks, five
+mobile tabs, zero browser errors), plus both cards' real browser API stubs for
+void success, rejected sharing and aggregate-only payloads. Zero external shares
+were sent by these tests. Independent Community QA also checked quota failures,
+draft preservation/retry, 500-character boundaries, corrupted-data recovery and
+390/1440px layouts. Browser sharing is tested; actual native chooser completion
+and iPhone runtime remain untested.
+
 ## Checks actually performed
 
 | Check | Result |

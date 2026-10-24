@@ -1,6 +1,6 @@
 # MetroQuest integration board
 
-Lead-owned snapshot, 2026-10-24 16:15 IST. Fetch origin/main and inspect live
+Lead-owned snapshot, 2026-10-24 16:29 IST. Fetch origin/main and inspect live
 GitHub PR/check status before acting; this file does not lock remote agents.
 
 The app is live at https://roojool.github.io/pune-metro-strava/ and baseline
@@ -9,16 +9,21 @@ Optional product scope is frozen. Current work is integration and reliability.
 
 | Workstream | Owner | Published status | Next action |
 | --- | --- | --- | --- |
-| Lead/shared | Roojool, this session | Continuation tooling #20 and browser gate #25 merged | Review and integrate exact passing heads; verify release |
+| Lead/shared | Roojool, this session | Tooling #20, browser gates #25/#28 and shared integration completed | Verify deployment and preserve the working baseline |
 | Journey | prathadox | PR #23 reviewed and merged as 3d5e3e2 | Sync main and run integrated E2E |
 | Passport | chetanpujari5105 | First-ride card reviewed and merged through lead-opened upstream PR #26 | Sync main and run integrated E2E |
 | Leagues | mangeshraut712 | PR #16, #24 and README/screenshots PR #21 merged | Sync main and run integrated E2E |
-| Community | Lead-authorized AGY Gemini 3.8 Flash (High) helper | No new Atharva branch commits found; helper running in ai/community-gemini | Verify/fix only src/features/community/** and submit evidence |
+| Community | AGY Gemini 3.8 Flash (High), covering Atharva by user request | PR #29 independently reviewed and merged as 368b488 | Complete; helper stopped editing |
 
-Community is temporarily reserved to the named helper by the user's explicit
-request. It has a separate worktree and cannot edit shared files or Atharva's
-branch. If Atharva resumes, coordinate with the lead before editing that feature.
-The five human roles remain defined; this helper does not impersonate a teammate.
+The temporary community reservation is released after PR #29. AGY used its own
+worktree and branch; Atharva's branch was untouched. The five human roles remain
+defined. Any resumed developer must normally merge current main before editing.
+
+The integrated application tree at 368b488 exactly matches tested preview
+86bb149: typecheck, 24 tests, web export, full real browser flow and both share
+cards' browser void-success/rejection/privacy regression passed. Sharing tests
+stubbed navigator.share and sent no external content. Native chooser completion
+and iPhone runtime remain untested. Local social data remains local/sample.
 
 Three independent helpers reviewed/watched work in parallel. Main merges are
 sequential and tied to exact reviewed head commits with successful required CI.
