@@ -23,7 +23,7 @@ async (page) => {
   await page.getByRole('heading', { name: 'Hey, Pune Explorer.', exact: true }).waitFor();
   const journeyMilliseconds = Date.now() - begin;
   assert(journeyMilliseconds < 10_000, `Quick log took ${journeyMilliseconds}ms`);
-  await page.getByText('LATEST SELF-REPORTED RIDE', { exact: true }).filter({visible:true}).waitFor();
+  await page.getByText(/^LATEST (?:SELF-REPORTED )?RIDE$/).filter({visible:true}).waitFor();
   await page.getByText('50 XP earned', { exact: true }).filter({visible:true}).waitFor();
   await page.getByText('2 / 28', { exact: true }).filter({visible:true}).waitFor();
   await page.getByRole('button', { name: /^Log again(?: from .+)?$/ }).first().click();

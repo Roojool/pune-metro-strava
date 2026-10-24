@@ -1,9 +1,10 @@
+import { Text } from '@/components/Typography';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import Svg, { Circle, G, Line, Polyline, Text as SvgText } from 'react-native-svg';
 import { LINES, getStationName } from '@/data/pune';
 
-const ORANGE = '#FC4C02';
+const ORANGE = '#00CD6B';
 const points = new Map<string, { x: number; y: number }>();
 for (const line of LINES) {
   const interchange = line.stationIds.indexOf('civil-court');
@@ -18,14 +19,14 @@ export default function RouteMap({ stationIds }: { stationIds: string[] }) {
   const from = stationIds[0];
   const to = stationIds[stationIds.length - 1];
   return <View style={{ gap: 8, width: '100%' }}>
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}><Text style={{ fontSize: 10, letterSpacing: 1.3, fontWeight: '700', color: '#B8C2C8' }}>PUNE METRO · ROUTE MAP</Text><Text style={{ color: '#FF9B70', fontSize: 10, fontWeight: '700' }}>SCHEMATIC</Text></View>
-    <View accessible accessibilityLabel={`Schematic metro route from ${getStationName(from ?? '')} to ${getStationName(to ?? '')}. Not a GPS recording.`} style={{ backgroundColor: '#282F35', borderRadius: 14, overflow: 'hidden', aspectRatio: 4 / 3 }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}><Text style={{ fontSize: 10, letterSpacing: 1.3, fontWeight: '700', color: '#B8C2C8' }}>PUNE METRO · ROUTE MAP</Text><Text style={{ color: '#00CD6B', fontSize: 10, fontWeight: '700' }}>SCHEMATIC</Text></View>
+    <View accessible accessibilityLabel={`Schematic metro route from ${getStationName(from ?? '')} to ${getStationName(to ?? '')}. Not a GPS recording.`} style={{ backgroundColor: '#151C18', borderRadius: 14, overflow: 'hidden', aspectRatio: 4 / 3 }}>
       <Svg width="100%" height="100%" viewBox="0 0 360 270" aria-hidden>
-        {[45,90,135,180,225].map(y => <Line key={`h${y}`} x1="0" x2="360" y1={y} y2={y} stroke="#333C43" strokeWidth="1" />)}
-        {[45,90,135,180,225,270,315].map(x => <Line key={`v${x}`} x1={x} x2={x} y1="0" y2="270" stroke="#333C43" strokeWidth="1" />)}
+        {[45,90,135,180,225].map(y => <Line key={`h${y}`} x1="0" x2="360" y1={y} y2={y} stroke="#25352B" strokeWidth="1" />)}
+        {[45,90,135,180,225,270,315].map(x => <Line key={`v${x}`} x1={x} x2={x} y1="0" y2="270" stroke="#25352B" strokeWidth="1" />)}
         {LINES.map(line => <Polyline key={line.id} points={pathPoints(line.stationIds)} fill="none" stroke={line.id === 'purple' ? '#8870B1' : '#4C9CAC'} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />)}
         {stationIds.length > 1 ? <Polyline points={pathPoints(stationIds)} fill="none" stroke={ORANGE} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" /> : null}
-        {[...points.entries()].map(([id,point]) => <Circle key={id} cx={point.x} cy={point.y} r={id === 'civil-court' ? 6 : 2.5} fill={stationIds.includes(id) ? ORANGE : '#CDD4D8'} stroke="#282F35" strokeWidth={id === 'civil-court' ? 2 : 0} />)}
+        {[...points.entries()].map(([id,point]) => <Circle key={id} cx={point.x} cy={point.y} r={id === 'civil-court' ? 6 : 2.5} fill={stationIds.includes(id) ? ORANGE : '#CDD4D8'} stroke="#151C18" strokeWidth={id === 'civil-court' ? 2 : 0} />)}
         {[from,to].filter((id,index,list) => id && list.indexOf(id) === index).map(id => { const point=points.get(id); return point ? <Circle key={`end-${id}`} cx={point.x} cy={point.y} r="7" fill={ORANGE} stroke="#fff" strokeWidth="3" /> : null; })}
         <G fontFamily="sans-serif">
         <SvgText x="194" y="27" fill="#E7ECEF" fontSize="11" fontWeight="600">PCMC</SvgText>

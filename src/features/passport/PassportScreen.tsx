@@ -1,5 +1,6 @@
+import { Text } from '@/components/Typography';
 import React, { useState } from 'react';
-import { Pressable, ScrollView, Share, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, ScrollView, Share, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useApp } from '@/state/AppState';
 import { LINES, OPEN_STATIONS, STATIONS } from '@/data/pune';
@@ -58,13 +59,13 @@ export default function PassportScreen() {
 
       <Card style={[local.passportCard, { flexDirection: wide ? 'row' : 'column' }]}>
         <View style={{ flex: 1, gap: 18 }}>
-          <View style={styles.row}><Icon name="compass" color="#FFD8C7" /><Text style={local.lightEyebrow}>PUNE EXPLORER PASSPORT</Text></View>
+          <View style={styles.row}><Icon name="compass" color="#B4F5D0" /><Text style={local.lightEyebrow}>PUNE EXPLORER PASSPORT</Text></View>
           <View style={{ gap: 4 }}>
             <Text style={local.passportNumber}>{visitedIds.length}<Text style={local.passportDenominator}> / {OPEN_STATIONS.length}</Text></Text>
             <Text style={local.passportLabel}>stations collected. More city to discover.</Text>
           </View>
           <View style={{ gap: 10, maxWidth: 520 }}>
-            <Progress value={completion} color="#FC8D5E" />
+            <Progress value={completion} color="#00CD6B" />
             <View style={[styles.row, { justifyContent: 'space-between' }]}>
               <Text style={local.lightMuted}>{completion}% of selectable stations</Text>
               <Text style={local.lightMuted}>{OPEN_STATIONS.length - visitedIds.length} still to explore</Text>
@@ -74,9 +75,9 @@ export default function PassportScreen() {
         </View>
         <View style={[local.stamp, { alignSelf: wide ? 'center' : 'flex-end' }]}>
           <Text style={local.stampCaption}>METROQUEST · PUNE</Text>
-          <Icon name="navigation" size={30} color="#FFD8C7" />
+          <Icon name="navigation" size={30} color="#B4F5D0" />
           <Text style={local.stampTitle}>{visitedIds.length ? 'ON THE MOVE' : 'ALL ABOARD'}</Text>
-          <Text style={local.stampCaption}>LOCAL DEMO PASSPORT</Text>
+          <Text style={local.stampCaption}>PUNE METRO PASSPORT</Text>
         </View>
       </Card>
 
@@ -95,7 +96,7 @@ export default function PassportScreen() {
           accessibilityLabel={`Explore ${item.name}`}
           accessibilityState={{ selected: lineId === item.id }}
           onPress={() => { setLineId(item.id); setSelectedId('civil-court'); }}
-          style={({ pressed }) => [local.lineTab, { borderColor: lineId === item.id ? item.color : theme.border, backgroundColor: lineId === item.id ? (item.id === 'purple' ? theme.palePurple : '#E8F6F7') : theme.surface, opacity: pressed ? 0.75 : 1 }]}
+          style={({ pressed }) => [local.lineTab, { borderColor: lineId === item.id ? item.color : theme.border, backgroundColor: lineId === item.id ? (item.id === 'purple' ? theme.palePurple : '#122A30') : theme.surface, opacity: pressed ? 0.75 : 1 }]}
         >
           <View style={[local.lineDot, { backgroundColor: item.color }]} />
           <Text style={[local.lineTabText, { color: lineId === item.id ? item.color : theme.muted }]}>{item.name}</Text>
@@ -107,7 +108,7 @@ export default function PassportScreen() {
         <Card style={{ flex: 1, gap: 16 }}>
           <View style={[styles.row, { justifyContent: 'space-between', flexWrap: 'wrap' }]}>
             <View style={{ gap: 4 }}><Text style={styles.section}>{line.name}</Text><Text style={styles.muted}>{stations[0].name} ↔ {stations[stations.length - 1].name}</Text></View>
-            <Pill text={`${lineCollected} / ${lineTotal} COLLECTED`} color={lineId === 'purple' ? theme.palePurple : '#E8F6F7'} ink={line.color} />
+            <Pill text={`${lineCollected} / ${lineTotal} COLLECTED`} color={lineId === 'purple' ? theme.palePurple : '#122A30'} ink={line.color} />
           </View>
           <Progress value={lineCollected / lineTotal * 100} color={line.color} />
           <View style={{ marginTop: 4 }}>
@@ -121,7 +122,7 @@ export default function PassportScreen() {
                 accessibilityLabel={`${station.name}, ${status}. Show station details`}
                 accessibilityState={{ selected: selectedStation }}
                 onPress={() => setSelectedId(station.id)}
-                style={({ pressed }) => [local.stationRow, { backgroundColor: selectedStation ? theme.bg : pressed ? '#F3F1EF' : 'transparent' }]}
+                style={({ pressed }) => [local.stationRow, { backgroundColor: selectedStation ? theme.bg : pressed ? '#242925' : 'transparent' }]}
               >
                 <View style={{ width: 30, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center' }}>
                   {index > 0 ? <View style={[local.track, { top: 0, backgroundColor: line.color }]} /> : null}
@@ -204,14 +205,14 @@ export default function PassportScreen() {
 
 const local = StyleSheet.create({
   passportCard: { backgroundColor: theme.dark, borderColor: theme.dark, padding: 28, gap: 24, overflow: 'hidden' },
-  lightEyebrow: { color: '#FFD8C7', fontSize: 10, fontWeight: '800', letterSpacing: 2 },
+  lightEyebrow: { color: '#B4F5D0', fontSize: 10, fontWeight: '800', letterSpacing: 2 },
   passportNumber: { color: '#fff', fontSize: 64, fontWeight: '800', letterSpacing: -3, lineHeight: 72 },
-  passportDenominator: { color: '#E5A389', fontSize: 30, letterSpacing: -1 },
-  passportLabel: { color: '#F7E9E2', fontSize: 14, lineHeight: 22 },
+  passportDenominator: { color: '#AD79FF', fontSize: 30, letterSpacing: -1 },
+  passportLabel: { color: '#F5F5F2', fontSize: 14, lineHeight: 22 },
   lightMuted: { color: '#D1C7C3', fontSize: 11, lineHeight: 18 },
-  stamp: { height: 150, width: 150, borderRadius: 75, borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#9C6B59', justifyContent: 'center', alignItems: 'center', gap: 10, transform: [{ rotate: '-10deg' }], marginRight: 10 },
-  stampCaption: { color: '#FFB18F', fontSize: 7, fontWeight: '700', letterSpacing: 1.4 },
-  stampTitle: { color: '#FFD8C7', fontSize: 11, fontWeight: '800', letterSpacing: 1.1 },
+  stamp: { height: 150, width: 150, borderRadius: 75, borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#664A87', justifyContent: 'center', alignItems: 'center', gap: 10, transform: [{ rotate: '-10deg' }], marginRight: 10 },
+  stampCaption: { color: '#C3A2FF', fontSize: 7, fontWeight: '700', letterSpacing: 1.4 },
+  stampTitle: { color: '#B4F5D0', fontSize: 11, fontWeight: '800', letterSpacing: 1.1 },
   statsRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
   lineTabs: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   lineTab: { minHeight: 50, minWidth: 150, paddingHorizontal: 16, paddingVertical: 13, borderWidth: 1, borderRadius: 12, flexDirection: 'row', alignItems: 'center', gap: 10 },
@@ -222,7 +223,7 @@ const local = StyleSheet.create({
   stationDot: { height: 20, width: 20, borderRadius: 10, borderWidth: 2, alignItems: 'center', justifyContent: 'center' },
   stationName: { fontSize: 14, fontWeight: '600', lineHeight: 20 },
   stationStatus: { fontSize: 11, lineHeight: 16 },
-  legendDot: { height: 10, width: 10, borderRadius: 5, borderWidth: 1.5, backgroundColor: '#fff' },
+  legendDot: { height: 10, width: 10, borderRadius: 5, borderWidth: 1.5, backgroundColor: theme.surface },
   detailIcon: { width: 56, height: 56, borderRadius: 18, justifyContent: 'center', alignItems: 'center' },
   sharePreview: { backgroundColor: theme.bg, borderRadius: 15, borderWidth: 1, borderColor: theme.border, padding: 20, gap: 14 },
 });

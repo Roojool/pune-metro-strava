@@ -1,5 +1,6 @@
+import { Text } from '@/components/Typography';
 import React, { useMemo, useState } from 'react';
-import { KeyboardAvoidingView, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { KeyboardAvoidingView, Linking, Modal, Platform, Pressable, ScrollView, StyleSheet, TextInput, View, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LINES, STATIONS, getStationName } from '@/data/pune';
 import { routeBetween } from '@/domain/metro';
@@ -75,7 +76,7 @@ export default function LogScreen() {
           <Text style={{ color: '#B7C3CB', fontSize: 11, lineHeight: 18 }}>Route follows the station network, not recorded location. Time excludes waiting and transfers; segment distances are approximate.</Text>
         </Card>
         <Card style={{ gap: 12 }}><View style={styles.row}><Icon name="credit-card" size={19} /><Text style={styles.section}>Check your actual fare</Text></View><Text style={styles.body}>Operator fares are not calculated in this demo. Use Pune Metro’s official fare checker before you travel.</Text><Action label="Open official fare checker" secondary icon="external-link" onPress={async () => { try { await Linking.openURL('https://punemetrorail.org/fare_chart.aspx'); } catch { setError('Could not open the fare checker. Visit punemetrorail.org/fare_chart.aspx in your browser.'); } }} /></Card>
-        <Card style={{ gap: 10, backgroundColor: theme.paleMint, borderColor: '#F1DDD2' }}><View style={styles.row}><Icon name="shield" size={18} /><Text style={styles.section}>Your commute, your control</Text></View><Text style={styles.muted}>No background location. No gate verification. Boarding and exit stations earn stamps; stations passed on the way do not.</Text><Text style={styles.muted}>To avoid accidental duplicates, wait one minute between logs. The local demo allows up to ten rides per UTC day.</Text></Card>
+        <Card style={{ gap: 10, backgroundColor: theme.paleMint, borderColor: '#234131' }}><View style={styles.row}><Icon name="shield" size={18} /><Text style={styles.section}>Your commute, your control</Text></View><Text style={styles.muted}>No background location. No gate verification. Boarding and exit stations earn stamps; stations passed on the way do not.</Text><Text style={styles.muted}>To avoid accidental duplicates, wait one minute between logs. The local demo allows up to ten rides per UTC day.</Text></Card>
       </View>
     </View>
 
@@ -94,7 +95,7 @@ export default function LogScreen() {
 
 const local = StyleSheet.create({
   stationField: { flexDirection: 'row', alignItems: 'center', gap: 14, minHeight: 76, padding: 16, borderWidth: 1, borderColor: theme.border, backgroundColor: theme.bg, borderRadius: 14 },
-  endpoint: { height: 13, width: 13, borderRadius: 7, borderWidth: 3, backgroundColor: '#fff' },
+  endpoint: { height: 13, width: 13, borderRadius: 7, borderWidth: 3, backgroundColor: theme.surface },
   fieldLabel: { color: theme.muted, fontSize: 10, letterSpacing: 1.2, fontWeight: '700' },
   stationName: { color: theme.ink, fontSize: 16, lineHeight: 22, fontWeight: '700' },
   estimate: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 4 },
@@ -105,7 +106,7 @@ const local = StyleSheet.create({
   routeUnit: { fontSize: 14, fontWeight: '500', color: '#B7C3CB' },
   routeCaption: { fontSize: 11, lineHeight: 18, color: '#C8D0D5' },
   backdrop: { flex: 1, backgroundColor: 'rgba(20,25,30,0.45)', justifyContent: 'center', alignItems: 'center', padding: 18 },
-  picker: { width: '100%', maxWidth: 580, maxHeight: '86%', backgroundColor: '#fff', borderRadius: 22, padding: 20, gap: 14 },
+  picker: { width: '100%', maxWidth: 580, maxHeight: '86%', backgroundColor: theme.surface, borderRadius: 22, padding: 20, gap: 14 },
   close: { height: 48, width: 48, alignItems: 'center', justifyContent: 'center', borderRadius: 12, backgroundColor: theme.bg },
   search: { flexDirection: 'row', gap: 10, alignItems: 'center', paddingHorizontal: 13, backgroundColor: theme.bg, borderRadius: 12, borderWidth: 1, borderColor: theme.border },
   option: { flexDirection: 'row', alignItems: 'center', gap: 13, paddingHorizontal: 13, paddingVertical: 13, minHeight: 64, borderRadius: 12 },
