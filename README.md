@@ -9,6 +9,10 @@ Android and iOS. Public repository: https://github.com/Roojool/pune-metro-strava
 
 ![MetroQuest activity dashboard with schematic route map](docs/screenshots/home-desktop.png)
 
+Verified on hosted web and an Android API 36 emulator with Expo Go 57.0.9.
+[Android screenshot](docs/screenshots/android-home.png). Physical phones and iOS
+runtime testing remain untested; both native platform bundles export successfully.
+
 ## Run
 
 Node 24 LTS and npm are recommended. No external API keys required.

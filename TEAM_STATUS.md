@@ -52,7 +52,8 @@ PR #11 resolves static hydration/responsive dimensions and accessible tab labels
 | Mobile/desktop | PASS, all five tabs at 390px, no document overflow; desktop at 1440px |
 | Full browser smoke | PASS, zero page/console errors; scripted local quick log 421ms, not a human timing study |
 | Sharing | Aggregate-only privacy tests PASS; native chooser completion not tested |
-| Android real device/emulator | NOT TESTED, adb found no device |
+| Android emulator | PASS, API 36 + Expo Go 57.0.9; full ride/social/restart flow |
+| Physical Android device | NOT TESTED |
 | iPhone/iOS simulator | NOT TESTED, none available on this Windows machine |
 | Hosted release | PASS, GitHub Pages deployment and full live-URL browser scenario |
 
@@ -92,4 +93,24 @@ Main CI passed: https://github.com/Roojool/pune-metro-strava/actions/runs/400805
 Hosted deployment passed: https://github.com/Roojool/pune-metro-strava/actions/runs/40080504565
 All five human branches contain the integrated handoff. Main requires PRs and
 the check job; force pushes/deletion are disabled. Four invitations still await
-acceptance. The lead alone integrated shared work; no human activity was fabricated.
+acceptance at the initial handoff. At 14:54 IST, write access was verified for
+prathadox and chetanpujari5105; mangeshraut712 and atharvamhaske still had pending
+invitations. The lead alone integrated shared work; no human activity was fabricated.
+
+## Android native verification — 14:56 IST
+
+A configured AVD was found after the initial adb check and booted read-only.
+Expo Go 57.0.9 ran MetroQuest on Android API 36. The native UI logged PCMC →
+Civil Court, updated Passport to 1 journey / 2 of 28 stamps / 13.4 estimated km,
+earned 50 XP and unlocked First stop. A Purple Line post, like and membership
+survived force-stopping and reopening Expo Go, along with the journey/passport.
+Targeted ReactNativeJS/AndroidRuntime logs contained no error lines.
+
+The native test found and verified a top safe-area correction in PR #14 so the
+wordmark clears the Android status bar. Local production-browser regression
+also passed after this fix: 11 tests, typecheck/export and the full browser smoke
+with 1 ride / 2 stamps / 50 XP / persistence / all five tabs / zero browser errors.
+
+Evidence is in ignored output/android/SMOKE_RESULT.md and its PNG/XML/log files.
+[Native Android screenshot](docs/screenshots/android-home.png). This is emulator
+testing, not physical-phone or iPhone testing. Native share completion remains untested.
