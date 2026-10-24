@@ -1,9 +1,11 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View, type ViewStyle, type StyleProp } from 'react-native';
+import { Pressable, StyleSheet, Text, View, type ViewStyle, type StyleProp, type ColorValue } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { theme } from '@/theme';
 export type IconName = React.ComponentProps<typeof Feather>['name'];
-export function Icon({ name, size = 20, color = theme.primary }: { name: IconName; size?: number; color?: string }) { return <Feather name={name} size={size} color={color} />; }
+export function Icon({ name, size = 20, color = theme.primary }: { name: IconName; size?: number; color?: ColorValue }) {
+  return <Feather name={name} size={size} color={color} />;
+}
 export function Page({ children }: { children: React.ReactNode }) { return <View style={styles.page}><View style={styles.topline}><Text style={styles.wordmark}>metro<Text style={{ color: theme.primary }}>quest</Text><Text style={styles.city}> / PUNE</Text></Text><Pill text="LOCAL DEMO" color={theme.paleMint} ink={theme.primary} /></View>{children}<Text style={styles.footer}>A little less traffic. A little more adventure.</Text></View>; }
 export function Heading({ title, subtitle, eyebrow }: { title: string; subtitle?: string; eyebrow?: string }) { return <View style={{ gap: 8, marginBottom: 10 }}>{eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}<Text accessibilityRole="header" style={styles.h1}>{title}</Text>{subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}</View>; }
 export function Card({ children, style }: { children: React.ReactNode; style?: StyleProp<ViewStyle> }) { return <View style={[styles.card, style]}>{children}</View>; }
