@@ -9,6 +9,7 @@ import { LINES, getStationName } from '@/data/pune';
 import type { LeaderboardEntry, LineId } from '@/domain/models';
 import { theme } from '@/theme';
 import { SAMPLE_LEAGUE } from './sampleLeague';
+import { AchievementCollection } from './AchievementCollection';
 type Scope = 'Pune' | 'Friends' | 'Route';
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -26,7 +27,8 @@ function LabeledProgress({ label, value, valueText }: { label: string; value: nu
 
 export default function LeaguesScreen(){
   const router=useRouter();
-  const {points,achievements,challenges,journeys,user,streak,activeDays,ready,storageError}=useApp();
+  const app=useApp();
+  const {points,achievements,challenges,journeys,user,streak,activeDays,ready,storageError}=app;
   const [scope,setScope]=useState<Scope>('Pune');const [line,setLine]=useState<LineId>('purple');
   const [showXpDetails,setShowXpDetails]=useState(false);
   const wide=useWindowDimensions().width>=1180;
@@ -115,7 +117,7 @@ export default function LeaguesScreen(){
         </Card>;
       })}<Card style={{gap:12,backgroundColor:'#261E1B',borderColor:'#4D3730'}}><Icon name="shield" color="#FFC6B0"/><Text style={styles.section}>Play fair. Ride for yourself.</Text><Text style={styles.muted}>Manually log rides between different open stations. Wait 1 minute between logs, with a limit of 10 rides per UTC day (reset at 5:30 AM IST). XP is self-reported, not independently verified or tamper-proof.</Text></Card></View>
     </View>
-    <View style={{gap:4}}><SectionTitle>The little wins collection</SectionTitle><Text style={styles.muted}>{unlocked} OF {achievements.length} UNLOCKED</Text><Text style={styles.muted}>Based on current activity. The three-day streak badge locks again when your streak breaks.</Text></View><View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>{achievements.map(a=><Card key={a.id} style={{flex:1,minWidth:180,gap:13,backgroundColor:a.unlocked?'#14281B':theme.surface,borderColor:a.unlocked?'#28583C':theme.border}}><View style={{width:48,height:48,borderRadius:16,backgroundColor:a.unlocked?'#173A26':theme.bg,alignItems:'center',justifyContent:'center'}}><Icon name={a.unlocked?'award':'lock'} size={24} color={a.unlocked?ACTIVITY_INK:'#626A72'}/></View><Text style={{fontWeight:'700',fontSize:15,color:theme.ink}}>{a.title}</Text><Text style={styles.muted}>{a.description}</Text><Text style={{fontWeight:'700',fontSize:10,letterSpacing:1,color:a.unlocked?ACTIVITY_INK:theme.muted}}>{a.unlocked?'UNLOCKED':'TO DISCOVER'}</Text></Card>)}</View>
+    <AchievementCollection achievements={achievements} stats={app}/>
     <Text style={styles.muted}>Sample league · your progress is saved on this device.</Text>
   </Page></ScrollView>;
 }
