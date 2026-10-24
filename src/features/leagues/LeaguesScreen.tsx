@@ -4,12 +4,11 @@ import { useRouter } from 'expo-router';
 import { Platform, Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
 import { useApp } from '@/state/AppState';
 import { Action, Card, Heading, Page, Pill, SectionTitle, Icon, Progress, Notice, styles } from '@/components/UI';
-import { rankLeaderboard, leaderboardScore } from '@/domain/metro';
 import { LINES, getStationName } from '@/data/pune';
-import type { LeaderboardEntry, LineId } from '@/domain/models';
+import type { LineId } from '@/domain/models';
 import { theme } from '@/theme';
-import { SAMPLE_LEAGUE } from './sampleLeague';
-type Scope = 'Pune' | 'Friends' | 'Route';
+import { leagueStandings, type LeagueScope } from './standingsModel';
+import { LeagueStandings } from './LeagueStandings';
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
 // Preserve the shared visual bar and expose its name and units on web and native.
@@ -27,7 +26,7 @@ function LabeledProgress({ label, value, valueText }: { label: string; value: nu
 export default function LeaguesScreen(){
   const router=useRouter();
   const {points,achievements,challenges,journeys,user,streak,activeDays,ready,storageError}=useApp();
-  const [scope,setScope]=useState<Scope>('Pune');const [line,setLine]=useState<LineId>('purple');
+  const [scope,setScope]=useState<LeagueScope>('Pune');const [line,setLine]=useState<LineId>('purple');
   const [showXpDetails,setShowXpDetails]=useState(false);
   const wide=useWindowDimensions().width>=1180;
   if (!ready || storageError) return <ScrollView style={{backgroundColor:theme.bg}}><Page>
@@ -35,16 +34,10 @@ export default function LeaguesScreen(){
     <Notice error={!!storageError}>{storageError ?? <Text style={{color:theme.ink}}>Loading your saved XP, achievements and leagues…</Text>}</Notice>
     {storageError?<Action label="Open profile for recovery options" secondary onPress={()=>router.push('/profile')}/>:null}
   </Page></ScrollView>;
-  const selectedLine=LINES.find(l=>l.id===line)!;
-  const routeIds=selectedLine.stationIds;
-  const routeJourneys=journeys.filter(j=>j.stationIds.filter(id=>routeIds.includes(id)).length>=2);
-  const currentScore=scope==='Route'?leaderboardScore(routeJourneys):points;
-  const samples=scope==='Friends'?SAMPLE_LEAGUE.slice(0,3):scope==='Route'?SAMPLE_LEAGUE.filter(e=>e.line===line):SAMPLE_LEAGUE;
-  const current:LeaderboardEntry={id:'you',name:user.name.trim() || 'You',points:currentScore,sample:false,line};
-  const board=rankLeaderboard([...samples,current]);const rank=board.findIndex(e=>e.id==='you')+1;
+  const { selectedLine, routeJourneys, currentScore, board, rank, sampleCount, title: leagueTitle } =
+    leagueStandings(scope, line, journeys, user, points);
   const unlocked=achievements.filter(a=>a.unlocked).length;
   const latestJourney=journeys[0];
-  const leagueTitle=scope==='Route'?`${selectedLine.name} league`:scope==='Friends'?'Friends preview':'Pune explorers';
   return <ScrollView style={{backgroundColor:theme.bg}}><Page>
     <View style={{gap:8}}><Text style={[styles.eyebrow,{color:ACTIVITY_INK}]}>YOUR EVERYDAY METRO PROGRESS</Text><Heading title="Make Pune Metro a habit." subtitle="Turn the rides you take around Pune into local XP, endpoint stamps and one small weekly goal."/></View>
     {journeys.length===0?<Card style={{gap:12}}>
@@ -91,17 +84,17 @@ export default function LeaguesScreen(){
     </View>
     {unlocked>0?<View accessibilityLiveRegion="polite" style={{backgroundColor:theme.paleMint,padding:18,borderRadius:16,borderLeftWidth:4,borderLeftColor:ACTIVITY_ORANGE,flexDirection:'row',gap:14,alignItems:'center'}}><Icon name="award" size={27}/><View style={{flex:1,gap:3}}><Text style={{fontWeight:'700',fontSize:15,color:theme.ink}}>A milestone worth celebrating.</Text><Text style={styles.body}>Unlocked: {achievements.filter(a=>a.unlocked).map(a=>a.title).join(' · ')}</Text><Text style={[styles.muted,{color:theme.ink}]}>{unlocked} {unlocked===1?'achievement':'achievements'} currently unlocked from your self-reported rides. Keep exploring.</Text></View></View>:null}
     <View style={{flexDirection:wide?'row':'column',gap:20,alignItems:'stretch'}}>
-      <View style={{flex:1.35,gap:14}}><View style={{gap:4}}><SectionTitle>A little friendly competition</SectionTitle><Text style={[styles.muted,{color:theme.ink}]}>ALL-TIME · SAMPLE LEAGUE</Text></View>
-        <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,padding:5,backgroundColor:'#1C211E',borderRadius:13}}>{(['Pune','Friends','Route'] as Scope[]).map(item=><Pressable key={item} accessibilityRole="button" accessibilityLabel={`${item} sample demo league`} accessibilityState={Platform.OS==='web'?undefined:{selected:scope===item}} aria-pressed={Platform.OS==='web'?scope===item:undefined} onPress={()=>setScope(item)} style={({pressed})=>({flex:1,minWidth:72,minHeight:48,paddingHorizontal:8,paddingVertical:10,gap:3,alignItems:'center',justifyContent:'center',borderRadius:9,borderBottomWidth:3,borderBottomColor:scope===item?ACTIVITY_INK:'transparent',backgroundColor:scope===item?theme.surface:pressed?'#242925':'transparent'})}><Text style={{fontWeight:'700',fontSize:13,color:scope===item?ACTIVITY_INK:theme.ink}}>{item}</Text><Text style={{fontSize:10,fontWeight:'700',letterSpacing:0.5,color:theme.ink}}>LEAGUE</Text></Pressable>)}</View>
+      <View style={{flex:wide?1.35:undefined,gap:14}}><View style={{gap:4}}><SectionTitle>A little friendly competition</SectionTitle><Text style={[styles.muted,{color:theme.ink}]}>ALL-TIME · SAMPLE LEAGUE</Text></View>
+        <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,padding:5,backgroundColor:'#1C211E',borderRadius:13}}>{(['Pune','Friends','Route'] as LeagueScope[]).map(item=><Pressable key={item} accessibilityRole="button" accessibilityLabel={`${item} sample demo league`} accessibilityState={Platform.OS==='web'?undefined:{selected:scope===item}} aria-pressed={Platform.OS==='web'?scope===item:undefined} onPress={()=>setScope(item)} style={({pressed})=>({flex:1,minWidth:72,minHeight:48,paddingHorizontal:8,paddingVertical:10,gap:3,alignItems:'center',justifyContent:'center',borderRadius:9,borderBottomWidth:3,borderBottomColor:scope===item?ACTIVITY_INK:'transparent',backgroundColor:scope===item?theme.surface:pressed?'#242925':'transparent'})}><Text style={{fontWeight:'700',fontSize:13,color:scope===item?ACTIVITY_INK:theme.ink}}>{item}</Text><Text style={{fontSize:10,fontWeight:'700',letterSpacing:0.5,color:theme.ink}}>LEAGUE</Text></Pressable>)}</View>
         {scope==='Route'?<View style={[styles.row,{flexWrap:'wrap'}]}>{LINES.map(l=><Pressable key={l.id} accessibilityRole="button" accessibilityLabel={`${l.name} sample demo league`} accessibilityState={Platform.OS==='web'?undefined:{selected:line===l.id}} aria-pressed={Platform.OS==='web'?line===l.id:undefined} onPress={()=>setLine(l.id)} style={({pressed})=>({minHeight:48,flexGrow:1,flexBasis:140,padding:12,borderRadius:10,borderWidth:2,borderColor:line===l.id?l.color:theme.border,flexDirection:'row',gap:6,alignItems:'center',justifyContent:'center',backgroundColor:line===l.id?(l.id==='purple'?theme.palePurple:'#122A30'):pressed?'#1C211E':theme.surface})}>{line===l.id?<Icon name="check" size={16} color={theme.ink}/>:null}<Text style={{flexShrink:1,color:theme.ink,fontWeight:'700',fontSize:13}}>{l.name}</Text></Pressable>)}</View>:null}
-        <Card style={{padding:0,overflow:'hidden'}}><View style={{padding:20,gap:5,borderBottomWidth:1,borderBottomColor:theme.border}}><View style={[styles.row,{justifyContent:'space-between',flexWrap:'wrap'}]}><Text accessibilityRole="header" style={[styles.section,{flexShrink:1}]}>{leagueTitle}</Text><Pill text="SAMPLE LEAGUE" ink="#AD79FF"/></View><Text style={styles.muted}>You + {samples.length} fictional profiles · no real public ranking</Text></View>{board.map((entry,i)=><View key={entry.id} accessible={Platform.OS!=='web'} accessibilityLabel={Platform.OS!=='web'?`Position ${i+1}, ${entry.name}${entry.id==='you'?', you':''}, ${entry.points} XP. ${entry.sample?'Fictional sample profile':'Your local, self-reported score'}.`:undefined} style={{flexDirection:'row',alignItems:'center',gap:12,paddingHorizontal:18,paddingVertical:16,backgroundColor:entry.id==='you'?theme.paleMint:theme.surface,borderBottomColor:theme.border,borderBottomWidth:i<board.length-1?1:0}}><Text style={{width:25,fontWeight:'700',fontSize:14,color:entry.id==='you'?ACTIVITY_INK:i<3?ACTIVITY_INK:theme.muted}}>{String(i+1).padStart(2,'0')}</Text><View style={{width:37,height:37,borderRadius:13,backgroundColor:entry.id==='you'?'#173A26':i%2?theme.palePurple:'#242925',alignItems:'center',justifyContent:'center'}}><Text style={{fontSize:14,fontWeight:'700',color:entry.id==='you'?ACTIVITY_INK:theme.ink}}>{Array.from(entry.name.trim())[0]?.toUpperCase() || '?'}</Text></View><View style={{flex:1,minWidth:0,gap:2}}><Text style={{fontSize:14,fontWeight:'700',color:theme.ink}}>{entry.name}{entry.id==='you'?' · you':''}</Text><Text style={{fontSize:12,lineHeight:18,color:entry.id==='you'?theme.ink:theme.muted}}>{entry.sample?'SAMPLE · Fictional profile':scope==='Route'?'Your self-reported route score':'Your local, self-reported score'}</Text></View><Text style={{fontWeight:'800',fontSize:15,color:theme.ink}}>{entry.points}<Text style={{fontSize:10,fontWeight:'500'}}> XP</Text></Text></View>)}<View style={{padding:16,backgroundColor:theme.bg,gap:8}}>
+        <Card style={{padding:0,overflow:'hidden'}}><View style={{padding:20,gap:5,borderBottomWidth:1,borderBottomColor:theme.border}}><View style={[styles.row,{justifyContent:'space-between',flexWrap:'wrap'}]}><Text accessibilityRole="header" style={[styles.section,{flexShrink:1}]}>{leagueTitle}</Text><Pill text="SAMPLE LEAGUE" ink="#AD79FF"/></View><Text style={styles.muted}>You + {sampleCount} fictional profiles · no real public ranking</Text></View><LeagueStandings board={board} title={leagueTitle} route={scope==='Route'}/><View style={{padding:16,backgroundColor:theme.bg,gap:8}}>
           <Text accessibilityLiveRegion="polite" style={[styles.body,{fontWeight:'700'}]}>Your position: #{rank} of {board.length} · {currentScore} XP · {leagueTitle}.</Text>
           {scope==='Route' && routeJourneys.length===0?<Text style={styles.body}>No rides on {selectedLine.name} yet. Log a journey using at least one segment of this line to start your route score.</Text>:null}
           <Text style={styles.muted}>{scope==='Route'?'Route scores include the full XP of rides using at least one segment of this line. A transfer ride can count in both route leagues; your total XP is counted only once.':'Sample scores are fixed; your score updates with each eligible local ride.'}</Text>
           <Text style={styles.muted}>Equal XP scores are ordered by name.</Text>
         </View></Card>
       </View>
-      <View style={{flex:1,gap:14}}><SectionTitle>One week. One small goal.</SectionTitle>{challenges.map(c=>{
+      <View style={{flex:wide?1:undefined,gap:14}}><SectionTitle>One week. One small goal.</SectionTitle>{challenges.map(c=>{
         const complete=c.progress>=c.target;
         const remaining=Math.max(0,c.target-c.progress);
         return <Card key={c.id} style={{gap:16}}>
