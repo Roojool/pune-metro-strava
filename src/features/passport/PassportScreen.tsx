@@ -36,7 +36,7 @@ export default function PassportScreen() {
     setShareError(false);
     try {
       const result = await Share.share({ title: 'My MetroQuest passport', message: summary });
-      setShareMessage(result.action === Share.dismissedAction ? 'Sharing cancelled. Your passport stays private.' : 'Share action completed. Your summary contains totals only, with no routes or travel dates.');
+      setShareMessage(result?.action === Share.dismissedAction ? 'Sharing cancelled. Your passport stays private.' : 'Share action completed. Your summary contains totals only, with no routes or travel dates.');
     } catch {
       setShareError(true);
       setShareMessage('Sharing is unavailable or was cancelled. You can select and copy the passport summary below. No data has been published by MetroQuest.');
