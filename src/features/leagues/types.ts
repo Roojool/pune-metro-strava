@@ -291,6 +291,22 @@ export interface MonthlyHabitMatrixSummary {
   accessibilityDescription: string;
 }
 
+export interface BurnPaceEfficiencySummary {
+  averagePaceMinPerKm: number;
+  averageSpeedKmh: number;
+  burnRateKcalPerKm: number;
+  burnRateKcalPerMinute: number;
+  totalDistanceKm: number;
+  totalDurationMinutes: number;
+  totalCaloriesBurned: number;
+  roadPaceComparisonMinPerKm: number;
+  timeSavingsMultiplier: number;
+  efficiencyRatingTitle: string;
+  efficiencyRatingSubtitle: string;
+  accessibilityDescription: string;
+}
+
+
 
 
 
