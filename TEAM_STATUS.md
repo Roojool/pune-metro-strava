@@ -19,17 +19,49 @@ assumed. Exactly five standalone prompts in team-prompts/ include full context,
 ownership, shared APIs, commands, acceptance, PR steps, deadlines and fallbacks.
 Each person can paste one into a separate AI session on their own checkout.
 
-## AI reservations released
+## Initial AI reservations released
 
 Three helpers used separate journey/passport/community worktrees and ai/* branches.
 The lead implemented Leagues sequentially on ai/gamification-demo. Feature PRs
 #7–#10 passed checks and were squash merged sequentially. No helpers edited
 another feature or shared checkout. Humans were not counted as AI workers.
 
-All four feature reservations are now **released to the human owners**. Fetch
+At the initial handoff all four feature reservations were **released to the human owners**. Fetch
 and merge latest origin/main before editing. Verify and improve the existing
 implementation instead of rebuilding it. Shared files remain lead-only.
 PR #11 resolves static hydration/responsive dimensions and accessible tab labels.
+
+## Continued integration — 2026-10-24 16:15 IST
+
+- Mangesh's Leagues PRs #16 and #24 are merged. #24 includes explicit sample labels,
+  an accessible XP explanation and the narrow-screen card growth correction.
+  His README/screenshots PR #21 is reviewed and merged.
+- Prathadox's Journey PR #23 is merged as `3d5e3e2`. Independent review checked
+  history, save-failure/retry, duplicate rejection, recovery, keyboard dismissal
+  and 390/768/1024/1440px layouts. Shared gate PR #25 preserves descriptive action
+  labels and checks expanded mobile XP text stays inside its card.
+- Chetan published commit `5076cd3`, adding the empty-passport first-ride action.
+  The lead opened and merged upstream PR #26 from his published feature branch. Independent
+  typecheck, 16 tests, export and the focused first-ride browser flow passed.
+- No new published Atharva branch changes were found. At the user's request,
+  AGY model `gemini-3.8-flash-high`, effort high, is handling community verification
+  in isolated branch/worktree `ai/community-gemini`. It owns only
+  `src/features/community/**`; no human branch is overwritten. This is a temporary
+  reservation; Atharva must coordinate before resuming edits there.
+- Continuation tooling and all five refreshed prompts shipped in PR #20.
+  Root production E2E passed for combined Journey/Leagues/shared-test preview
+  `066a57b4e97709dea9435e9f7d7a1f519fdc38df`: 597ms automated log, one ride,
+  two stamps, 50 XP, all four persistence checks, five mobile tabs, no browser
+  errors. This is preview evidence; final main/deployment checks follow integration.
+- Integrated main `059a35957dccadadc37602211bfbbdd2b02fb922` passed the full
+  production browser gate after Journey and Passport integration: 605ms automated
+  log, one ride/two stamps/50 XP, post/reaction/membership/profile persistence,
+  five mobile tabs, no browser errors. Direct loading of Passport, Community,
+  Leagues and Log also passed with no browser errors in the root production
+  export. Later PR #21 changes documentation/screenshots only.
+
+Live GitHub checks and fetched main override this timestamped snapshot. Local
+unpublished teammate changes cannot be inferred from GitHub activity.
 
 ## Checks actually performed
 

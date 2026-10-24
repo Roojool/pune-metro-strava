@@ -9,7 +9,7 @@
 <div align="center">
 
 ![Expo SDK 57](https://img.shields.io/badge/Expo-SDK%2057-000020?style=for-the-badge&logo=expo&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![React Native](https://img.shields.io/badge/React%20Native-Web%20%2B%20Native-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Pune Metro](https://img.shields.io/badge/Pune%20Metro-Purple%20%2B%20Aqua-7B2D8E?style=for-the-badge)
 [![Live demo](https://img.shields.io/badge/Live%20demo-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github)](https://roojool.github.io/pune-metro-strava/)
