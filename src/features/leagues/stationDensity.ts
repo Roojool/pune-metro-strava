@@ -93,19 +93,20 @@ export function calculateStationDensity(
     };
   });
 
-  // Top visited stations with active burn > 0
-  const topStations = profiles
+  // Visited stations with active burn > 0
+  const visitedProfiles = profiles
     .filter(p => p.totalVisits > 0)
-    .sort((a, b) => b.totalBurnKcal - a.totalBurnKcal || b.totalVisits - a.totalVisits || a.stationName.localeCompare(b.stationName))
-    .slice(0, 5);
+    .sort((a, b) => b.totalBurnKcal - a.totalBurnKcal || b.totalVisits - a.totalVisits || a.stationName.localeCompare(b.stationName));
+
+  // Compute total across ALL visited stations before ranking truncation
+  const totalStationBurnKcal = visitedProfiles.reduce((sum, s) => sum + s.totalBurnKcal, 0);
+  const topStations = visitedProfiles.slice(0, 5);
 
   // Recommended high-burn stations (e.g. Civil Court) that haven't been visited yet or have low visits
   const recommendedHighBurnStations = profiles
     .filter(p => p.elevationType === 'underground_interchange' || p.elevationType === 'elevated_terminal')
     .sort((a, b) => b.activeBurnKcalPerVisit - a.activeBurnKcalPerVisit || a.totalVisits - b.totalVisits)
     .slice(0, 3);
-
-  const totalStationBurnKcal = topStations.reduce((sum, s) => sum + s.totalBurnKcal, 0);
   const deepestStationName = 'Civil Court (District Court)';
 
   const accessibilityDescription = topStations.length > 0

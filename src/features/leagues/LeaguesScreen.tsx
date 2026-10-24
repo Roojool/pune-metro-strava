@@ -1,7 +1,7 @@
 import { Text } from '@/components/Typography';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
-import { Platform, Pressable, ScrollView, View, useWindowDimensions } from 'react-native';
+import { Platform, Pressable, ScrollView, Share, View, useWindowDimensions } from 'react-native';
 import { useApp } from '@/state/AppState';
 import { Action, Card, Heading, Page, Pill, SectionTitle, Icon, Progress, Notice, styles } from '@/components/UI';
 import { leaderboardScore } from '@/domain/metro';
@@ -22,7 +22,7 @@ import { calculatePuneMilestoneProgress, getTopBurnCorridors } from './puneBurnE
 import { PuneMilestonesCard } from './PuneMilestonesCard';
 import { filterJourneysByLine, getLineEmptyStateGuidance, sanitizeParticipantName } from './edgeCases';
 import { CorridorBurnCard } from './CorridorBurnCard';
-import { generateLeagueShareSummary, handleLeagueShare } from './share';
+import { generateLeagueShareSummary, handleLeagueShareResult } from './share';
 import { DivisionZoneCard } from './DivisionZoneCard';
 import { RivalDuelCard } from './RivalDuelCard';
 import { calculateDivisionStanding } from './divisions';
@@ -579,9 +579,22 @@ export default function LeaguesScreen() {
                       milestoneName: puneMilestoneProgress.currentMilestone.name,
                       isZeroState: relevantJourneys.length === 0,
                     });
-                    const res = await handleLeagueShare(summary);
-                    setShareNotice(res.message);
-                    setIsSharing(false);
+                    try {
+                      if (Platform.OS !== 'web' || (typeof navigator !== 'undefined' && typeof navigator.share === 'function')) {
+                        const rawResult = await Share.share({ title: 'My MetroQuest Pune Leagues Card', message: summary });
+                        const feedback = handleLeagueShareResult(rawResult);
+                        setShareNotice(feedback.message);
+                      } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
+                        await navigator.clipboard.writeText(summary);
+                        setShareNotice('Summary copied to clipboard!');
+                      } else {
+                        setShareNotice('Sharing is not supported on this platform.');
+                      }
+                    } catch {
+                      setShareNotice('Sharing was cancelled.');
+                    } finally {
+                      setIsSharing(false);
+                    }
                   }}
                 />
                 {shareNotice ? <Notice>{shareNotice}</Notice> : null}

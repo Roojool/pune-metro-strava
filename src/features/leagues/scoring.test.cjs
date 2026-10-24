@@ -46,6 +46,16 @@ test('calculateJourneyCalories computes active commute walking and station movem
     stationIds: ['vanaz', 'ideal-colony', 'nal-stop', 'garware-college', 'deccan-gymkhana', 'chhatrapati-sambhaji-udyan', 'pmc', 'civil-court', 'shivajinagar', 'pcmc'],
   });
   assert.equal(transfer, 250);
+
+  // Same-line ride passing through Civil Court: Vanaz -> Ramwadi (pure Aqua Line)
+  // Does NOT require a line transfer: 45 + 15.7 * 12 = 233 kcal (no +25 bonus)
+  const sameLineThroughInterchange = calculateJourneyCalories({
+    kilometers: 15.7,
+    from: 'vanaz',
+    to: 'ramwadi',
+    stationIds: ['vanaz', 'nal-stop', 'civil-court', 'mangalwar-peth', 'ramwadi'],
+  });
+  assert.equal(sameLineThroughInterchange, 233);
 });
 
 test('calculateBurnSummary accurately handles real journeys and honest zero state', () => {

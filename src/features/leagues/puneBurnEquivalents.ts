@@ -1,5 +1,5 @@
 import type { Journey, LineId } from '../../domain/models';
-import { calculateJourneyCalories } from './scoring';
+import { calculateJourneyCalories, isLineTransferJourney } from './scoring';
 import { getStationName } from '../../data/pune';
 
 export interface PuneBurnMilestone {
@@ -136,7 +136,7 @@ export function getTopBurnCorridors(journeys: Journey[]): CorridorBurnSummary[] 
     const key = [fromId, toId].sort().join('::');
     const cal = calculateJourneyCalories(j);
     const stationList = j.stationIds ?? [fromId, toId];
-    const isInterchange = stationList.includes('civil-court') && fromId !== 'civil-court' && toId !== 'civil-court';
+    const isInterchange = isLineTransferJourney(stationList);
 
     const existing = map.get(key);
     if (existing) {

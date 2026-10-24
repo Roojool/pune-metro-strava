@@ -2,16 +2,46 @@ import type { Journey } from '../../domain/models';
 import type { WeekendChallenge } from './types';
 
 /**
- * Returns whether a given ISO date string falls in the current or most recent India weekend.
- * Saturday & Sunday in IST (UTC+5:30).
+ * Calculates start and end timestamps (UTC ms) for the active India weekend relative to now.
+ * India Standard Time is UTC+5:30.
+ * An active weekend runs from Saturday 00:00:00 IST to Sunday 23:59:59.999 IST.
+ * If now is Monday through Friday, returns the upcoming weekend boundaries so past weekend rides are excluded.
  */
-export function isJourneyInWeekend(isoString: string): boolean {
+export function getActiveWeekendBoundaries(now: Date = new Date()): { startUtcMs: number; endUtcMs: number } {
+  const istOffsetMs = 5.5 * 60 * 60 * 1000;
+  const istNow = new Date(now.getTime() + istOffsetMs);
+  const day = istNow.getUTCDay(); // 0: Sun, 1: Mon, ..., 6: Sat
+
+  let daysSinceSaturday = 0;
+  if (day === 6) {
+    daysSinceSaturday = 0;
+  } else if (day === 0) {
+    daysSinceSaturday = 1;
+  } else {
+    // Weekday: upcoming Saturday
+    const daysUntilSaturday = 6 - day;
+    const saturdayDate = new Date(Date.UTC(istNow.getUTCFullYear(), istNow.getUTCMonth(), istNow.getUTCDate() + daysUntilSaturday));
+    const startUtcMs = saturdayDate.getTime() - istOffsetMs;
+    const endUtcMs = startUtcMs + (48 * 60 * 60 * 1000) - 1;
+    return { startUtcMs, endUtcMs };
+  }
+
+  const saturdayDate = new Date(Date.UTC(istNow.getUTCFullYear(), istNow.getUTCMonth(), istNow.getUTCDate() - daysSinceSaturday));
+  const startUtcMs = saturdayDate.getTime() - istOffsetMs;
+  const endUtcMs = startUtcMs + (48 * 60 * 60 * 1000) - 1;
+  return { startUtcMs, endUtcMs };
+}
+
+/**
+ * Returns whether a given ISO date string falls in the active India weekend relative to now.
+ * Saturday & Sunday in IST (UTC+5:30) of the current active weekend window.
+ */
+export function isJourneyInWeekend(isoString: string, now: Date = new Date()): boolean {
   try {
-    const d = new Date(isoString);
-    // Convert to IST
-    const istTime = new Date(d.getTime() + 5.5 * 60 * 60 * 1000);
-    const day = istTime.getUTCDay();
-    return day === 0 || day === 6; // Sunday or Saturday
+    const journeyMs = Date.parse(isoString);
+    if (!Number.isFinite(journeyMs)) return false;
+    const { startUtcMs, endUtcMs } = getActiveWeekendBoundaries(now);
+    return journeyMs >= startUtcMs && journeyMs <= endUtcMs;
   } catch {
     return false;
   }
@@ -44,7 +74,7 @@ export function calculateWeekendChallenges(
   journeys: Journey[],
   now: Date = new Date()
 ): WeekendChallenge[] {
-  const weekendJourneys = journeys.filter(j => isJourneyInWeekend(j.at));
+  const weekendJourneys = journeys.filter(j => isJourneyInWeekend(j.at, now));
   const remainingTimeText = getWeekendRemainingText(now);
 
   // Challenge 1: Mutha River Crossing Sprint

@@ -36,49 +36,14 @@ export function generateLeagueShareSummary(data: LeagueShareData): string {
 }
 
 /**
- * Normalizes native and web share results into uniform user feedback.
+ * Normalizes native Share and Web Share API results into user feedback.
  */
 export function handleLeagueShareResult(result: unknown): { ok: boolean; message: string } {
-  if (result === undefined || (result && typeof result === 'object' && (result as { action?: string }).action === 'sharedAction')) {
+  if (
+    result === undefined ||
+    (result && typeof result === 'object' && (result as { action?: string }).action === 'sharedAction')
+  ) {
     return { ok: true, message: 'League card handed to the share dialog.' };
   }
   return { ok: false, message: 'Sharing is unavailable here.' };
-}
-
-/**
- * Handles Web Share API invocation with graceful fallback to clipboard.
- */
-export async function handleLeagueShare(
-  summaryText: string,
-  customNav?: {
-    share?: (data: { title: string; text: string }) => Promise<unknown>;
-    clipboard?: { writeText: (text: string) => Promise<void> };
-  }
-): Promise<{ ok: boolean; method: 'native' | 'clipboard' | 'unsupported'; message: string }> {
-  const nav = customNav ?? (typeof navigator !== 'undefined' ? navigator : undefined);
-
-  if (nav && typeof nav.share === 'function') {
-    try {
-      await nav.share({
-        title: 'My MetroQuest Pune Leagues Card',
-        text: summaryText,
-      });
-      return { ok: true, method: 'native', message: 'Shared successfully via device share sheet.' };
-    } catch (err: unknown) {
-      if (err instanceof Error && err.name === 'AbortError') {
-        return { ok: true, method: 'native', message: 'Share sheet dismissed.' };
-      }
-    }
-  }
-
-  if (nav?.clipboard && typeof nav.clipboard.writeText === 'function') {
-    try {
-      await nav.clipboard.writeText(summaryText);
-      return { ok: true, method: 'clipboard', message: 'Summary copied to clipboard!' };
-    } catch {
-      // Clipboard write failed
-    }
-  }
-
-  return { ok: false, method: 'unsupported', message: 'Sharing not supported on this platform.' };
 }

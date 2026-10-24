@@ -31,6 +31,9 @@ test('isJourneyInWeekend detects Saturday and Sunday in India Standard Time', ()
   // Monday 2026-10-26 10:00 UTC = 15:30 IST (Monday)
   assert.equal(isJourneyInWeekend('2026-10-26T10:00:00Z'), false);
 
+  // Earlier weekend (Oct 17, 2026) rejected relative to active weekend (Oct 24, 2026)
+  assert.equal(isJourneyInWeekend('2026-10-17T10:00:00Z', new Date('2026-10-24T12:00:00Z')), false);
+
   // Invalid timestamp
   assert.equal(isJourneyInWeekend('invalid'), false);
 });

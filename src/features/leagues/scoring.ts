@@ -1,4 +1,5 @@
 import type { Journey, LineId } from '../../domain/models';
+import { STATIONS } from '../../data/pune';
 import { SAMPLE_LEAGUE } from './sampleLeague';
 import type {
   BurnSummary,
@@ -7,6 +8,20 @@ import type {
   RivalMatchup,
   ScoringMetric,
 } from './types';
+
+const PURPLE_STATION_IDS = new Set(STATIONS.filter(s => s.line === 'purple').map(s => s.id));
+const AQUA_STATION_IDS = new Set(STATIONS.filter(s => s.line === 'aqua').map(s => s.id));
+
+/**
+ * Returns true if and only if a route transfers between the Purple Line and Aqua Line at Civil Court.
+ * Same-line trips passing through Civil Court (e.g. Vanaz to Ramwadi on Aqua) do not require a line transfer.
+ */
+export function isLineTransferJourney(stationList: string[]): boolean {
+  if (!stationList.includes('civil-court')) return false;
+  const hasPurple = stationList.some(id => PURPLE_STATION_IDS.has(id));
+  const hasAqua = stationList.some(id => AQUA_STATION_IDS.has(id));
+  return hasPurple && hasAqua;
+}
 
 /**
  * Calculates estimated active commute calories burned during a Pune Metro journey.
@@ -27,12 +42,9 @@ export function calculateJourneyCalories(journey: {
   kcal += journey.kilometers * 12;
 
   // Civil Court interchange transfer walk adds additional platform stairs and concourse distance
+  // ONLY if the commuter actually transfers between Purple and Aqua lines
   const stationList = journey.stationIds ?? [journey.from, journey.to];
-  const isInterchange =
-    stationList.includes('civil-court') &&
-    journey.from !== 'civil-court' &&
-    journey.to !== 'civil-court';
-  if (isInterchange) {
+  if (isLineTransferJourney(stationList)) {
     kcal += 25;
   }
 

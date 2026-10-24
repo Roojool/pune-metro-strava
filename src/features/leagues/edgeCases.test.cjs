@@ -81,21 +81,34 @@ test('getTopBurnCorridors aggregates corridor burn and flags interchange routes'
       kilometers: 15.0,
       stationIds: ['vanaz', 'civil-court', 'pcmc'],
     },
+    {
+      id: '4',
+      from: 'vanaz',
+      to: 'ramwadi',
+      kilometers: 15.7,
+      stationIds: ['vanaz', 'civil-court', 'ramwadi'],
+    },
   ];
 
   const corridors = getTopBurnCorridors(journeys);
-  assert.equal(corridors.length, 2);
+  assert.equal(corridors.length, 3);
 
   // PCMC <-> Civil Court corridor has 2 rides
   const pcmcCorridor = corridors.find(c => c.corridorKey === 'civil-court::pcmc');
   assert.ok(pcmcCorridor);
   assert.equal(pcmcCorridor.ridesCount, 2);
   assert.ok(pcmcCorridor.totalCalories > 0);
+  assert.equal(pcmcCorridor.hasInterchange, false);
 
   // Vanaz <-> PCMC corridor has interchange
   const transferCorridor = corridors.find(c => c.corridorKey === 'pcmc::vanaz');
   assert.ok(transferCorridor);
   assert.equal(transferCorridor.hasInterchange, true);
+
+  // Vanaz <-> Ramwadi stays on Aqua Line through Civil Court (no line transfer)
+  const aquaThroughCorridor = corridors.find(c => c.corridorKey === 'ramwadi::vanaz');
+  assert.ok(aquaThroughCorridor);
+  assert.equal(aquaThroughCorridor.hasInterchange, false);
 
   // Empty state
   assert.deepEqual(getTopBurnCorridors([]), []);

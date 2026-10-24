@@ -86,6 +86,17 @@ test('calculateStationDensity counts boarding and destination visits and compute
   assert.equal(density.totalStationBurnKcal, 118);
 
   assert.match(density.accessibilityDescription, /Top active transit hub is Civil Court/);
+
+  // 6 distinct stations: Vanaz (24), Anand Nagar (20), Ideal Colony (20), Nal Stop (20), Garware (20), Deccan (20)
+  // Total across all 6 stations: 24 + 5 * 20 = 124 kcal
+  const sixJourneys = [
+    { id: '1', from: 'vanaz', to: 'anand-nagar', kilometers: 1, points: 10, at: '2026-10-22T08:00:00Z' },
+    { id: '2', from: 'ideal-colony', to: 'nal-stop', kilometers: 1, points: 10, at: '2026-10-22T09:00:00Z' },
+    { id: '3', from: 'garware-college', to: 'deccan-gymkhana', kilometers: 1, points: 10, at: '2026-10-22T10:00:00Z' },
+  ];
+  const sixDensity = calculateStationDensity(sixJourneys);
+  assert.equal(sixDensity.topStations.length, 5); // top 5 displayed in ranking
+  assert.equal(sixDensity.totalStationBurnKcal, 124); // all 6 stations counted in total
 });
 
 test('calculateStationDensity respects line filtering for Purple Line', () => {

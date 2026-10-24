@@ -107,7 +107,9 @@ export function calculateRivalDuelDetail(
     else if (metric === 'eco') metricPerRide = 0.5; // average ~0.5 kg CO2 per transit trip
     else metricPerRide = profile.xp;
 
-    const ridesNeeded = deficit === 0 ? 0 : Math.ceil(deficit / Math.max(1, metricPerRide));
+    const safePerRide = Math.max(0.1, metricPerRide);
+    // Calculate rides needed to strictly overtake the rival
+    const ridesNeeded = deficit === 0 ? 0 : Math.floor(deficit / safePerRide) + 1;
 
     return {
       routeLabel: profile.label,

@@ -24,20 +24,23 @@ export function RivalDuelCard({ duel }: RivalDuelCardProps) {
       >
         {/* Header */}
         <View style={[uiStyles.row, { justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }]}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flex: 1, minWidth: 200 }}>
             <View style={[styles.iconBox, { backgroundColor: accentBg }]}>
               <Icon name="zap" size={18} color={accentColor} />
             </View>
-            <View>
-              <Text style={[styles.eyebrow, { color: accentColor }]}>WHO BURNED MORE · RIVAL DUEL</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={[styles.eyebrow, { color: accentColor }]}>WHO BURNED MORE · RIVAL MATCHUP</Text>
               <Text style={styles.title}>{duel.headline}</Text>
             </View>
           </View>
-          <Pill
-            text={isAhead ? 'PACESETTER' : 'CHASER'}
-            color={accentBg}
-            ink={accentColor}
-          />
+          <View style={{ flexDirection: 'row', gap: 6, alignItems: 'center' }}>
+            <Pill text="SAMPLE RIVAL" color="#261A33" ink="#AD79FF" />
+            <Pill
+              text={isAhead ? 'PACESETTER' : 'CHASER'}
+              color={accentBg}
+              ink={accentColor}
+            />
+          </View>
         </View>
 
         {/* Head-to-Head Comparison Grid */}
@@ -107,7 +110,7 @@ export function RivalDuelCard({ duel }: RivalDuelCardProps) {
         ) : null}
 
         <Text style={styles.disclaimer}>
-          Direct head-to-head competition against {duel.rivalName}. Live standings update with every self-reported ride.
+          Fictional demo matchup against {duel.rivalName}. Competitor scores are illustrative; only your progress reflects local self-reported rides on this device.
         </Text>
       </View>
     </Card>

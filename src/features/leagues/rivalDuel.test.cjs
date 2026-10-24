@@ -88,4 +88,13 @@ test('calculateRivalDuelDetail assesses momentum advantage across rides count', 
   const duel = calculateRivalDuelDetail(board[1], board, 'xp');
   assert.ok(duel);
   assert.equal(duel.momentumAdvantage, 'user');
+
+  // Eco catchup test: deficit 2.0 kg CO2 with fractional 0.5 kg/ride -> 5 rides needed to overtake
+  const boardEco = [
+    { id: 'r1', name: 'Aarav', points: 500, sample: true, line: 'purple', caloriesBurned: 900, co2SavedKg: 5.0, ridesCount: 8 },
+    { id: 'you', name: 'You', points: 410, sample: false, line: 'purple', caloriesBurned: 720, co2SavedKg: 3.0, ridesCount: 6 },
+  ];
+  const duelEco = calculateRivalDuelDetail(boardEco[1], boardEco, 'eco');
+  assert.ok(duelEco);
+  assert.equal(duelEco.suggestedCatchups[0].ridesNeededToOvertake, 5);
 });

@@ -55,8 +55,10 @@ export function WeekendChallengeCard({ challenges }: WeekendChallengeCardProps) 
                     <Text style={styles.challengeTitle}>{c.title}</Text>
                     <Text style={styles.challengeSubtitle}>{c.subtitle}</Text>
                   </View>
-                  <View style={styles.rewardPill}>
-                    <Text style={styles.rewardText}>+{c.rewardXp} XP · +{c.rewardKcal} kcal</Text>
+                  <View style={[styles.rewardPill, { backgroundColor: c.isCompleted ? '#163624' : '#2A2016' }]}>
+                    <Text style={[styles.rewardText, { color: c.isCompleted ? '#00CD6B' : '#FF9500' }]}>
+                      {c.isCompleted ? 'COMPLETED' : 'WEEKEND GOAL'}
+                    </Text>
                   </View>
                 </View>
 
@@ -84,7 +86,7 @@ export function WeekendChallengeCard({ challenges }: WeekendChallengeCardProps) 
         </View>
 
         <Text style={styles.disclaimer}>
-          Weekend goals reset every Monday at 00:00 IST. Bonuses apply automatically to your leaderboard standing.
+          Weekend goals reset every Monday at 00:00 IST. Tracks active exploration milestones across Saturday and Sunday.
         </Text>
       </View>
     </Card>
