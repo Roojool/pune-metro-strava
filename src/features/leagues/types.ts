@@ -550,3 +550,27 @@ export interface IntermodalTransitSummary {
   accessibilityDescription: string;
 }
 
+export type AuditTrustTier = 'provisional' | 'verified_commuter' | 'fair_play_champion';
+
+export interface AuditFlag {
+  type: string;
+  message: string;
+  journeyId?: string;
+}
+
+export interface CommuterAuditSummary {
+  trustScore: number;
+  trustTier: AuditTrustTier;
+  trustTierTitle: string;
+  trustTierMarathi: string;
+  totalJourneysAudited: number;
+  rapidSpamChecksPassed: boolean;
+  dailyCapCompliant: boolean;
+  velocityPlausibilityRatio: number;
+  flaggedAnomaliesCount: number;
+  integrityFlags: AuditFlag[];
+  auditVerificationBadge: string;
+  shareableAuditText: string;
+  accessibilityDescription: string;
+}
+

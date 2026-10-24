@@ -68,6 +68,8 @@ import { FuelSavingsCard } from './FuelSavingsCard';
 import { calculateFuelSavings } from './fuelSavings';
 import { IntermodalTransitCard } from './IntermodalTransitCard';
 import { calculateIntermodalTransit } from './intermodalTransit';
+import { CommuterAuditCard } from './CommuterAuditCard';
+import { calculateCommuterAudit } from './commuterAudit';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -170,6 +172,7 @@ export default function LeaguesScreen() {
   const smogShield = calculateSmogShield(relevantJourneys);
   const fuelSavings = calculateFuelSavings(relevantJourneys);
   const intermodalTransit = calculateIntermodalTransit(relevantJourneys);
+  const commuterAudit = calculateCommuterAudit(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -390,6 +393,9 @@ export default function LeaguesScreen() {
 
         {/* Intermodal Transit & Multi-Modal Feeder Connectivity */}
         <IntermodalTransitCard summary={intermodalTransit} />
+
+        {/* Commuter Fair Play & Leaderboard Integrity Audit */}
+        <CommuterAuditCard summary={commuterAudit} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
