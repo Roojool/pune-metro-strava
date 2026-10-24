@@ -3,10 +3,13 @@ import { SAMPLE_LEAGUE } from './sampleLeague';
 import { getStationName } from '../../data/pune';
 import { routeBetween } from '../../domain/metro';
 import type {
+  ActiveBurnStreakSummary,
   BurnSummary,
   CommuterBurnTier,
+  DailyBurnActivity,
   EnrichedLeaderboardEntry,
   LevelProgress,
+  RivalDuelComparison,
   RivalMatchup,
   RouteBurnEstimate,
   ScoringMetric,
@@ -511,4 +514,153 @@ export function estimateRouteBurn(
     };
   }
 }
+
+/**
+ * Computes active daily commuter streak, 14-day activity matrix, and midnight IST grace protection.
+ */
+export function calculateActiveBurnStreak(
+  journeys: Journey[],
+  now = new Date()
+): ActiveBurnStreakSummary {
+  const safeNow = Number.isFinite(now.getTime()) ? now.getTime() : Date.now();
+  const toIndiaDay = (date: Date): string => {
+    return new Date(date.getTime() + 330 * 60_000).toISOString().slice(0, 10);
+  };
+
+  const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  // Aggregate stats per IST calendar day
+  const dayMap = new Map<string, { calories: number; rides: number }>();
+  for (const j of journeys) {
+    const time = Date.parse(j.at);
+    if (!Number.isFinite(time)) continue;
+    const key = toIndiaDay(new Date(time));
+    const current = dayMap.get(key) ?? { calories: 0, rides: 0 };
+    current.calories += calculateJourneyCalories(j);
+    current.rides += 1;
+    dayMap.set(key, current);
+  }
+
+  const todayKey = toIndiaDay(new Date(safeNow));
+  const yesterdayKey = toIndiaDay(new Date(safeNow - 86_400_000));
+
+  // Build 14-day rolling matrix ending today
+  const twoWeekMatrix: DailyBurnActivity[] = [];
+  for (let i = 13; i >= 0; i--) {
+    const targetDate = new Date(safeNow - i * 86_400_000);
+    const key = toIndiaDay(targetDate);
+    const istDate = new Date(targetDate.getTime() + 330 * 60_000);
+    const dayStats = dayMap.get(key) ?? { calories: 0, rides: 0 };
+    twoWeekMatrix.push({
+      dateKey: key,
+      dayName: DAY_NAMES[istDate.getUTCDay()],
+      dayOfMonth: istDate.getUTCDate(),
+      calories: dayStats.calories,
+      ridesCount: dayStats.rides,
+      isActive: dayStats.calories > 0 || dayStats.rides > 0,
+      isToday: key === todayKey,
+    });
+  }
+
+  const activeDaysSet = new Set(
+    Array.from(dayMap.entries())
+      .filter(([_, stats]) => stats.calories > 0 || stats.rides > 0)
+      .map(([key]) => key)
+  );
+
+  let currentStreak = 0;
+  let cursor = new Date(safeNow);
+
+  if (activeDaysSet.has(todayKey)) {
+    while (activeDaysSet.has(toIndiaDay(cursor))) {
+      currentStreak++;
+      cursor = new Date(cursor.getTime() - 86_400_000);
+    }
+  } else if (activeDaysSet.has(yesterdayKey)) {
+    cursor = new Date(safeNow - 86_400_000);
+    while (activeDaysSet.has(toIndiaDay(cursor))) {
+      currentStreak++;
+      cursor = new Date(cursor.getTime() - 86_400_000);
+    }
+  }
+
+  // Calculate longest streak
+  const sortedDays = Array.from(activeDaysSet).sort();
+  let longestStreak = 0;
+  let run = 0;
+  let lastTime = 0;
+  for (const day of sortedDays) {
+    const t = Date.parse(`${day}T00:00:00Z`);
+    if (lastTime > 0 && Math.round((t - lastTime) / 86_400_000) === 1) {
+      run++;
+    } else {
+      run = 1;
+    }
+    if (run > longestStreak) longestStreak = run;
+    lastTime = t;
+  }
+  longestStreak = Math.max(longestStreak, currentStreak);
+
+  const shieldActive =
+    !activeDaysSet.has(todayKey) && activeDaysSet.has(yesterdayKey) && currentStreak > 0;
+
+  let streakStatusText = '';
+  if (shieldActive) {
+    streakStatusText = `Ride today before midnight IST to protect your ${currentStreak}-day active commuter streak!`;
+  } else if (activeDaysSet.has(todayKey)) {
+    streakStatusText = `Streak locked in for today! You are on a ${currentStreak}-day active transit streak.`;
+  } else if (currentStreak > 0) {
+    streakStatusText = `You have a ${currentStreak}-day streak going. Keep the rhythm!`;
+  } else {
+    streakStatusText = 'Log a ride today to kickstart a new active transit streak.';
+  }
+
+  return {
+    currentStreak,
+    longestStreak,
+    activeStreakDays: activeDaysSet.size,
+    twoWeekMatrix,
+    shieldActive,
+    streakStatusText,
+  };
+}
+
+/**
+ * Computes direct head-to-head commuter duel analysis between user and any rival.
+ */
+export function calculateRivalDuel(
+  userEntry: EnrichedLeaderboardEntry,
+  rivalEntry: EnrichedLeaderboardEntry
+): RivalDuelComparison {
+  const userScore = userEntry.caloriesBurned;
+  const rivalScore = rivalEntry.caloriesBurned;
+  const calorieGap = rivalScore - userScore;
+  const userLeads = userScore >= rivalScore;
+  const absGap = Math.abs(calorieGap);
+
+  const stairFlightsToBridge = Math.round(absGap / 3.5);
+  const kmToBridge = Math.round((absGap / 65) * 10) / 10;
+
+  let duelInsight = '';
+  if (userScore === rivalScore) {
+    duelInsight = `Dead heat! You and ${rivalEntry.name} are tied at ${userScore} kcal. Next ride wins!`;
+  } else if (userLeads) {
+    duelInsight = `Leading ${rivalEntry.name} by +${absGap} kcal (~${stairFlightsToBridge} stair flights). Log another ride to seal the lead!`;
+  } else {
+    duelInsight = `Burn ${absGap} more kcal (~${stairFlightsToBridge} station stairs / ${kmToBridge} km walk) to overtake ${rivalEntry.name}!`;
+  }
+
+  return {
+    rivalId: rivalEntry.id,
+    rivalName: rivalEntry.name,
+    userScore,
+    rivalScore,
+    calorieGap,
+    userLeads,
+    stairFlightsToBridge,
+    kmToBridge,
+    duelInsight,
+  };
+}
+
 
