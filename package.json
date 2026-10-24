@@ -10,7 +10,9 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "export:web": "expo export --platform web",
-    "test": "tsc -p tsconfig.domain.json && node --test"
+    "test": "tsc -p tsconfig.domain.json && node --test",
+    "team:continue": "node scripts/team-loop.mjs",
+    "verify:e2e": "node scripts/verify-e2e.mjs"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
