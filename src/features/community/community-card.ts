@@ -10,6 +10,11 @@ export interface PostValidationResult {
   cleanBody?: string;
 }
 
+export interface ShareFeedbackResult {
+  ok: boolean;
+  message: string;
+}
+
 /**
  * Formats an aggregate-only summary for commuter card sharing.
  * Contains no station names, travel dates, commute routes, or private user identity.
@@ -34,4 +39,19 @@ export function validateCommunityPost(raw: string): PostValidationResult {
     ok: true,
     cleanBody,
   };
+}
+
+/**
+ * Handles web and native Share.share results.
+ * In web browsers, react-native-web delegates to navigator.share() which resolves to undefined (void).
+ * In native Android/iOS, Share.share returns { action: 'sharedAction' | 'dismissedAction' }.
+ */
+export function handleShareResult(result: { action?: string } | void | undefined): ShareFeedbackResult | null {
+  if (!result || result.action === 'sharedAction') {
+    return { ok: true, message: 'Your commuter card was handed to the share dialog.' };
+  }
+  if (result.action === 'dismissedAction') {
+    return { ok: false, message: 'Sharing cancelled. Your commuter card remains private.' };
+  }
+  return null;
 }

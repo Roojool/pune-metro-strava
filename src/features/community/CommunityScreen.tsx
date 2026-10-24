@@ -70,7 +70,11 @@ export default function CommunityScreen() {
     setFeedback(null);
     try {
       const result = await Share.share({ title: 'My MetroQuest commuter card', message: cardSummary });
-      if (result.action === Share.sharedAction) setFeedback({ ok: true, message: 'Your commuter card was handed to the share dialog.' });
+      if (!result || result.action === Share.sharedAction) {
+        setFeedback({ ok: true, message: 'Your commuter card was handed to the share dialog.' });
+      } else if (result.action === Share.dismissedAction) {
+        setFeedback({ ok: false, message: 'Sharing cancelled. Your commuter card remains private.' });
+      }
     } catch {
       setFeedback({ ok: false, message: 'Sharing is unavailable here. Your card preview below is ready to copy or screenshot.' });
     } finally {
