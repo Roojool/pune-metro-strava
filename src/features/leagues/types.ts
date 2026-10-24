@@ -364,6 +364,20 @@ export interface EcoCertificateSummary {
   accessibilityDescription: string;
 }
 
+export interface ConcourseStepsSummary {
+  totalEstimatedSteps: number;
+  totalConcourseKm: number;
+  interchangeSteps: number;
+  averageStepsPerRide: number;
+  puneParkLapEquivalent: string;
+  puneParkLapCount: number;
+  stepMilestoneTitle: string;
+  stepMilestoneProgress: number;
+  stepMilestoneTarget: number;
+  accessibilityDescription: string;
+}
+
+
 
 
 

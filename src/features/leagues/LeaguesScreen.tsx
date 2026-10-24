@@ -52,6 +52,8 @@ import { StreakShieldCard } from './StreakShieldCard';
 import { calculateStreakShield } from './streakShield';
 import { EcoCertificateCard } from './EcoCertificateCard';
 import { generateEcoCertificate } from './ecoCertificate';
+import { ConcourseStepsCard } from './ConcourseStepsCard';
+import { calculateConcourseSteps } from './concourseSteps';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -146,6 +148,7 @@ export default function LeaguesScreen() {
   const puneReplenish = calculatePuneReplenish(relevantJourneys);
   const streakShield = calculateStreakShield(journeys, streak);
   const ecoCertificate = generateEcoCertificate(relevantJourneys, user.name);
+  const concourseSteps = calculateConcourseSteps(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -342,6 +345,9 @@ export default function LeaguesScreen() {
 
         {/* Clean Air Commuter Sustainability Certificate */}
         <EcoCertificateCard certificate={ecoCertificate} onShare={handleShareCertificate} />
+
+        {/* Station Concourse Physical Pedometer Steps */}
+        <ConcourseStepsCard summary={concourseSteps} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
