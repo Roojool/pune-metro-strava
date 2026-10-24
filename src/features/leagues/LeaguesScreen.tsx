@@ -23,6 +23,11 @@ import { PuneMilestonesCard } from './PuneMilestonesCard';
 import { filterJourneysByLine, getLineEmptyStateGuidance, sanitizeParticipantName } from './edgeCases';
 import { CorridorBurnCard } from './CorridorBurnCard';
 import { generateLeagueShareSummary, handleLeagueShare } from './share';
+import { DivisionZoneCard } from './DivisionZoneCard';
+import { RivalDuelCard } from './RivalDuelCard';
+import { calculateDivisionStanding } from './divisions';
+import { calculateRivalDuelDetail } from './rivalDuel';
+import { calculateHabitMultiplier } from './habitScoring';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -102,6 +107,9 @@ export default function LeaguesScreen() {
   const rivalMatchup = calculateRivalMatchup(current, board, metric);
   const levelProgress = calculateLevelProgress(points);
   const topCorridors = getTopBurnCorridors(relevantJourneys);
+  const divisionStanding = calculateDivisionStanding(rank, board.length, board, metric, points);
+  const rivalDuel = calculateRivalDuelDetail(current, board, metric);
+  const habitInfo = calculateHabitMultiplier(streak);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -209,7 +217,17 @@ export default function LeaguesScreen() {
                 <Text style={styles.muted}>Active days, all time</Text>
               </View>
             </View>
-            <Text style={styles.muted}>Streak uses India calendar days. A ride today or yesterday keeps it active.</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <Pill
+                text={habitInfo.bonusPercentageText}
+                color={habitInfo.effectiveMultiplier > 1 ? '#173A26' : theme.surface}
+                ink={habitInfo.effectiveMultiplier > 1 ? '#B4F5D0' : theme.muted}
+              />
+              {habitInfo.isWeekend ? (
+                <Pill text="WEEKEND ECO BONUS" color="#1F2A1E" ink="#78D692" />
+              ) : null}
+            </View>
+            <Text style={styles.muted}>Streak uses India calendar days. {habitInfo.fairPlayNotice}</Text>
             <View style={{ height: 1, backgroundColor: theme.border }} />
             {latestJourney ? (
               <View style={{ gap: 12 }}>
@@ -236,6 +254,9 @@ export default function LeaguesScreen() {
           metric={metric}
           onLogRide={() => router.push('/log')}
         />
+
+        {/* Head-to-Head Rival Duel */}
+        {rivalDuel ? <RivalDuelCard duel={rivalDuel} /> : null}
 
         {/* Authentic Pune Cultural Burn Milestones */}
         <PuneMilestonesCard
@@ -395,6 +416,9 @@ export default function LeaguesScreen() {
                 );
               })}
             </View>
+
+            {/* Division Tier & Promotion/Relegation Cutoffs */}
+            <DivisionZoneCard standing={divisionStanding} />
 
             {/* Main Leaderboard Table Card */}
             <Card style={{ padding: 0, overflow: 'hidden' }}>

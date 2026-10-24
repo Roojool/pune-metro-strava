@@ -43,3 +43,79 @@ export interface LevelProgress {
   nextLevel: number;
   title: string;
 }
+
+export type DivisionTier = 'bronze' | 'silver' | 'gold' | 'diamond';
+
+export type DivisionZone = 'promotion' | 'safe' | 'relegation';
+
+export interface DivisionTierInfo {
+  tier: DivisionTier;
+  title: string;
+  badgeColor: string;
+  badgeBg: string;
+  borderTint: string;
+  minPoints: number;
+  nextTier?: DivisionTier;
+  nextTierPoints?: number;
+  description: string;
+}
+
+export interface DivisionStanding {
+  tierInfo: DivisionTierInfo;
+  zone: DivisionZone;
+  userRank: number;
+  totalParticipants: number;
+  userScore: number;
+  targetUnit: string;
+  pointsToPromote: number;
+  pointsToSafety: number;
+  bufferOverCutoff: number;
+  promotionCutoffScore: number;
+  relegationCutoffScore: number;
+  promotionRanksCount: number;
+  relegationRanksCount: number;
+  headline: string;
+  subtext: string;
+  a11yZoneDescription: string;
+}
+
+export interface SuggestedCatchupRide {
+  routeLabel: string;
+  stationCount: number;
+  estimatedKcal: number;
+  xpValue: number;
+  ridesNeededToOvertake: number;
+}
+
+export interface RivalDuelDetail {
+  userRank: number;
+  rivalName: string;
+  rivalRank: number;
+  userScore: number;
+  rivalScore: number;
+  scoreDelta: number; // positive = user ahead, negative = user behind
+  targetUnit: string;
+  userCalories: number;
+  rivalCalories: number;
+  caloriesDelta: number;
+  userXp: number;
+  rivalXp: number;
+  xpDelta: number;
+  userCo2: number;
+  rivalCo2: number;
+  co2Delta: number;
+  momentumAdvantage: 'user' | 'rival' | 'tied';
+  suggestedCatchups: SuggestedCatchupRide[];
+  headline: string;
+  accessibilityAnnouncement: string;
+}
+
+export interface HabitMultiplierInfo {
+  streakDays: number;
+  isWeekend: boolean;
+  streakMultiplier: number;
+  weekendBonusMultiplier: number;
+  effectiveMultiplier: number;
+  bonusPercentageText: string;
+  fairPlayNotice: string;
+}
