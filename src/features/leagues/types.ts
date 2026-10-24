@@ -495,3 +495,19 @@ export interface SegmentVelocitySummary {
   accessibilityDescription: string;
 }
 
+export type SmogShieldTier = 'bronze' | 'silver' | 'gold' | 'platinum';
+
+export interface SmogShieldSummary {
+  pm25AvoidedMicrograms: number;
+  smogMinutesAvoided: number;
+  filteredAirLiters: number;
+  hillStationFreshAirDays: number;
+  smogShieldTier: SmogShieldTier;
+  smogShieldTitle: string;
+  smogShieldMarathi: string;
+  highestProtectionCorridor: string;
+  healthBenefitText: string;
+  shareableShieldText: string;
+  accessibilityDescription: string;
+}
+

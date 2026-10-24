@@ -62,6 +62,8 @@ import { StationRadiusCard } from './StationRadiusCard';
 import { calculateStationRadius } from './stationRadius';
 import { SegmentVelocityCard } from './SegmentVelocityCard';
 import { calculateSegmentVelocity } from './segmentVelocity';
+import { SmogShieldCard } from './SmogShieldCard';
+import { calculateSmogShield } from './smogShield';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -161,6 +163,7 @@ export default function LeaguesScreen() {
   const peakFlow = calculatePeakFlow(relevantJourneys);
   const stationRadius = calculateStationRadius(relevantJourneys);
   const segmentVelocity = calculateSegmentVelocity(relevantJourneys);
+  const smogShield = calculateSmogShield(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -372,6 +375,9 @@ export default function LeaguesScreen() {
 
         {/* Strava Segment Velocity & Local Legends */}
         <SegmentVelocityCard summary={segmentVelocity} />
+
+        {/* Commuter Smog Shield & AQI Exposure Protection */}
+        <SmogShieldCard summary={smogShield} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
