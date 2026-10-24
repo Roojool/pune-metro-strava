@@ -7,7 +7,7 @@ iOS and web. Pune commuters manually record rides, collect stations, earn local
 XP and interact with a local demo community. No API keys are needed. This is
 self-reported local demo data, not verified travel or a live multi-user platform.
 
-Repository: https://github.com/Roojool/pune-metro-strava (PRIVATE).
+Repository: https://github.com/Roojool/pune-metro-strava (PUBLIC).
 Primary branch: main. Your assigned branch: `feature/gamification`.
 Lead: Roojool / Developer 1. Four human usernames are pending; invitation commands
 are in CONTRIBUTING.md. AI workers are helpers, not substitutes for human access.
@@ -77,7 +77,7 @@ Do not duplicate or modify XP/achievement/anti-abuse calculations, edit root nav
 ## UI and UX
 Use shared theme and components from @/components/UI: Page, Heading, Card, Pill,
 Action, Stat, SectionTitle, Progress, Notice, Icon, styles. Icon uses Feather
-names; no extra icon dependency. Premium calm green/cream with Purple/Aqua route
+names; no extra icon dependency. Strava-inspired orange/charcoal/white with Purple/Aqua route
 accents, rounded cards, clear hierarchy, readable text and 48px buttons.
 Every interaction needs an accessibilityRole/label and visible feedback.
 Support 390px mobile and wide web with flex wrapping and useWindowDimensions.
@@ -104,14 +104,12 @@ Native: npm run start, open SDK-57-compatible Expo Go on the same Wi-Fi.
 On Windows iOS testing requires a physical iPhone; do not claim it passed otherwise.
 
 ## Deadline and timeboxes
-Sprint started 2026-10-24 13:58 IST; hard deadline 15:58 IST.
-Contracts freeze 14:18 IST. Stop optional features by 15:08 IST (minute 70).
-Spend at most 5 minutes reading/setup, 35 minutes implementation, 10 minutes
-verification. Commit, push and open PR by 15:08 IST or within 50 minutes of
-starting, whichever is earlier. Lead integrates 15:08–15:33; testing
-15:33–15:53; final delivery 15:53–15:58.
-If starting after optional-scope freeze, do blocker fixes only.
-
+Latest user instruction: one-hour delivery sprint from 14:15 to 15:15 IST on
+2026-10-24. This replaces the original 120-minute deadline. Contracts are already
+frozen. Spend at most 5 minutes reading/setup, 20 minutes implementing and 5
+minutes verifying. Commit, push and open your PR by 14:40 IST. Stop optional
+features at 14:50 IST. Lead integrates and tests through 15:10; final handoff by
+15:15. If starting late, fix blockers and complete the existing feature only.
 ## Definition of done and integration
 - Implemented behavior works in the owned module and existing route wrapper.
 - TypeScript, domain tests and web export pass with actual result recorded.
@@ -145,3 +143,6 @@ Report completion with branch, commit SHA, PR URL, tests actually run, and
 remaining limits. Human contributors must report availability; no assumption
 that the lead can control another computer.
 
+
+## Revised one-hour handoff (latest user instruction)
+Repository visibility is now PUBLIC. The hard deadline is 2026-10-24 15:15 IST, revised at 14:15. Finish feature PRs by 14:40, stop optional scope 14:50, integration/testing by 15:10, final delivery 15:15. These times override older 120-minute template times above. UI must be Strava-inspired: orange #FC4C02, charcoal/white, prominent schematic route map, estimated duration/distance and ride activity summaries. No separate web app, API keys, fabricated GPS tracks or invented fares. Your ownership remains unchanged. Work continuously in your assigned branch until done; after reporting a blocker continue independent fixes. Check TEAM_STATUS and AI reservation handoff before editing. All five prompts are standalone for separate AI sessions on each human developer checkout.

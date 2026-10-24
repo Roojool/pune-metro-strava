@@ -14,7 +14,7 @@ Feature modules import models from `src/domain/models.ts`, calculations from
 `src/domain/metro.ts`, and state from `src/state/AppState.tsx`. Await all mutation
 results and surface errors. AsyncStorage writes belong only to AppState.
 Run `npm run typecheck`, `npm test`, `npm run export:web` before integration.
-No direct main pushes by feature workers, no force pushes, no public repo.
+No direct main pushes by feature workers, no force pushes, visibility is public by revised user instruction.
 
 Scope: Expo SDK 57, Expo Router, React Native, TypeScript. One app for web, Android and iOS. No Next.js monorepo in the first two hours.
 
