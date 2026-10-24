@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Tabs } from 'expo-router';
 import { View, useWindowDimensions } from 'react-native';
 import { Icon } from '@/components/UI';
