@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, Share, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { useRouter } from 'expo-router';
 import { useApp } from '@/state/AppState';
 import { LINES, OPEN_STATIONS, STATIONS } from '@/data/pune';
 import { ESTIMATES, networkCompletion } from '@/domain/metro';
@@ -10,6 +11,7 @@ import { passportShareSummary } from './presentation';
 
 export default function PassportScreen() {
   const app = useApp();
+  const nav = useRouter();
   const { journeys, visitedIds, totalJourneys, totalKm, totalSavings, totalCo2, monthlyJourneys, points, ready, storageError } = app;
   const [lineId, setLineId] = useState<LineId>('purple');
   const [selectedId, setSelectedId] = useState('civil-court');
@@ -48,6 +50,11 @@ export default function PassportScreen() {
       <Heading eyebrow="COLLECT MOMENTS, NOT TRAFFIC" title="Your metro passport." subtitle="A familiar route. A new discovery. Every station adds to your story." />
       {storageError ? <Notice error>{storageError}</Notice> : null}
       {!ready ? <Notice>Opening your local passport…</Notice> : null}
+      {ready && totalJourneys === 0 ? <Card style={{ gap: 12 }}>
+        <View style={styles.row}><View style={styles.iconBox}><Icon name="map-pin" /></View><Text style={styles.section}>Your first stamp is one ride away</Text></View>
+        <Text style={styles.body}>Log a ride you have taken and its boarding and exit stations will be stamped here.</Text>
+        <Action label="Log your first ride" icon="plus" onPress={() => nav.navigate('/log')} />
+      </Card> : null}
 
       <Card style={[local.passportCard, { flexDirection: wide ? 'row' : 'column' }]}>
         <View style={{ flex: 1, gap: 18 }}>
