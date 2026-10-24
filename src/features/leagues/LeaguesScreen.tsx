@@ -48,6 +48,8 @@ import { BurnPaceEfficiencyCard } from './BurnPaceEfficiencyCard';
 import { calculateBurnPaceEfficiency } from './burnPaceEfficiency';
 import { PuneReplenishCard } from './PuneReplenishCard';
 import { calculatePuneReplenish } from './puneReplenish';
+import { StreakShieldCard } from './StreakShieldCard';
+import { calculateStreakShield } from './streakShield';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -140,6 +142,7 @@ export default function LeaguesScreen() {
   const monthlyHabitMatrix = calculateMonthlyHabitMatrix(relevantJourneys);
   const burnPaceEfficiency = calculateBurnPaceEfficiency(relevantJourneys);
   const puneReplenish = calculatePuneReplenish(relevantJourneys);
+  const streakShield = calculateStreakShield(journeys, streak);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -317,6 +320,9 @@ export default function LeaguesScreen() {
 
         {/* Post-Burn Hydration & Food Replenish */}
         <PuneReplenishCard summary={puneReplenish} />
+
+        {/* Commuter Streak Shield & Rest Day Protection */}
+        <StreakShieldCard summary={streakShield} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (

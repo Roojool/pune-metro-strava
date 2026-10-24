@@ -330,6 +330,21 @@ export interface PuneReplenishSummary {
   accessibilityDescription: string;
 }
 
+export interface StreakShieldSummary {
+  shieldsAvailable: number;
+  maxShields: number;
+  weeklyCommuteDaysSoFar: number;
+  weeklyCommuteTarget: number;
+  progressToNextShieldRatio: number;
+  isStreakAtRisk: boolean;
+  hoursUntilReset: number;
+  shieldStatusHeadline: string;
+  shieldStatusMessage: string;
+  fairPlayNotice: string;
+  accessibilityDescription: string;
+}
+
+
 
 
 
