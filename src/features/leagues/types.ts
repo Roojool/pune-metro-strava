@@ -306,6 +306,31 @@ export interface BurnPaceEfficiencySummary {
   accessibilityDescription: string;
 }
 
+export interface PuneReplenishItem {
+  id: string;
+  name: string;
+  marathiName: string;
+  category: 'hydration' | 'carb_snack' | 'traditional_treat';
+  calorieValue: number;
+  icon: string;
+  description: string;
+  landmarkLocation: string;
+  isUnlocked: boolean;
+  earnedRatio: number;
+}
+
+export interface PuneReplenishSummary {
+  estimatedFluidLossMl: number;
+  recommendedWaterGlasses: number;
+  totalCaloriesBurned: number;
+  activeRecommendation: PuneReplenishItem;
+  items: PuneReplenishItem[];
+  unlockedCount: number;
+  hydrationTip: string;
+  accessibilityDescription: string;
+}
+
+
 
 
 

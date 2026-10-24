@@ -46,6 +46,8 @@ import { MonthlyHabitMatrixCard } from './MonthlyHabitMatrixCard';
 import { calculateMonthlyHabitMatrix } from './monthlyHabitMatrix';
 import { BurnPaceEfficiencyCard } from './BurnPaceEfficiencyCard';
 import { calculateBurnPaceEfficiency } from './burnPaceEfficiency';
+import { PuneReplenishCard } from './PuneReplenishCard';
+import { calculatePuneReplenish } from './puneReplenish';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -137,6 +139,7 @@ export default function LeaguesScreen() {
   const verticalAscent = calculateVerticalAscent(relevantJourneys);
   const monthlyHabitMatrix = calculateMonthlyHabitMatrix(relevantJourneys);
   const burnPaceEfficiency = calculateBurnPaceEfficiency(relevantJourneys);
+  const puneReplenish = calculatePuneReplenish(relevantJourneys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -311,6 +314,9 @@ export default function LeaguesScreen() {
 
         {/* Commute Pace & Burn Rate Efficiency */}
         <BurnPaceEfficiencyCard summary={burnPaceEfficiency} />
+
+        {/* Post-Burn Hydration & Food Replenish */}
+        <PuneReplenishCard summary={puneReplenish} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
