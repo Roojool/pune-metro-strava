@@ -66,6 +66,8 @@ import { SmogShieldCard } from './SmogShieldCard';
 import { calculateSmogShield } from './smogShield';
 import { FuelSavingsCard } from './FuelSavingsCard';
 import { calculateFuelSavings } from './fuelSavings';
+import { IntermodalTransitCard } from './IntermodalTransitCard';
+import { calculateIntermodalTransit } from './intermodalTransit';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -167,6 +169,7 @@ export default function LeaguesScreen() {
   const segmentVelocity = calculateSegmentVelocity(relevantJourneys);
   const smogShield = calculateSmogShield(relevantJourneys);
   const fuelSavings = calculateFuelSavings(relevantJourneys);
+  const intermodalTransit = calculateIntermodalTransit(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -384,6 +387,9 @@ export default function LeaguesScreen() {
 
         {/* Commuter Rupee Fuel Savings & Economic ROI */}
         <FuelSavingsCard summary={fuelSavings} />
+
+        {/* Intermodal Transit & Multi-Modal Feeder Connectivity */}
+        <IntermodalTransitCard summary={intermodalTransit} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (

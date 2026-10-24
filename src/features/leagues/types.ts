@@ -525,3 +525,28 @@ export interface FuelSavingsSummary {
   accessibilityDescription: string;
 }
 
+export interface IntermodalHub {
+  id: string;
+  stationId: string;
+  hubName: string;
+  marathiName: string;
+  connectingModes: string[];
+  interchangeStairsFlights: number;
+  visitCount: number;
+  isUnlocked: boolean;
+}
+
+export interface IntermodalTransitSummary {
+  totalIntermodalVisits: number;
+  unlockedHubsCount: number;
+  totalHubs: number;
+  intermodalConnectivityScore: number;
+  intermodalTransferKcal: number;
+  hubs: IntermodalHub[];
+  dominantFeederMode: string;
+  intermodalPersona: string;
+  intermodalPersonaMarathi: string;
+  shareableIntermodalText: string;
+  accessibilityDescription: string;
+}
+
