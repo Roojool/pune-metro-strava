@@ -21,7 +21,7 @@ its `src/features/<role-folder>/**`; shared blockers go to the lead.
 
 Prerequisites: Node/npm, Git, authenticated GitHub CLI, and Codex CLI authenticated
 with your existing account/config. No new API key is needed. RTK is used for Git
-and PR commands when installed. Normal Codex approval/authentication requirements
+synchronization when installed. Normal Codex approval/authentication requirements
 remain in force. Exact machine-readable Git fields/filenames and GitHub JSON use
 raw CLI output so display filtering cannot corrupt parsing; synchronization uses
 native RTK Git commands when available. If approvals block, the runner reports failure rather than bypassing
