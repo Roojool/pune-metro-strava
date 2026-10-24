@@ -439,3 +439,30 @@ export interface PeakFlowSummary {
   accessibilityDescription: string;
 }
 
+export interface NeighborhoodCatchment {
+  id: string;
+  name: string;
+  marathiName: string;
+  associatedStations: string[];
+  walkRadiusMeters: number;
+  prominentLandmarks: string[];
+  visitCount: number;
+  isUnlocked: boolean;
+  totalKmWalked: number;
+}
+
+export interface StationRadiusSummary {
+  totalEstimatedWalkKm: number;
+  totalWalkSteps: number;
+  firstLastMileBurnKcal: number;
+  activeCommuteMultiplier: number;
+  unlockedCatchmentsCount: number;
+  totalCatchments: number;
+  catchments: NeighborhoodCatchment[];
+  topWalkableHub: string;
+  pedestrianPersona: string;
+  pedestrianPersonaMarathi: string;
+  shareableRadiusText: string;
+  accessibilityDescription: string;
+}
+

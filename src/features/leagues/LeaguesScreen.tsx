@@ -58,6 +58,8 @@ import { TrophyCabinetCard } from './TrophyCabinetCard';
 import { calculateTrophyCabinet } from './trophyCabinet';
 import { PeakFlowCard } from './PeakFlowCard';
 import { calculatePeakFlow } from './peakFlow';
+import { StationRadiusCard } from './StationRadiusCard';
+import { calculateStationRadius } from './stationRadius';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -155,6 +157,7 @@ export default function LeaguesScreen() {
   const concourseSteps = calculateConcourseSteps(relevantJourneys);
   const trophyCabinet = calculateTrophyCabinet(journeys, streak, points);
   const peakFlow = calculatePeakFlow(relevantJourneys);
+  const stationRadius = calculateStationRadius(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -360,6 +363,9 @@ export default function LeaguesScreen() {
 
         {/* Commute Transit Rhythm & Congestion Grid Balancer */}
         <PeakFlowCard summary={peakFlow} />
+
+        {/* Station Neighborhood Walking Catchments */}
+        <StationRadiusCard summary={stationRadius} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
