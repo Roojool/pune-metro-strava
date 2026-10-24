@@ -54,7 +54,7 @@ PR #11 resolves static hydration/responsive dimensions and accessible tab labels
 | Sharing | Aggregate-only privacy tests PASS; native chooser completion not tested |
 | Android real device/emulator | NOT TESTED, adb found no device |
 | iPhone/iOS simulator | NOT TESTED, none available on this Windows machine |
-| Hosted release | Pages configured; final hosted verification recorded before delivery |
+| Hosted release | PASS, GitHub Pages deployment and full live-URL browser scenario |
 
 Re-run in a fresh Playwright CLI session on Home after serving a production
 export with `npx expo serve --port 8090`:
@@ -78,3 +78,18 @@ issue and test locator ambiguities were diagnosed and fixed before the final pas
 
 No API keys, verified GPS trips, real public ranks or live multi-user feed are
 claimed. KNOWN_LIMITATIONS.md records assumptions, risks and post-MVP work.
+
+## Release proof
+
+The full script also passed against https://roojool.github.io/pune-metro-strava/
+on 2026-10-24 at 14:36 IST. Result: 1 journey, 2 endpoint stations, 50 XP;
+post/reaction/membership/profile survived reload; all five mobile tabs passed;
+zero page/console errors. Automated quick log took 485ms on this test machine.
+Tested application commit: `a66c0105f20a760bf6261eff4bf36c1a7778399c`.
+The final documentation commit changes no application behavior.
+
+Main CI passed: https://github.com/Roojool/pune-metro-strava/actions/runs/40080504483
+Hosted deployment passed: https://github.com/Roojool/pune-metro-strava/actions/runs/40080504565
+All five human branches contain the integrated handoff. Main requires PRs and
+the check job; force pushes/deletion are disabled. Four invitations still await
+acceptance. The lead alone integrated shared work; no human activity was fabricated.
