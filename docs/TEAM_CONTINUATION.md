@@ -22,8 +22,15 @@ its `src/features/<role-folder>/**`; shared blockers go to the lead.
 Prerequisites: Node/npm, Git, authenticated GitHub CLI, and Codex CLI authenticated
 with your existing account/config. No new API key is needed. RTK is used for Git
 and PR commands when installed. Normal Codex approval/authentication requirements
-remain in force. If they block, the runner reports failure rather than bypassing
+remain in force. Exact machine-readable Git fields/filenames and GitHub JSON use
+raw CLI output so display filtering cannot corrupt parsing; synchronization uses
+native RTK Git commands when available. If approvals block, the runner reports failure rather than bypassing
 them. `--dry-run` verifies role/branch and prints the plan without running an agent.
+
+The controller normally fetches/merges main before each agent call and only then
+records the starting commit for ownership checks. The invoked agent must not
+pull, merge, rebase or change branches; this prevents legitimate shared updates
+from being mistaken for out-of-scope agent edits. Conflicts stop for the lead.
 
 The loop is bounded to 30 minutes (or a smaller --minutes value) and six agent
 calls. It acquires an exclusive checkout lock under Git’s own metadata directory.

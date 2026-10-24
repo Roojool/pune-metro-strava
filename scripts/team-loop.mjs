@@ -42,6 +42,11 @@ export function acquireLock(filename) {
   let released = false;
   return () => { if (!released) { released = true; fs.closeSync(handle); fs.unlinkSync(filename); } };
 }
+export function syncBeforeSnapshot(git) {
+  git('fetch', 'origin', 'main');
+  git('merge', '--no-edit', 'origin/main');
+  return git('rev-parse', 'HEAD');
+}
 function executable(name) {
   for (const directory of (process.env.PATH ?? '').split(path.delimiter)) {
     for (const extension of process.platform === 'win32' ? ['.exe', '.cmd', '.bat', ''] : ['']) {
@@ -61,7 +66,9 @@ export async function main(args = process.argv.slice(2)) {
   if (!binaries.git) throw new Error('Git is required.');
   function run(name, argv, { input, allowFailure = false, show = false } = {}) {
     let bin = binaries[name]; let commandArgs = argv;
-    if (rtk && (name === 'git' || name === 'gh' && argv[0] === 'pr')) { bin = rtk; commandArgs = [name, ...argv]; }
+    // Exact Git fields/filenames and gh JSON need raw output, not display filtering.
+    const machineOutput = name === 'gh' || name === 'git' && ['branch', 'rev-parse', 'status', 'rev-list', 'diff'].includes(argv[0]);
+    if (rtk && name === 'git' && !machineOutput) { bin = rtk; commandArgs = [name, ...argv]; }
     if (!bin) throw new Error(`${name} is not installed or not on PATH.`);
     if (/\.(cmd|bat)$/i.test(bin)) {
       const entry = name === 'codex' ? path.join(path.dirname(bin), 'node_modules/@openai/codex/bin/codex.js') : name === 'npm' ? path.join(path.dirname(bin), 'node_modules/npm/bin/npm-cli.js') : null;
@@ -101,8 +108,8 @@ export async function main(args = process.argv.slice(2)) {
     if (calls >= 6 || Date.now() >= deadline) return false;
     assertBranch(role, git('branch', '--show-current'));
     assertOwned(role, dirtyFiles());
-    const before = git('rev-parse', 'HEAD');
-    const prompt = `Continue MetroQuest as ${role}. Read AGENTS.md, TEAM_STATUS.md and team-prompts/${spec.prompt}. Own ONLY src/features/${spec.folder}/** on ${branch}. Reason: ${reason}. PR: ${pr?.url ?? 'none'}. Deadline: ${new Date(deadline).toISOString()}. Do not invent features. Repair only owned integration blockers, run typecheck/tests/export and npm run verify:e2e when available. Check empty/error/mobile states and share privacy. Await repository mutations. Commit only owned files, push ${branch}, open/update a small PR to main if needed. NEVER self-merge, edit shared files, force-push, change dependencies, bypass approvals or claim success without actual browser E2E exit 0. Report shared blockers to the lead. After opening a PR, continue verification within this task rather than ending at PR creation. Stop within the remaining time and report honestly.`;
+    const before = syncBeforeSnapshot(git);
+    const prompt = `Continue MetroQuest as ${role}. Read AGENTS.md, TEAM_STATUS.md and team-prompts/${spec.prompt}. Own ONLY src/features/${spec.folder}/** on ${branch}. The controller has already fetched and normally merged origin/main before recording your starting commit. Do NOT pull, fetch, merge, rebase, switch/checkout or change branches during this invocation, even if setup instructions in the team prompt mention them; the controller owns synchronization. Reason: ${reason}. PR: ${pr?.url ?? 'none'}. Deadline: ${new Date(deadline).toISOString()}. Do not invent features. Repair only owned integration blockers, run typecheck/tests/export and npm run verify:e2e when available. Check empty/error/mobile states and share privacy. Await repository mutations. Commit only owned files, push ${branch}, open/update a small PR to main if needed. NEVER self-merge, edit shared files, force-push, change dependencies, bypass approvals or claim success without actual browser E2E exit 0. Report shared blockers to the lead. After opening a PR, continue verification within this task rather than ending at PR creation. Stop within the remaining time and report honestly.`;
     calls++;
     run('codex', ['exec', '--sandbox', 'workspace-write', '--output-last-message', lastMessage, '-'], { input: prompt, show: true });
     assertBranch(role, git('branch', '--show-current'));

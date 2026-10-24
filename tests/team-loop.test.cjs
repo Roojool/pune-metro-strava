@@ -39,3 +39,11 @@ test('exclusive checkout lock refuses a second runner and can be released', asyn
     assert.equal(fs.existsSync(filename), false);
   } finally { fs.rmdirSync(directory); }
 });
+test('controller syncs shared updates before taking the ownership-check snapshot', async () => {
+  const { syncBeforeSnapshot } = await api;
+  const calls = [];
+  const before = syncBeforeSnapshot((...args) => { calls.push(args); return args[0] === 'rev-parse' ? 'after-main-sync' : ''; });
+  assert.deepEqual(calls, [['fetch', 'origin', 'main'], ['merge', '--no-edit', 'origin/main'], ['rev-parse', 'HEAD']]);
+  assert.equal(before, 'after-main-sync');
+  assert.throws(() => syncBeforeSnapshot((...args) => { if (args[0] === 'merge') throw new Error('conflict'); }), /conflict/);
+});
