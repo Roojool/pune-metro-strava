@@ -76,6 +76,8 @@ import { TrafficReliefCard } from './TrafficReliefCard';
 import { calculateTrafficRelief } from './trafficRelief';
 import { AcousticWellnessCard } from './AcousticWellnessCard';
 import { calculateAcousticWellness } from './acousticWellness';
+import { GreenTractionCard } from './GreenTractionCard';
+import { calculateGreenTraction } from './greenTraction';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -182,6 +184,7 @@ export default function LeaguesScreen() {
   const treeOffset = calculateTreeOffset(relevantJourneys);
   const trafficRelief = calculateTrafficRelief(relevantJourneys);
   const acousticWellness = calculateAcousticWellness(relevantJourneys);
+  const greenTraction = calculateGreenTraction(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -414,6 +417,9 @@ export default function LeaguesScreen() {
 
         {/* Pune Acoustic Wellness & Decibel Noise Shield */}
         <AcousticWellnessCard summary={acousticWellness} />
+
+        {/* Pune Solar Microgrid & Green Traction Power */}
+        <GreenTractionCard summary={greenTraction} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (

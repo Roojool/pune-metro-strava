@@ -669,6 +669,37 @@ export interface AcousticWellnessSummary {
   accessibilityDescription: string;
 }
 
+export type GreenTractionTier = 'solar_sprout' | 'pv_pioneer' | 'grid_guardian' | 'traction_maestro';
+
+export interface SolarStationArray {
+  stationId: string;
+  name: string;
+  marathiName: string;
+  solarCapacityKwp: number;
+  annualSolarYieldMwh: number;
+  isVisited: boolean;
+}
+
+export interface GreenTractionSummary {
+  cleanTractionKwh: number;
+  solarSolarKwh: number;
+  regenerativeBrakingKwh: number;
+  solarBulbHours: number;
+  gridIndependenceScore: number;
+  solarTractionTier: GreenTractionTier;
+  tierTitle: string;
+  tierTitleMarathi: string;
+  solarStationsVisitedCount: number;
+  totalSolarStations: number;
+  solarStations: SolarStationArray[];
+  nextTierKwh: number;
+  progressPercent: number;
+  solarTractionTip: string;
+  shareableSolarText: string;
+  accessibilityDescription: string;
+}
+
+
 
 
 
