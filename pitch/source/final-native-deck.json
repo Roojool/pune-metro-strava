@@ -5378,7 +5378,7 @@
             "text": {
               "textElements": [
                 {
-                  "endIndex": 79,
+                  "endIndex": 61,
                   "paragraphMarker": {
                     "style": {
                       "lineSpacing": 108,
@@ -5404,9 +5404,9 @@
                   }
                 },
                 {
-                  "endIndex": 79,
+                  "endIndex": 61,
                   "textRun": {
-                    "content": "Prototype: manual rides, local data, simulated social ranks. No APK delivered.\n",
+                    "content": "Prototype: manual rides, local data, simulated social ranks.\n",
                     "style": {
                       "backgroundColor": {},
                       "foregroundColor": {
@@ -7017,7 +7017,7 @@
             "text": {
               "textElements": [
                 {
-                  "endIndex": 65,
+                  "endIndex": 40,
                   "paragraphMarker": {
                     "style": {
                       "lineSpacing": 108,
@@ -7043,9 +7043,9 @@
                   }
                 },
                 {
-                  "endIndex": 65,
+                  "endIndex": 40,
                   "textRun": {
-                    "content": "Ideas to validate. No customers, paid pilots or revenue claimed.\n",
+                    "content": "Ideas to validate through a Pune pilot.\n",
                     "style": {
                       "backgroundColor": {},
                       "foregroundColor": {
