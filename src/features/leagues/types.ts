@@ -151,3 +151,25 @@ export interface PersonalBestsSummary {
   headline: string;
   accessibilitySummary: string;
 }
+
+export type StationElevationType = 'underground_interchange' | 'elevated_terminal' | 'elevated_standard';
+
+export interface StationBurnProfile {
+  stationId: string;
+  stationName: string;
+  line: LineId | 'interchange';
+  elevationType: StationElevationType;
+  stairFlightsPerVisit: number;
+  activeBurnKcalPerVisit: number;
+  totalVisits: number;
+  totalBurnKcal: number;
+  estimatedStairsClimbed: number;
+}
+
+export interface StationDensitySummary {
+  topStations: StationBurnProfile[];
+  recommendedHighBurnStations: StationBurnProfile[];
+  totalStationBurnKcal: number;
+  deepestStationName: string;
+  accessibilityDescription: string;
+}

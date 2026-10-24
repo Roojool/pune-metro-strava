@@ -32,6 +32,8 @@ import { WeekendChallengeCard } from './WeekendChallengeCard';
 import { PersonalBestsCard } from './PersonalBestsCard';
 import { calculateWeekendChallenges } from './weekendChallenges';
 import { calculatePersonalBests } from './personalBests';
+import { StationBurnHeatmapCard } from './StationBurnHeatmapCard';
+import { calculateStationDensity } from './stationDensity';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -116,6 +118,7 @@ export default function LeaguesScreen() {
   const habitInfo = calculateHabitMultiplier(streak);
   const weekendChallenges = calculateWeekendChallenges(relevantJourneys);
   const personalBests = calculatePersonalBests(journeys);
+  const stationDensity = calculateStationDensity(relevantJourneys, scope === 'Route' ? line : undefined);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -632,6 +635,9 @@ export default function LeaguesScreen() {
 
             {/* Top Pune Metro Corridor Active Burn */}
             <CorridorBurnCard corridors={topCorridors} />
+
+            {/* Station Exertion & Stair Climb Heatmap */}
+            <StationBurnHeatmapCard summary={stationDensity} />
 
             <Card style={{ gap: 12, backgroundColor: '#261E1B', borderColor: '#4D3730' }}>
               <Icon name="shield" color="#FFC6B0" />
