@@ -5,7 +5,7 @@ import { Platform, Pressable, ScrollView, View, useWindowDimensions } from 'reac
 import { useApp } from '@/state/AppState';
 import { Action, Card, Heading, Page, Pill, SectionTitle, Icon, Progress, Notice, styles } from '@/components/UI';
 import { rankLeaderboard, leaderboardScore } from '@/domain/metro';
-import { LINES } from '@/data/pune';
+import { LINES, getStationName } from '@/data/pune';
 import type { LeaderboardEntry, LineId } from '@/domain/models';
 import { theme } from '@/theme';
 import { SAMPLE_LEAGUE } from './sampleLeague';
@@ -43,9 +43,10 @@ export default function LeaguesScreen(){
   const current:LeaderboardEntry={id:'you',name:user.name.trim() || 'You',points:currentScore,sample:false,line};
   const board=rankLeaderboard([...samples,current]);const rank=board.findIndex(e=>e.id==='you')+1;
   const unlocked=achievements.filter(a=>a.unlocked).length;
+  const latestJourney=journeys[0];
   const leagueTitle=scope==='Route'?`${selectedLine.name} league`:scope==='Friends'?'Friends preview':'Pune explorers';
   return <ScrollView style={{backgroundColor:theme.bg}}><Page>
-    <View style={{gap:8}}><Text style={[styles.eyebrow,{color:ACTIVITY_INK}]}>THE EVERYDAY ADVENTURE CLUB</Text><Heading title="Good habits. Great company." subtitle="A little friendly competition makes the everyday journey go further."/></View>
+    <View style={{gap:8}}><Text style={[styles.eyebrow,{color:ACTIVITY_INK}]}>YOUR EVERYDAY METRO PROGRESS</Text><Heading title="Make Pune Metro a habit." subtitle="Turn the rides you take around Pune into local XP, endpoint stamps and one small weekly goal."/></View>
     {journeys.length===0?<Card style={{gap:12}}>
       <Text accessibilityRole="header" style={styles.section}>Your first ride starts here.</Text>
       <Text style={styles.body}>Manually record a metro journey to start earning XP, collect endpoint stations and join the sample leagues.</Text>
@@ -72,7 +73,21 @@ export default function LeaguesScreen(){
           </View>:null}
         </View>
       </Card>
-      <Card style={{flex:wide?1:undefined,gap:18}}><View style={styles.row}><View style={[styles.iconBox,{backgroundColor:'#302019'}]}><Icon name="sun" color="#FFC6B0"/></View><Text style={[styles.section,{flexShrink:1}]}>Keep your rhythm.</Text></View><View style={{flexDirection:'row',gap:16}}><View style={{flex:1,gap:5}}><Text style={styles.statValue}>{streak}<Text style={{fontSize:13,fontWeight:'500'}}> {streak===1?'day':'days'}</Text></Text><Text style={styles.muted}>Current streak</Text></View><View style={{flex:1,gap:5}}><Text style={styles.statValue}>{activeDays}</Text><Text style={styles.muted}>Active days, all time</Text></View></View><View style={{height:1,backgroundColor:theme.border}}/><Text style={styles.body}>Your city moves every day. Find your own pace.</Text><Text style={styles.muted}>Streak uses India calendar days. A ride today or yesterday keeps it active.</Text></Card>
+      <Card style={{flex:wide?1:undefined,gap:18}}>
+        <View style={styles.row}><View style={[styles.iconBox,{backgroundColor:'#302019'}]}><Icon name="sun" color="#FFC6B0"/></View><Text style={[styles.section,{flexShrink:1}]}>Keep your rhythm.</Text></View>
+        <View style={{flexDirection:'row',gap:16}}><View style={{flex:1,gap:5}}><Text style={styles.statValue}>{streak}<Text style={{fontSize:13,fontWeight:'500'}}> {streak===1?'day':'days'}</Text></Text><Text style={styles.muted}>Current streak</Text></View><View style={{flex:1,gap:5}}><Text style={styles.statValue}>{activeDays}</Text><Text style={styles.muted}>Active days, all time</Text></View></View>
+        <Text style={styles.muted}>Streak uses India calendar days. A ride today or yesterday keeps it active.</Text>
+        <View style={{height:1,backgroundColor:theme.border}}/>
+        {latestJourney?<View style={{gap:12}}>
+          <View style={[styles.row,{justifyContent:'space-between',flexWrap:'wrap'}]}>
+            <Text style={[styles.eyebrow,{color:ACTIVITY_INK,flexShrink:1}]}>LATEST RIDE · SELF-REPORTED</Text>
+            <Pill text={`+${latestJourney.points} XP`} color={theme.paleMint} ink={ACTIVITY_INK}/>
+          </View>
+          <Text style={[styles.body,{fontWeight:'700'}]}>{getStationName(latestJourney.from)} → {getStationName(latestJourney.to)}</Text>
+          <Text style={styles.muted}>This ride’s XP is included in your total. Only boarding and exit stations count toward your Passport.</Text>
+          <Action label="View my Passport" secondary icon="map" onPress={()=>router.push('/passport')}/>
+        </View>:<Text style={styles.body}>An errand, a visit or your usual trip: log the Pune Metro rides you actually take.</Text>}
+      </Card>
     </View>
     {unlocked>0?<View accessibilityLiveRegion="polite" style={{backgroundColor:theme.paleMint,padding:18,borderRadius:16,borderLeftWidth:4,borderLeftColor:ACTIVITY_ORANGE,flexDirection:'row',gap:14,alignItems:'center'}}><Icon name="award" size={27}/><View style={{flex:1,gap:3}}><Text style={{fontWeight:'700',fontSize:15,color:theme.ink}}>A milestone worth celebrating.</Text><Text style={styles.body}>Unlocked: {achievements.filter(a=>a.unlocked).map(a=>a.title).join(' · ')}</Text><Text style={[styles.muted,{color:theme.ink}]}>{unlocked} {unlocked===1?'achievement':'achievements'} currently unlocked from your self-reported rides. Keep exploring.</Text></View></View>:null}
     <View style={{flexDirection:wide?'row':'column',gap:20,alignItems:'stretch'}}>
@@ -86,7 +101,19 @@ export default function LeaguesScreen(){
           <Text style={styles.muted}>Equal XP scores are ordered by name.</Text>
         </View></Card>
       </View>
-      <View style={{flex:1,gap:14}}><SectionTitle>One week. One small goal.</SectionTitle>{challenges.map(c=><Card key={c.id} style={{gap:16}}><View style={[styles.row,{justifyContent:'space-between'}]}><View style={[styles.iconBox,{backgroundColor:theme.palePurple}]}><Icon name="target" color={theme.purple}/></View><Pill text={c.progress>=c.target?'COMPLETED':'ROLLING 7 DAYS'} color={theme.paleMint} ink={ACTIVITY_INK}/></View><Text style={styles.section}>{c.title}</Text><Text style={styles.body}>{c.description}</Text><LabeledProgress label={`${c.title} progress`} value={c.progress/c.target*100} valueText={`${c.progress} of ${c.target} rides in the last 7 days`}/><Text style={{fontSize:13,fontWeight:'700',color:ACTIVITY_INK}}>{c.progress} / {c.target} rides{c.progress>=c.target?' · Nicely done!':''}</Text></Card>)}<Card style={{gap:12,backgroundColor:'#261E1B',borderColor:'#4D3730'}}><Icon name="shield" color="#FFC6B0"/><Text style={styles.section}>Play fair. Ride for yourself.</Text><Text style={styles.muted}>Manually log rides between different open stations. Wait 1 minute between logs, with a limit of 10 rides per UTC day (reset at 5:30 AM IST). XP is self-reported, not independently verified or tamper-proof.</Text></Card></View>
+      <View style={{flex:1,gap:14}}><SectionTitle>One week. One small goal.</SectionTitle>{challenges.map(c=>{
+        const complete=c.progress>=c.target;
+        const remaining=Math.max(0,c.target-c.progress);
+        return <Card key={c.id} style={{gap:16}}>
+          <View style={[styles.row,{justifyContent:'space-between',flexWrap:'wrap'}]}><View style={[styles.iconBox,{backgroundColor:theme.palePurple}]}><Icon name="target" color={theme.purple}/></View><Pill text={complete?'COMPLETED':'ROLLING 7 DAYS'} color={theme.paleMint} ink={ACTIVITY_INK}/></View>
+          <Text style={styles.section}>{c.title}</Text><Text style={styles.body}>{c.description}</Text>
+          <LabeledProgress label={`${c.title} progress`} value={c.progress/c.target*100} valueText={`${c.progress} of ${c.target} rides in the last 7 days`}/>
+          <Text style={{fontSize:13,fontWeight:'700',color:ACTIVITY_INK}}>{c.progress} / {c.target} rides{complete?' · Nicely done!':''}</Text>
+          <Text style={styles.body}>{complete?'Goal reached for this rolling window. Explore the local demo communities for your metro line.':`${remaining} more ${remaining===1?'ride':'rides'} to reach your goal. Log a journey after you take it.`}</Text>
+          <Text style={styles.muted}>Your self-reported rides on this device count. Progress can decrease as rides leave the last 7 days.</Text>
+          <Action label={complete?'Explore route communities':'Log a completed ride'} icon={complete?'users':'plus'} onPress={()=>router.push(complete?'/community':'/log')}/>
+        </Card>;
+      })}<Card style={{gap:12,backgroundColor:'#261E1B',borderColor:'#4D3730'}}><Icon name="shield" color="#FFC6B0"/><Text style={styles.section}>Play fair. Ride for yourself.</Text><Text style={styles.muted}>Manually log rides between different open stations. Wait 1 minute between logs, with a limit of 10 rides per UTC day (reset at 5:30 AM IST). XP is self-reported, not independently verified or tamper-proof.</Text></Card></View>
     </View>
     <View style={{gap:4}}><SectionTitle>The little wins collection</SectionTitle><Text style={styles.muted}>{unlocked} OF {achievements.length} UNLOCKED</Text><Text style={styles.muted}>Based on current activity. The three-day streak badge locks again when your streak breaks.</Text></View><View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>{achievements.map(a=><Card key={a.id} style={{flex:1,minWidth:180,gap:13,backgroundColor:a.unlocked?'#14281B':theme.surface,borderColor:a.unlocked?'#28583C':theme.border}}><View style={{width:48,height:48,borderRadius:16,backgroundColor:a.unlocked?'#173A26':theme.bg,alignItems:'center',justifyContent:'center'}}><Icon name={a.unlocked?'award':'lock'} size={24} color={a.unlocked?ACTIVITY_INK:'#626A72'}/></View><Text style={{fontWeight:'700',fontSize:15,color:theme.ink}}>{a.title}</Text><Text style={styles.muted}>{a.description}</Text><Text style={{fontWeight:'700',fontSize:10,letterSpacing:1,color:a.unlocked?ACTIVITY_INK:theme.muted}}>{a.unlocked?'UNLOCKED':'TO DISCOVER'}</Text></Card>)}</View>
     <Text style={styles.muted}>Sample league · your progress is saved on this device.</Text>
