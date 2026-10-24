@@ -34,6 +34,10 @@ import { calculateWeekendChallenges } from './weekendChallenges';
 import { calculatePersonalBests } from './personalBests';
 import { StationBurnHeatmapCard } from './StationBurnHeatmapCard';
 import { calculateStationDensity } from './stationDensity';
+import { LeagueBadgesCard } from './LeagueBadgesCard';
+import { calculateLeagueBadges } from './leagueBadges';
+import { WeeklyConsistencyCard } from './WeeklyConsistencyCard';
+import { calculateWeeklyConsistency } from './weeklyConsistency';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -119,6 +123,8 @@ export default function LeaguesScreen() {
   const weekendChallenges = calculateWeekendChallenges(relevantJourneys);
   const personalBests = calculatePersonalBests(journeys);
   const stationDensity = calculateStationDensity(relevantJourneys, scope === 'Route' ? line : undefined);
+  const leagueBadges = calculateLeagueBadges(journeys);
+  const weeklyConsistency = calculateWeeklyConsistency(relevantJourneys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -275,6 +281,12 @@ export default function LeaguesScreen() {
 
         {/* All-Time Personal Bests & Commuter Records */}
         <PersonalBestsCard summary={personalBests} />
+
+        {/* Weekly Transit Rhythm & Consistency Profile */}
+        <WeeklyConsistencyCard profile={weeklyConsistency} />
+
+        {/* Pune Metro Commuter Mastery Badges */}
+        <LeagueBadgesCard summary={leagueBadges} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (

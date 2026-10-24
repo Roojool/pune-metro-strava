@@ -173,3 +173,64 @@ export interface StationDensitySummary {
   deepestStationName: string;
   accessibilityDescription: string;
 }
+
+export type LeagueBadgeTier = 'bronze' | 'silver' | 'gold' | 'diamond';
+
+export interface LeagueBadge {
+  id: string;
+  title: string;
+  marathiTitle: string;
+  category: 'distance' | 'elevation' | 'consistency' | 'eco' | 'exploration';
+  icon: string;
+  description: string;
+  tier: LeagueBadgeTier;
+  target: number;
+  current: number;
+  unit: string;
+  isUnlocked: boolean;
+  progressRatio: number; // 0 to 1
+  rewardXp: number;
+  unlockedDate: string | null;
+}
+
+export interface LeagueBadgeSummary {
+  badges: LeagueBadge[];
+  earnedCount: number;
+  totalCount: number;
+  completionPercent: number;
+  nextBadge: LeagueBadge | null;
+  accessibilityDescription: string;
+}
+
+export interface DayRhythm {
+  dayIndex: number; // 0=Sunday, 1=Monday, ..., 6=Saturday
+  dayShort: string; // 'Mon', 'Tue', ...
+  dayFull: string;  // 'Monday', 'Tuesday', ...
+  ridesCount: number;
+  caloriesBurned: number;
+  isPeakDay: boolean;
+}
+
+export type CommuterPersonaType =
+  | 'daily_it_commuter'
+  | 'weekend_explorer'
+  | 'balanced_champion'
+  | 'active_kickstarter'
+  | 'station_newcomer';
+
+export interface WeeklyConsistencyProfile {
+  days: DayRhythm[];
+  totalWeekRides: number;
+  totalWeekCalories: number;
+  weekdayRides: number;
+  weekendRides: number;
+  peakDayName: string;
+  personaType: CommuterPersonaType;
+  personaTitle: string;
+  personaSubtitle: string;
+  consistencyScore: number; // 0 to 100
+  projectedMonthlyCalories: number;
+  projectedMonthlyCo2Kg: number;
+  accessibilityDescription: string;
+}
+
