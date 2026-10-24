@@ -1,0 +1,5000 @@
+{
+  "presentationId": "15YO5gWM3iXUtirN6qM5rAHUq5Pb8xcTAweBxdiNvIUM",
+  "source": "Native Google Slides fallback; Artifact Tool unavailable in task runtime",
+  "slideCount": 6,
+  "palette": {
+    "background": "#000000",
+    "text": "#FFFFFF",
+    "green": "#00B857",
+    "violet": "#9147FF",
+    "peach": "#FFC6B0",
+    "blue": "#006AFF"
+  },
+  "requests": [
+    {
+      "createSlide": {
+        "objectId": "mq_slide_01",
+        "slideLayoutReference": {
+          "predefinedLayout": "BLANK"
+        }
+      }
+    },
+    {
+      "updatePageProperties": {
+        "objectId": "mq_slide_01",
+        "pageProperties": {
+          "pageBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0,
+                  "blue": 0
+                }
+              },
+              "alpha": 1
+            }
+          }
+        },
+        "fields": "pageBackgroundFill"
+      }
+    },
+    {
+      "createSlide": {
+        "objectId": "mq_slide_02",
+        "slideLayoutReference": {
+          "predefinedLayout": "BLANK"
+        }
+      }
+    },
+    {
+      "updatePageProperties": {
+        "objectId": "mq_slide_02",
+        "pageProperties": {
+          "pageBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0,
+                  "blue": 0
+                }
+              },
+              "alpha": 1
+            }
+          }
+        },
+        "fields": "pageBackgroundFill"
+      }
+    },
+    {
+      "createSlide": {
+        "objectId": "mq_slide_03",
+        "slideLayoutReference": {
+          "predefinedLayout": "BLANK"
+        }
+      }
+    },
+    {
+      "updatePageProperties": {
+        "objectId": "mq_slide_03",
+        "pageProperties": {
+          "pageBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0,
+                  "blue": 0
+                }
+              },
+              "alpha": 1
+            }
+          }
+        },
+        "fields": "pageBackgroundFill"
+      }
+    },
+    {
+      "createSlide": {
+        "objectId": "mq_slide_04",
+        "slideLayoutReference": {
+          "predefinedLayout": "BLANK"
+        }
+      }
+    },
+    {
+      "updatePageProperties": {
+        "objectId": "mq_slide_04",
+        "pageProperties": {
+          "pageBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0,
+                  "blue": 0
+                }
+              },
+              "alpha": 1
+            }
+          }
+        },
+        "fields": "pageBackgroundFill"
+      }
+    },
+    {
+      "createSlide": {
+        "objectId": "mq_slide_05",
+        "slideLayoutReference": {
+          "predefinedLayout": "BLANK"
+        }
+      }
+    },
+    {
+      "updatePageProperties": {
+        "objectId": "mq_slide_05",
+        "pageProperties": {
+          "pageBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0,
+                  "blue": 0
+                }
+              },
+              "alpha": 1
+            }
+          }
+        },
+        "fields": "pageBackgroundFill"
+      }
+    },
+    {
+      "createSlide": {
+        "objectId": "mq_slide_06",
+        "slideLayoutReference": {
+          "predefinedLayout": "BLANK"
+        }
+      }
+    },
+    {
+      "updatePageProperties": {
+        "objectId": "mq_slide_06",
+        "pageProperties": {
+          "pageBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0,
+                  "blue": 0
+                }
+              },
+              "alpha": 1
+            }
+          }
+        },
+        "fields": "pageBackgroundFill"
+      }
+    },
+    {
+      "deleteObject": {
+        "objectId": "p"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_1",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 600,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 82,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 42,
+            "translateY": 72,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_1",
+        "text": "MetroQuest",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_1",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 62,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_1",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_1",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_2",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 580,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 49,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 159,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_2",
+        "text": "Strava for Metro",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_2",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 33,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.7215686274509804,
+                "blue": 0.3411764705882353
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_2",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_2",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_3",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 590,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 40,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 220,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_3",
+        "text": "Pune, one station at a time",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_3",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 23,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_3",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_3",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_4",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 570,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 24,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 350,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_4",
+        "text": "Working prototype  /  October 2026",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_4",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 13,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_4",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_4",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_5",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 54,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 590,
+            "translateY": 34,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_5",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 1,
+                  "green": 0.7764705882352941,
+                  "blue": 0.6901960784313725
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_6",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 62,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 62,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 570,
+            "translateY": 256,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_6",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0.7215686274509804,
+                  "blue": 0.3411764705882353
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_7",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 49,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 49,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 489,
+            "translateY": 286,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_7",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0.5686274509803921,
+                  "green": 0.2784313725490196,
+                  "blue": 1
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_8",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_01",
+          "size": {
+            "width": {
+              "magnitude": 44,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 44,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 650,
+            "translateY": 319,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_8",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0.41568627450980394,
+                  "blue": 1
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_9",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_02",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 60,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 42,
+            "translateY": 42,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_9",
+        "text": "The commuter problem",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_9",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 35,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_9",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_9",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_10",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_02",
+          "size": {
+            "width": {
+              "magnitude": 620,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 106,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 127,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_10",
+        "text": "“I take the same route.\nWhat am I building?”",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_10",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 34,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 0.7764705882352941,
+                "blue": 0.6901960784313725
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_10",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_10",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_11",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_02",
+          "size": {
+            "width": {
+              "magnitude": 610,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 30,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 255,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_11",
+        "text": "Our hypothesis to test in Pune",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_11",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 18,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.7215686274509804,
+                "blue": 0.3411764705882353
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_11",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_11",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_12",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_02",
+          "size": {
+            "width": {
+              "magnitude": 630,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 65,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 296,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_12",
+        "text": "Visible progress and friendly competition can make\na repeated journey more rewarding.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_12",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_12",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_12",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_13",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 60,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 42,
+            "translateY": 40,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_13",
+        "text": "The MetroQuest loop",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_13",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 35,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_13",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_13",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_14",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_14",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0.7215686274509804,
+                  "blue": 0.3411764705882353
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_15",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_15",
+        "text": "01",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_15",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 22,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0,
+                "blue": 0
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_15",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_15",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_16",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 223,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_16",
+        "text": "Log a ride",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_16",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 23,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_16",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_16",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_17",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 54,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 269,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_17",
+        "text": "PCMC →\nCivil Court",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_17",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 17,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_17",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_17",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_18",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 55,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 55,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 143,
+            "translateY": 148,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_18",
+        "text": "→",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_18",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 31,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_18",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_18",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_19",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 215,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_19",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0.5686274509803921,
+                  "green": 0.2784313725490196,
+                  "blue": 1
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_20",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 215,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_20",
+        "text": "02",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_20",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 22,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0,
+                "blue": 0
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_20",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_20",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_21",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 215,
+            "translateY": 223,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_21",
+        "text": "Collect stops",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_21",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 23,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_21",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_21",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_22",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 54,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 215,
+            "translateY": 269,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_22",
+        "text": "Board + exit\nstation stamps",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_22",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 17,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_22",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_22",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_23",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 55,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 55,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 313,
+            "translateY": 148,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_23",
+        "text": "→",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_23",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 31,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_23",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_23",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_24",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 385,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_24",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 1,
+                  "green": 0.7764705882352941,
+                  "blue": 0.6901960784313725
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_25",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 385,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_25",
+        "text": "03",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_25",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 22,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0,
+                "blue": 0
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_25",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_25",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_26",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 385,
+            "translateY": 223,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_26",
+        "text": "Earn XP",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_26",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 23,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_26",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_26",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_27",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 54,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 385,
+            "translateY": 269,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_27",
+        "text": "+50 XP on your\nfirst demo ride",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_27",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 17,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_27",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_27",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_28",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 55,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 55,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 483,
+            "translateY": 148,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_28",
+        "text": "→",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_28",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 31,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_28",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_28",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_29",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 555,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_29",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0,
+                  "green": 0.41568627450980394,
+                  "blue": 1
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_30",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 64,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 64,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 555,
+            "translateY": 144,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_30",
+        "text": "04",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_30",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 22,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0,
+                "blue": 0
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_30",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "CENTER",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_30",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_31",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 555,
+            "translateY": 223,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_31",
+        "text": "Find your line",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_31",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 23,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_31",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_31",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_32",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 155,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 54,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 555,
+            "translateY": 269,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_32",
+        "text": "Local posts\nand reactions",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_32",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 17,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_32",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_32",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_33",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 630,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 24,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 360,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_33",
+        "text": "Manual logs  /  Local persistence  /  Sample leagues and profiles",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_33",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 13,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_33",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_33",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_34",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 55,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 42,
+            "translateY": 40,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_34",
+        "text": "A working product, today",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_34",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 35,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_34",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_34",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_35",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 230,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 37,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 114,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_35",
+        "text": "One Expo app",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_35",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 24,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.7215686274509804,
+                "blue": 0.3411764705882353
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_35",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_35",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_36",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 235,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 34,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 155,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_36",
+        "text": "Web + Android demo",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_36",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 20,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_36",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_36",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_37",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 235,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 38,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 205,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_37",
+        "text": "24 tests passing",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_37",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 24,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.5686274509803921,
+                "green": 0.2784313725490196,
+                "blue": 1
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_37",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_37",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_38",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 235,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 52,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 262,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_38",
+        "text": "iOS bundle exports;\niOS runtime not tested.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_38",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 16,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_38",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_38",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_39",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 27,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 326,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_39",
+        "text": "roojool.github.io/pune-metro-strava",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_39",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 18,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.41568627450980394,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_39",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_39",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_39",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "link": {
+            "url": "https://roojool.github.io/pune-metro-strava/"
+          }
+        },
+        "fields": "link"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_40",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 645,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 20,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 369,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_40",
+        "text": "Prototype: manual rides, local data, simulated social ranks. No APK delivered.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_40",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 11,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_40",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_40",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_41",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 60,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 42,
+            "translateY": 40,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_41",
+        "text": "Start with a Pune pilot",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_41",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 35,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_41",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_41",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_42",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 380,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 24,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 121,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_42",
+        "text": "PROPOSED LAUNCH",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_42",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 14,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.5686274509803921,
+                "green": 0.2784313725490196,
+                "blue": 1
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_42",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_42",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_43",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 380,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 111,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 165,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_43",
+        "text": "Campus and office\ncommuters on Purple\nand Aqua routes",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_43",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 26,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_43",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_43",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_44",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 355,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 60,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 294,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_44",
+        "text": "Test repeat logging and\ncommunity participation.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_44",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 20,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_44",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_44",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_45",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 245,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 35,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 446,
+            "translateY": 123,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_45",
+        "text": "Possible revenue",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_45",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 23,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.7215686274509804,
+                "blue": 0.3411764705882353
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_45",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_45",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_46",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 232,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 67,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 446,
+            "translateY": 184,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_46",
+        "text": "Employer commute\nchallenges",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_46",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_46",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_46",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_47",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 232,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 67,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 446,
+            "translateY": 267,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_47",
+        "text": "Optional premium\npassport",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_47",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 0.7764705882352941,
+                "blue": 0.6901960784313725
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_47",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_47",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_48",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_05",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 21,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 369,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_48",
+        "text": "Ideas to validate. No customers, paid pilots or revenue claimed.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_48",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 12,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0.7019607843137254,
+                "green": 0.7019607843137254,
+                "blue": 0.7019607843137254
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_48",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_48",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_49",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_06",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 132,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 42,
+            "translateY": 62,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_49",
+        "text": "Try one ride.\nHelp shape the pilot.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_49",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 44,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 1,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_49",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_49",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_50",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_06",
+          "size": {
+            "width": {
+              "magnitude": 510,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 50,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 238,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_50",
+        "text": "Open the live demo →",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_50",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 29,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.7215686274509804,
+                "blue": 0.3411764705882353
+              }
+            }
+          },
+          "bold": true
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_50",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_50",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_50",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "link": {
+            "url": "https://roojool.github.io/pune-metro-strava/"
+          }
+        },
+        "fields": "link"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_51",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_06",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 32,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 301,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_51",
+        "text": "roojool.github.io/pune-metro-strava",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_51",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 19,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.41568627450980394,
+                "blue": 1
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_51",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_51",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_text_52",
+        "shapeType": "TEXT_BOX",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_06",
+          "size": {
+            "width": {
+              "magnitude": 640,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 28,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 45,
+            "translateY": 357,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_52",
+        "text": "Seeking Pune campus and office pilot partners",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_52",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontFamily": "Arial",
+          "fontSize": {
+            "magnitude": 17,
+            "unit": "PT"
+          },
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 1,
+                "green": 0.7764705882352941,
+                "blue": 0.6901960784313725
+              }
+            }
+          },
+          "bold": false
+        },
+        "fields": "fontFamily,fontSize,foregroundColor,bold"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "objectId": "mq_text_52",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "alignment": "START",
+          "spaceAbove": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "spaceBelow": {
+            "magnitude": 0,
+            "unit": "PT"
+          },
+          "lineSpacing": 108
+        },
+        "fields": "alignment,spaceAbove,spaceBelow,lineSpacing"
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_text_52",
+        "shapeProperties": {
+          "contentAlignment": "MIDDLE",
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          },
+          "shapeBackgroundFill": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "contentAlignment,outline,shapeBackgroundFill"
+      }
+    },
+    {
+      "createShape": {
+        "objectId": "mq_circle_53",
+        "shapeType": "ELLIPSE",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_06",
+          "size": {
+            "width": {
+              "magnitude": 58,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 58,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 597,
+            "translateY": 210,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updateShapeProperties": {
+        "objectId": "mq_circle_53",
+        "shapeProperties": {
+          "shapeBackgroundFill": {
+            "solidFill": {
+              "color": {
+                "rgbColor": {
+                  "red": 0.5686274509803921,
+                  "green": 0.2784313725490196,
+                  "blue": 1
+                }
+              },
+              "alpha": 1
+            }
+          },
+          "outline": {
+            "propertyState": "NOT_RENDERED"
+          }
+        },
+        "fields": "shapeBackgroundFill,outline"
+      }
+    }
+  ],
+  "notesAndCorrections": [
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_1",
+        "text": "MetroQuest working prototype for Pune commuters. Visual palette inspired by the user-supplied images.png reference; no OpenAI affiliation, sponsorship or AI functionality is claimed. Product source: https://github.com/Roojool/pune-metro-strava .",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_3",
+        "text": "Problem framing is a hypothesis to validate with Pune commuters, not a result from completed interviews or market research. No market-size or ridership statistics are claimed.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_5",
+        "text": "Implemented demo behavior: manual ride logging, endpoint-only station stamps, shared XP calculations and local community posts/reactions. First new-endpoint ride gives 10 ride XP + 20 for each endpoint = 50. Sources: src/domain/metro.ts, src/state/AppState.tsx in https://github.com/Roojool/pune-metro-strava .",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_7",
+        "text": "Implementation proof supplied by the engineering lead at pitch creation: 24 tests passing; working hosted web; Android Expo Go demo previously verified; iOS bundle export is not iOS runtime testing. No APK is delivered. Live demo: https://roojool.github.io/pune-metro-strava/ . Prototype uses manual self-reported rides and local state. League identities and community sample profiles are simulations.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_9",
+        "text": "Pilot audiences, measurement focus and monetization are proposals, not existing traction, customers or revenue. No actual pilot partners are claimed. This slide is a launch hypothesis for a Pune campus/office pilot.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_11",
+        "text": "Call to action: try the live working demo and discuss a Pune campus or office pilot. URL: https://roojool.github.io/pune-metro-strava/ . No investment, partner or usage claims are implied.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "deleteText": {
+        "objectId": "mq_text_10",
+        "textRange": {
+          "type": "ALL"
+        }
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "mq_text_10",
+        "text": "The route repeats.\nProgress is hard to see.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_39",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.41568627450980394,
+                "blue": 1
+              }
+            }
+          },
+          "underline": false
+        },
+        "fields": "foregroundColor,underline"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_50",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "foregroundColor": {
+            "opaqueColor": {
+              "rgbColor": {
+                "red": 0,
+                "green": 0.7215686274509804,
+                "blue": 0.3411764705882353
+              }
+            }
+          },
+          "underline": false
+        },
+        "fields": "foregroundColor,underline"
+      }
+    }
+  ],
+  "repairs": [
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_16",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          }
+        },
+        "fields": "fontSize"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_21",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          }
+        },
+        "fields": "fontSize"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_26",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          }
+        },
+        "fields": "fontSize"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "objectId": "mq_text_31",
+        "textRange": {
+          "type": "ALL"
+        },
+        "style": {
+          "fontSize": {
+            "magnitude": 21,
+            "unit": "PT"
+          }
+        },
+        "fields": "fontSize"
+      }
+    }
+  ]
+}

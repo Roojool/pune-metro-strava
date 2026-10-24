@@ -1,13 +1,12 @@
-# MetroQuest · Pune
+# MetroQuest — Strava for Pune Metro
 
-**Make every ride count.** A transit habit and exploration demo for **DevDay Loops
-House · Urban Mobility**: manually log a Pune Metro ride, collect boarding and exit
-stamps, see personal XP, and explore sample leagues and local route discussions.
+**Make every ride count.** MetroQuest helps everyday Pune Metro commuters turn familiar journeys into visible progress. Log a ride, collect station stamps, earn XP and explore conversations around your metro line.
 
-[Live demo](https://roojool.github.io/pune-metro-strava/) ·
-[Repository](https://github.com/Roojool/pune-metro-strava) ·
-[Ready-to-paste submission](SUBMISSION.md) · [Two-minute demo](DEMO_GUIDE.md) ·
-[Limitations](KNOWN_LIMITATIONS.md) · [Verification evidence](TEAM_STATUS.md)
+A transit habit and exploration demo for **DevDay Loops House · Urban Mobility**.
+
+**[Open MetroQuest](https://roojool.github.io/pune-metro-strava/)** · [Pitch deck (PDF)](pitch/output/MetroQuest-Pitch-2026.pdf) · [Editable PowerPoint](pitch/output/MetroQuest-Pitch-2026.pptx)
+
+[Ready-to-paste submission](SUBMISSION.md) · [Demo walkthrough](DEMO_GUIDE.md) · [Architecture](ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md) · [Limitations](KNOWN_LIMITATIONS.md) · [Verification evidence](TEAM_STATUS.md) · [Five developer prompts](team-prompts/)
 
 ## Urban Mobility idea
 
@@ -82,27 +81,50 @@ API 36 / Expo Go 57.0.9 emulator pass is historical evidence. Physical phones,
 iOS runtime and native share completion remain untested in the recorded handoff.
 [TEAM_STATUS.md](TEAM_STATUS.md) identifies tested commits and platform limits.
 
-## Screenshots
+## What you can do
 
-Captures supplied in merged [PR #21](https://github.com/Roojool/pune-metro-strava/pull/21)
-on 2026-10-24 show the demo at that time; later fixes may differ. Images are not
-usage metrics or evidence of verified travel. Sample content stays labeled.
+| Feature | Experience |
+| --- | --- |
+| Journey tracking | Choose boarding and exit stations, preview your route, log recurring commutes and browse ride history. |
+| Metro passport | Collect endpoint station stamps and explore your progress across the Purple and Aqua lines. |
+| XP and achievements | Earn points, unlock milestones, complete rolling challenges and explore clearly labeled sample leagues. |
+| Route communities | Browse line-based discussions, write posts, react and save group preferences on your device. |
+| Travel insights | See journey totals, estimated distance and duration, and illustrative savings and CO₂e comparisons. |
+| Shareable progress | Share aggregate passport and commuter cards without including your routes or travel dates. |
+
+One Expo SDK 57 + TypeScript + Expo Router project powers the web and native
+interfaces. The current prototype uses device-local persistence; sample profiles
+and rankings are simulated. No external API keys are needed to try it.
+
+## Inside the app
+
+Actual captures of the updated interface after manually recording a presentation
+ride from PCMC to Civil Court. A new installation starts at **0 rides / 0 XP**.
+Earlier captures in merged [PR #21](https://github.com/Roojool/pune-metro-strava/pull/21)
+show the demo at that time; later fixes may differ. Images are not usage metrics
+or evidence of verified travel. Sample content stays labeled.
 
 <div align="center">
 
-<img src="docs/screenshots/01-home.webp" alt="Home — local activity dashboard and schematic PCMC to Civil Court route" width="720" />
+<img src="docs/screenshots/devday-home.png" alt="MetroQuest Home with a black and green activity dashboard, schematic Pune Metro route and ride statistics" width="900" />
 
-<img src="docs/screenshots/02-log.webp" alt="Log — manual boarding and exit station selection" width="720" />
+<img src="docs/screenshots/devday-passport.png" alt="MetroQuest passport showing two collected endpoint stations and progress across the Pune Metro network" width="900" />
 
-<img src="docs/screenshots/03-passport.webp" alt="Passport — endpoint stamps and estimated statistics" width="720" />
-
-<img src="docs/screenshots/04-leagues.webp" alt="Leagues — sample XP board and How XP works" width="720" />
-
-<img src="docs/screenshots/05-community.webp" alt="Community — sample identities and device-local posts" width="720" />
+<img src="docs/screenshots/devday-passport-mobile.png" alt="Responsive MetroQuest passport with five navigation tabs on a phone-sized screen" width="280" />
 
 </div>
 
-[Earlier Android emulator capture](docs/screenshots/android-home.png).
+## Platform status
+
+| Platform | Status |
+| --- | --- |
+| Web | [Live on GitHub Pages](https://roojool.github.io/pune-metro-strava/); the complete journey → passport → XP → community → reload flow was browser-tested. |
+| Android | Previously verified on an API 36 emulator with Expo Go 57.0.9. A standalone MetroQuest APK has not been built. |
+| iOS | Bundle export verified; iPhone and simulator runtime testing have not been performed. |
+
+The latest visual update was checked on web at desktop and mobile widths.
+Earlier Android evidence: [emulator screenshot](docs/screenshots/android-home.png).
+See [verification history](TEAM_STATUS.md) and [known limitations](KNOWN_LIMITATIONS.md).
 
 ## Team and ownership
 

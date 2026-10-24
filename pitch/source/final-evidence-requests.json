@@ -1,0 +1,152 @@
+{
+  "images": [
+    {
+      "createImage": {
+        "objectId": "mq_actual_passport",
+        "url": "https://raw.githubusercontent.com/Roojool/pune-metro-strava/c1a07f5/pitch/assets/updated-metroquest-passport.png",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_03",
+          "size": {
+            "width": {
+              "magnitude": 285,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 197.9167,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 395,
+            "translateY": 125,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "createImage": {
+        "objectId": "mq_actual_home",
+        "url": "https://raw.githubusercontent.com/Roojool/pune-metro-strava/c1a07f5/pitch/assets/updated-metroquest-home.png",
+        "elementProperties": {
+          "pageObjectId": "mq_slide_04",
+          "size": {
+            "width": {
+              "magnitude": 400,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 277.7778,
+              "unit": "PT"
+            }
+          },
+          "transform": {
+            "scaleX": 1,
+            "scaleY": 1,
+            "translateX": 300,
+            "translateY": 100,
+            "unit": "PT"
+          }
+        }
+      }
+    },
+    {
+      "updatePageElementAltText": {
+        "objectId": "mq_actual_passport",
+        "title": "Actual updated MetroQuest Passport",
+        "description": "Actual app after logging PCMC to Civil Court: two collected endpoint stations, one journey,13.4 estimated km,28 estimated minutes. Black/green/purple UI."
+      }
+    },
+    {
+      "updatePageElementAltText": {
+        "objectId": "mq_actual_home",
+        "title": "Actual updated MetroQuest Home",
+        "description": "Actual updated app after a manually logged PCMC to Civil Court ride:1journey,13.4estimatedkm,50XP. Schematic route,not GPS."
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_5",
+        "text": "\nScreenshot source: actual updated MetroQuest app, provided by the engineering lead after the UI theme change and one manually logged PCMC → Civil Court journey, 2026-10-24. File: pitch/assets/updated-metroquest-passport.png. No screenshot was synthesized.",
+        "insertionIndex": 0
+      }
+    },
+    {
+      "insertText": {
+        "objectId": "SLIDES_API837836378_7",
+        "text": "\nScreenshot source: actual updated MetroQuest Home, provided by the engineering lead after the UI theme change and one manually logged PCMC → Civil Court journey, 2026-10-24. File: pitch/assets/updated-metroquest-home.png. No screenshot was synthesized.",
+        "insertionIndex": 0
+      }
+    }
+  ],
+  "geometryRepairs": [
+    {
+      "updatePageElementTransform": {
+        "objectId": "mq_circle_14",
+        "applyMode": "ABSOLUTE",
+        "transform": {
+          "scaleX": 0.18626666666666666,
+          "scaleY": 0.18626666666666666,
+          "translateX": 45,
+          "translateY": 120,
+          "unit": "PT"
+        }
+      }
+    },
+    {
+      "updatePageElementTransform": {
+        "objectId": "mq_circle_19",
+        "applyMode": "ABSOLUTE",
+        "transform": {
+          "scaleX": 0.18626666666666666,
+          "scaleY": 0.18626666666666666,
+          "translateX": 45,
+          "translateY": 180,
+          "unit": "PT"
+        }
+      }
+    },
+    {
+      "updatePageElementTransform": {
+        "objectId": "mq_circle_24",
+        "applyMode": "ABSOLUTE",
+        "transform": {
+          "scaleX": 0.18626666666666666,
+          "scaleY": 0.18626666666666666,
+          "translateX": 45,
+          "translateY": 240,
+          "unit": "PT"
+        }
+      }
+    },
+    {
+      "updatePageElementTransform": {
+        "objectId": "mq_circle_29",
+        "applyMode": "ABSOLUTE",
+        "transform": {
+          "scaleX": 0.18626666666666666,
+          "scaleY": 0.18626666666666666,
+          "translateX": 45,
+          "translateY": 300,
+          "unit": "PT"
+        }
+      }
+    },
+    {
+      "updatePageElementTransform": {
+        "objectId": "mq_text_40",
+        "applyMode": "ABSOLUTE",
+        "transform": {
+          "scaleX": 2.7305,
+          "scaleY": 0.08466666666666667,
+          "translateX": 45,
+          "translateY": 377,
+          "unit": "PT"
+        }
+      }
+    }
+  ],
+  "note": "The final-native-deck.json is the authoritative final native layout. deck-authoring.json records the initial authoring batch and initial corrections."
+}
