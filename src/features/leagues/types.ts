@@ -43,3 +43,50 @@ export interface LevelProgress {
   nextLevel: number;
   title: string;
 }
+
+export type CommuterBurnTierId =
+  | 'station-strider'
+  | 'elevated-climber'
+  | 'interchange-cruiser'
+  | 'underground-pioneer'
+  | 'transit-legend';
+
+export interface CommuterBurnTier {
+  id: CommuterBurnTierId;
+  title: string;
+  minCalories: number;
+  maxCalories: number;
+  badge: string;
+  description: string;
+  perk: string;
+}
+
+export interface WeeklyBurnPacing {
+  weeklyTargetKcal: number;
+  burnedLast7DaysKcal: number;
+  remainingKcal: number;
+  percent: number;
+  isTargetReached: boolean;
+  projectedWeeklyKcal: number;
+  pacingStatus: 'ahead' | 'on-track' | 'behind';
+  summaryText: string;
+}
+
+export interface RouteBurnEstimate {
+  from: string;
+  to: string;
+  fromName: string;
+  toName: string;
+  kilometers: number;
+  minutes: number;
+  calories: number;
+  walkingKmEquivalent: number;
+  flightOfStairsEquivalent: number;
+  co2SavedKg: number;
+  isInterchange: boolean;
+  interchangeBonusKcal: number;
+  projectedRank?: number;
+  overtakeNotice?: string;
+  stationCount: number;
+}
+

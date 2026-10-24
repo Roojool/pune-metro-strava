@@ -14,6 +14,8 @@ import {
   calculateLevelProgress,
   calculateRivalMatchup,
   calculateUserEntry,
+  calculateWeeklyBurnPacing,
+  getCommuterBurnTier,
   getEnrichedSampleLeague,
   rankByMetric,
 } from './scoring';
@@ -23,6 +25,7 @@ import { PuneMilestonesCard } from './PuneMilestonesCard';
 import { filterJourneysByLine, getLineEmptyStateGuidance, sanitizeParticipantName } from './edgeCases';
 import { CorridorBurnCard } from './CorridorBurnCard';
 import { generateLeagueShareSummary, handleLeagueShare } from './share';
+import { RouteBurnSimulator } from './RouteBurnSimulator';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -98,6 +101,8 @@ export default function LeaguesScreen() {
   const leagueTitle = scope === 'Route' ? `${selectedLine.name} league` : scope === 'Friends' ? 'Friends preview' : 'Pune explorers';
 
   const burnSummary = calculateBurnSummary(relevantJourneys);
+  const burnTier = getCommuterBurnTier(burnSummary.calories);
+  const weeklyPacing = calculateWeeklyBurnPacing(journeys);
   const puneMilestoneProgress = calculatePuneMilestoneProgress(burnSummary.calories);
   const rivalMatchup = calculateRivalMatchup(current, board, metric);
   const levelProgress = calculateLevelProgress(points);
@@ -234,7 +239,16 @@ export default function LeaguesScreen() {
           summary={burnSummary}
           rivalMatchup={rivalMatchup}
           metric={metric}
+          burnTier={burnTier}
+          weeklyPacing={weeklyPacing}
           onLogRide={() => router.push('/log')}
+        />
+
+        {/* Route Burn Estimator & Simulator */}
+        <RouteBurnSimulator
+          currentBoard={board}
+          currentUser={current}
+          onLogRide={(from, to) => router.push('/log')}
         />
 
         {/* Authentic Pune Cultural Burn Milestones */}
@@ -394,6 +408,24 @@ export default function LeaguesScreen() {
                   </Pressable>
                 );
               })}
+            </View>
+
+            {/* Live announcement of sorting changes for accessibility */}
+            <View
+              accessible
+              accessibilityLiveRegion="polite"
+              aria-live="polite"
+              style={{ height: 0, width: 0, opacity: 0, overflow: 'hidden' }}
+            >
+              <Text>
+                {`Leaderboard ranked by ${
+                  metric === 'calories'
+                    ? 'active commute calorie burn'
+                    : metric === 'eco'
+                    ? 'CO2 saved'
+                    : 'XP points'
+                }. You are ranked #${rank} of ${board.length}.`}
+              </Text>
             </View>
 
             {/* Main Leaderboard Table Card */}

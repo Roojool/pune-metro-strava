@@ -3,12 +3,14 @@ import { Text } from '@/components/Typography';
 import { View, Pressable, StyleSheet } from 'react-native';
 import { Card, Icon, Pill, Progress, styles as uiStyles } from '@/components/UI';
 import { theme } from '@/theme';
-import type { BurnSummary, RivalMatchup, ScoringMetric } from './types';
+import type { BurnSummary, CommuterBurnTier, RivalMatchup, ScoringMetric, WeeklyBurnPacing } from './types';
 
 interface WhoBurnedMoreCardProps {
   summary: BurnSummary;
   rivalMatchup: RivalMatchup;
   metric: ScoringMetric;
+  burnTier?: CommuterBurnTier;
+  weeklyPacing?: WeeklyBurnPacing;
   onLogRide?: () => void;
 }
 
@@ -16,13 +18,17 @@ export function WhoBurnedMoreCard({
   summary,
   rivalMatchup,
   metric,
+  burnTier,
+  weeklyPacing,
   onLogRide,
 }: WhoBurnedMoreCardProps) {
   const isTop = rivalMatchup.isTopRank;
   const hasRival = rivalMatchup.hasRivalAbove && rivalMatchup.rivalName;
 
   // Accessibility summary text
-  const a11ySummary = `Who Burned More summary: ${summary.calories} active calories burned, equivalent to ${summary.walkingKmEquivalent} kilometers of walking, ${summary.flightOfStairsEquivalent} flights of station stairs, and ${summary.co2SavedKg} kilograms of CO2 saved. ${rivalMatchup.recommendation}`;
+  const tierInfo = burnTier ? ` Current tier: ${burnTier.title}.` : '';
+  const pacingInfo = weeklyPacing ? ` Weekly pacing: ${weeklyPacing.summaryText}` : '';
+  const a11ySummary = `Who Burned More summary: ${summary.calories} active calories burned, equivalent to ${summary.walkingKmEquivalent} kilometers of walking, ${summary.flightOfStairsEquivalent} flights of station stairs, and ${summary.co2SavedKg} kilograms of CO2 saved.${tierInfo}${pacingInfo} ${rivalMatchup.recommendation}`;
 
   return (
     <Card style={localStyles.card}>
@@ -89,6 +95,66 @@ export function WhoBurnedMoreCard({
           </View>
         </View>
       </View>
+
+      {/* Commuter Burn Tier Badge */}
+      {burnTier ? (
+        <View style={localStyles.tierBox}>
+          <View style={[uiStyles.row, { justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }]}>
+            <Text style={localStyles.tierEyebrow}>COMMUTER BURN TIER</Text>
+            <View style={localStyles.perkBadge}>
+              <Text style={localStyles.perkText}>{burnTier.perk}</Text>
+            </View>
+          </View>
+          <Text style={localStyles.tierTitle}>{burnTier.badge}</Text>
+          <Text style={localStyles.tierDescription}>{burnTier.description}</Text>
+        </View>
+      ) : null}
+
+      {/* Weekly 7-Day Burn Pacing */}
+      {weeklyPacing ? (
+        <View style={localStyles.pacingBox}>
+          <View style={[uiStyles.row, { justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 6 }]}>
+            <Text style={localStyles.pacingEyebrow}>WEEKLY BURN PACING · ROLLING 7 DAYS</Text>
+            <Pill
+              text={weeklyPacing.pacingStatus.toUpperCase()}
+              color={
+                weeklyPacing.pacingStatus === 'ahead'
+                  ? '#173A26'
+                  : weeklyPacing.pacingStatus === 'on-track'
+                  ? '#122A30'
+                  : '#302019'
+              }
+              ink={
+                weeklyPacing.pacingStatus === 'ahead'
+                  ? '#00CD6B'
+                  : weeklyPacing.pacingStatus === 'on-track'
+                  ? '#159CAC'
+                  : '#FFC6B0'
+              }
+            />
+          </View>
+          <View
+            accessible
+            accessibilityRole="progressbar"
+            accessibilityLabel={`Weekly burn pacing: ${weeklyPacing.burnedLast7DaysKcal} of ${weeklyPacing.weeklyTargetKcal} kcal`}
+            accessibilityValue={{
+              min: 0,
+              max: weeklyPacing.weeklyTargetKcal,
+              now: weeklyPacing.burnedLast7DaysKcal,
+              text: `${weeklyPacing.burnedLast7DaysKcal} of ${weeklyPacing.weeklyTargetKcal} kcal`,
+            }}
+          >
+            <Progress value={weeklyPacing.percent} color="#00CD6B" />
+          </View>
+          <View style={[uiStyles.row, { justifyContent: 'space-between' }]}>
+            <Text style={localStyles.pacingNumbers}>
+              {weeklyPacing.burnedLast7DaysKcal} / {weeklyPacing.weeklyTargetKcal} kcal
+            </Text>
+            <Text style={localStyles.pacingPercent}>{weeklyPacing.percent}%</Text>
+          </View>
+          <Text style={localStyles.pacingSummary}>{weeklyPacing.summaryText}</Text>
+        </View>
+      ) : null}
 
       {/* Head-to-Head Rival Matchup Section */}
       <View style={localStyles.rivalSection}>
@@ -246,6 +312,70 @@ const localStyles = StyleSheet.create({
     width: 1,
     height: 24,
     backgroundColor: '#1E3224',
+  },
+  tierBox: {
+    backgroundColor: '#0F1A13',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#1D3B26',
+    padding: 14,
+    gap: 6,
+  },
+  tierEyebrow: {
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.8,
+    color: '#00CD6B',
+  },
+  perkBadge: {
+    backgroundColor: '#173A26',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  perkText: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#B4F5D0',
+  },
+  tierTitle: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: '#FFFFFF',
+  },
+  tierDescription: {
+    fontSize: 12,
+    lineHeight: 17,
+    color: '#A9B7AE',
+  },
+  pacingBox: {
+    backgroundColor: '#0A120D',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#182C1E',
+    padding: 14,
+    gap: 8,
+  },
+  pacingEyebrow: {
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.8,
+    color: '#7D8C82',
+  },
+  pacingNumbers: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  pacingPercent: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#00CD6B',
+  },
+  pacingSummary: {
+    fontSize: 12,
+    lineHeight: 17,
+    color: '#BCD5C7',
   },
   rivalSection: {
     backgroundColor: '#141D17',
