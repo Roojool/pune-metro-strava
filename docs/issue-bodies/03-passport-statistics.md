@@ -8,7 +8,7 @@ Build a polished Metro Passport with Purple/Aqua line selector and a touchable s
 
 Complete standalone instructions: https://github.com/Roojool/pune-metro-strava/blob/main/team-prompts/03-passport-statistics.md
 
-Acceptance: typecheck, domain tests and web export pass; demonstrate affected flow; sample labels/accessibility retained; no edits outside ownership. Deadline: 2026-10-24 15:08 IST (optional feature freeze). Shared contracts freeze 14:18 IST. See TEAM_STATUS.md for AI reservations; never edit a reserved feature until lead handoff.
+Acceptance: typecheck, domain tests and web export pass; demonstrate affected flow; sample labels/accessibility retained; no edits outside ownership. Deadline: 2026-10-24 14:50 IST (optional feature freeze). Shared contracts freeze 14:18 IST. AI reservations are released; merge latest main and continue only within your owned folder.
 
 Out of scope: No root routes, shared code, package config, full geographic maps, invented fares, emissions accuracy claims, automatic collection of every passed station, or direct storage access.
 Fallback: Keep working station stamps and shared totals; use a text share summary and line list rather than a custom map.

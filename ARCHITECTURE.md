@@ -1,6 +1,10 @@
 # MetroQuest architecture
 
 One Expo SDK 57 / TypeScript / Expo Router application serves Android, iOS and web.
+The root shows a deterministic branded loading screen during hydration, then
+mounts navigation on the client. This avoids icon-font and responsive-dimension
+mismatches in static web exports; this local app does not need server-rendered
+personal activity. The exported HTML routes still exist for direct navigation.
 `app/` contains navigation and thin feature entry points. `src/components/` and
 `src/theme.ts` contain the shared visual system. `src/domain/` owns all contracts
 and calculations; `src/data/pune.ts` owns the reference network.

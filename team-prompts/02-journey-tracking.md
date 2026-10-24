@@ -1,7 +1,7 @@
 # Developer 2 — journey tracking
 
 ## Mission and context
-Build MetroQuest, “Strava for Metro,” in a strict 120-minute five-human sprint.
+Deliver MetroQuest, Strava for Metro, in the revised one-hour five-human sprint.
 One Expo SDK 57 / TypeScript / Expo Router / React Native Web app supports Android,
 iOS and web. Pune commuters manually record rides, collect stations, earn local
 XP and interact with a local demo community. No API keys are needed. This is
@@ -9,8 +9,9 @@ self-reported local demo data, not verified travel or a live multi-user platform
 
 Repository: https://github.com/Roojool/pune-metro-strava (PUBLIC).
 Primary branch: main. Your assigned branch: `feature/journey-tracking`.
-Lead: Roojool / Developer 1. Four human usernames are pending; invitation commands
-are in CONTRIBUTING.md. AI workers are helpers, not substitutes for human access.
+Lead: Roojool / Developer 1. Human roles 2-5: prathadox, chetanpujari5105,
+mangeshraut712, atharvamhaske. Invitations were sent; see TEAM_STATUS.md.
+AI workers are helpers, not substitutes for human access.
 
 ## Exact ownership and collision rules
 You own: src/features/journey/** only. Required exports: HomeScreen.tsx and LogScreen.tsx, both default React components.
@@ -69,6 +70,11 @@ environmentalEstimate, calculateXp, unlockAchievements, weeklyChallenges,
 rankLeaderboard, networkCompletion. Use them; don't duplicate calculations.
 
 ## Features to implement
+EXECUTE now. Latest main already includes an integrated implementation. Inspect
+it, verify your acceptance criteria, and fix gaps within your owned files.
+Do not stop at a plan or rebuild working features. Continue independent work
+when a shared change is blocked; report concrete errors to the lead.
+
 Polish Home dashboard and the fast manual log flow. Search origin/destination from OPEN_STATIONS. Default PCMC → Civil Court. Confirm in under ten seconds. Show route summary, approximate distance/time, recent journeys, one-tap recurring commute and accessible ride history. Await addJourney(from,to), display rejected/failed save messages, prevent double submits, and navigate Home only on success. Show XP/weekly progress from shared state. Explain fares are unavailable and provide the official operator fare link; never invent a fare.
 
 ## Explicitly out of scope
