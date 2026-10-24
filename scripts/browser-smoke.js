@@ -26,7 +26,7 @@ async (page) => {
   await page.getByText('LATEST SELF-REPORTED RIDE', { exact: true }).filter({visible:true}).waitFor();
   await page.getByText('50 XP earned', { exact: true }).filter({visible:true}).waitFor();
   await page.getByText('2 / 28', { exact: true }).filter({visible:true}).waitFor();
-  await page.getByRole('button', { name: 'Log again', exact: true }).click();
+  await page.getByRole('button', { name: /^Log again(?: from .+)?$/ }).first().click();
   await page.getByText(/Wait one minute before logging another ride/).waitFor();
 
   await navigate('Passport');
@@ -84,6 +84,16 @@ async (page) => {
     await page.getByRole('tab', { name: title, exact: true }).click();
     assert(await page.getByRole('tab', {name:title,exact:true}).getAttribute('aria-selected') === 'true', `${title} tab must be selected`);
     assert(!await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth), `${title} must fit 390px`);
+    if (title === 'Leagues') {
+      const disclosure = page.getByRole('button', { name: 'How XP works', exact: true });
+      await disclosure.click();
+      assert(await disclosure.getAttribute('aria-expanded') === 'true', 'XP explanation must expand');
+      const card = await disclosure.locator('..').locator('..').boundingBox();
+      const explanation = await page.getByText('Rides and XP are self-reported, not independently verified.', { exact: true }).boundingBox();
+      assert(card && explanation && explanation.y + explanation.height <= card.y + card.height + 2, 'XP explanation must fit its mobile card');
+      await disclosure.press('Space');
+      assert(await disclosure.getAttribute('aria-expanded') === 'false', 'XP explanation must close with the keyboard');
+    }
   }
   await page.reload();
   await page.getByRole('textbox', { name: 'Display name', exact: true }).waitFor();
