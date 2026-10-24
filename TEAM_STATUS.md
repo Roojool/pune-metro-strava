@@ -1,6 +1,9 @@
 # Sprint team status
 
-Start: 2026-10-24 13:58 IST. Hard deadline: 15:58 IST.
+Original start: 2026-10-24 13:58 IST. Revised one-hour delivery sprint:
+**14:15–15:15 IST**. User now explicitly requires a PUBLIC repository and
+Strava-inspired orange activity/map UI. These replace the earlier private/
+120-minute delivery requirements.
 Four human developers retain their own branches and GitHub access. AI workers
 are separate helpers; no claim that humans have begun work or tested devices.
 
@@ -20,7 +23,7 @@ shared edits and merges. Features must not edit each other's directories.
 
 ## GitHub setup
 
-Private repo: https://github.com/Roojool/pune-metro-strava. Baseline: 90c4602.
+Public repo: https://github.com/Roojool/pune-metro-strava. Baseline: 90c4602.
 All five human feature branches originate from that same working baseline.
 Write-access invitations sent to all four supplied usernames; acceptance pending.
 
@@ -56,5 +59,5 @@ untouched by AI workers. This avoids simultaneous human/AI file ownership.
 - Browser critical interaction scenario: pending after feature integration.
 - Android: adb available, no device/emulator attached. Not tested.
 - iOS: no iPhone connected/tested. Not tested.
-- CI: definition in docs/github-actions-check.yml; GitHub workflow scope requested.
+- CI: workflow scope approved, .github/workflows/check.yml published; PR checks running.
 - Web deployment: not deployed; local server is available.

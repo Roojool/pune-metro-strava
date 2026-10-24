@@ -1,15 +1,17 @@
-# 120-minute sprint
+# Sprint plan — revised one-hour delivery
 
-Start: **2026-10-24 13:58 IST**. Deadline: **15:58 IST**.
+Original sprint started **2026-10-24 13:58 IST**. At 14:15 the user revised the
+deadline to **15:15 IST**, made the repository public and requested Strava-style
+orange activity screens with map, duration and distance. Revised plan below
+supersedes the original phase times; completed baseline work is retained.
 
 | Minutes | Local time | Exit gate |
 | --- | --- | --- |
-| 0–15 | 13:58–14:13 | Reuse starter, install, initial web export, private repo baseline |
-| 15–20 | 14:13–14:18 | Freeze models/repository; five prompts, issues and branches ready |
-| 20–70 | 14:18–15:08 | Isolated feature worktrees and non-overlapping ownership |
-| 70–95 | 15:08–15:33 | Stop optional scope; review, checks, sequential squash integration |
-| 95–115 | 15:33–15:53 | Web/browser critical flow, persistence, native check if available |
-| 115–120 | 15:53–15:58 | Final docs, commit/push, demo tag only if checks pass |
+| Completed baseline | 13:58–14:15 | Starter reused; runnable web, shared contracts, repo, invitations, prompts and branches |
+| 0–25 | 14:15–14:40 | Isolated feature work; orange activity UI, schematic map, time/distance |
+| 25–35 | 14:40–14:50 | Review feature PRs, typecheck/tests/export, sequential integration |
+| 35–55 | 14:50–15:10 | Optional scope frozen; browser critical flow/persistence/responsiveness |
+| 55–60 | 15:10–15:15 | Final docs/commit/push and demo tag only when checks pass |
 
 Parallel task plans are the exactly five files in team-prompts/. README has the
 exclusive ownership matrix; TEAM_STATUS has live reservations, human handles,
