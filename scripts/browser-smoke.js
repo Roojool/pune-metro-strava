@@ -39,8 +39,7 @@ async (page) => {
   await page.getByRole('button', { name: 'Vanaz, To explore. Show station details', exact: true }).waitFor();
 
   await navigate('Leagues');
-  await page.getByText('First stop', { exact: true }).waitFor();
-  await page.getByText('UNLOCKED', { exact: true }).waitFor();
+  await page.getByText('UNLOCKED', { exact: true }).locator('..').getByText('First stop', { exact: true }).waitFor();
   await page.getByText('Pune Explorer · you', { exact: true }).waitFor();
   await page.getByRole('button', { name: 'Friends demo league', exact: true }).click();
   await page.getByText('Friends preview', { exact: true }).waitFor();
