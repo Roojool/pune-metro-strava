@@ -9,6 +9,10 @@ Android and iOS. Public repository: https://github.com/Roojool/pune-metro-strava
 
 ![MetroQuest activity dashboard with schematic route map](docs/screenshots/home-desktop.png)
 
+Verified on hosted web and an Android API 36 emulator with Expo Go 57.0.9.
+[Android screenshot](docs/screenshots/android-home.png). Physical phones and iOS
+runtime testing remain untested; both native platform bundles export successfully.
+
 ## Run
 
 Node 24 LTS and npm are recommended. No external API keys required.
@@ -50,6 +54,32 @@ checker](https://punemetrorail.org/fare_chart.aspx). Savings/CO2e use illustrati
 comparison assumptions, explained in [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
 
 ## Five humans, separate ownership
+
+The five prompts now include a continuing integration protocol. Opening a PR is
+a checkpoint: verify while review is pending, address concrete failures, sync
+after merge, and finish only after a real integrated browser pass.
+
+After the current editing agent has stopped, its human can run this in that
+developer's own checkout (replace journey with passport, leagues or community):
+
+```sh
+git fetch origin
+git merge origin/main
+npm ci
+npm run team:continue -- journey --minutes 30
+```
+
+The runner requires authenticated Codex CLI and GitHub CLI. It uses one checkout
+lock, at most six agent calls, and a thirty-minute limit. It never self-merges or
+bypasses required checks. Install dependencies in each checkout. Do not run it
+alongside another editing agent. Existing active agents can instead read their
+updated prompt and follow the same protocol directly.
+
+`npm run verify:e2e` runs typecheck/tests/export, starts its own temporary static
+server and browser, and checks the full ride/passport/league/community/reload
+flow. Actual results are written to ignored output/e2e-result.json.
+See [the continuation guide](docs/TEAM_CONTINUATION.md) and
+[the shared integration board](INTEGRATION_BOARD.md).
 
 | Developer | GitHub | Branch | Exclusive files |
 | --- | --- | --- | --- |
