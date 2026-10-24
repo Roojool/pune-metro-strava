@@ -50,6 +50,8 @@ import { PuneReplenishCard } from './PuneReplenishCard';
 import { calculatePuneReplenish } from './puneReplenish';
 import { StreakShieldCard } from './StreakShieldCard';
 import { calculateStreakShield } from './streakShield';
+import { EcoCertificateCard } from './EcoCertificateCard';
+import { generateEcoCertificate } from './ecoCertificate';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -143,6 +145,20 @@ export default function LeaguesScreen() {
   const burnPaceEfficiency = calculateBurnPaceEfficiency(relevantJourneys);
   const puneReplenish = calculatePuneReplenish(relevantJourneys);
   const streakShield = calculateStreakShield(journeys, streak);
+  const ecoCertificate = generateEcoCertificate(relevantJourneys, user.name);
+
+  const handleShareCertificate = async (text: string) => {
+    try {
+      if (Platform.OS !== 'web' || (typeof navigator !== 'undefined' && typeof navigator.share === 'function')) {
+        await Share.share({ title: 'My Pune Metro Clean Air Certificate', message: text });
+      } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
+        setShareNotice('Certificate copied to clipboard!');
+      }
+    } catch {
+      // User cancelled
+    }
+  };
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -323,6 +339,9 @@ export default function LeaguesScreen() {
 
         {/* Commuter Streak Shield & Rest Day Protection */}
         <StreakShieldCard summary={streakShield} />
+
+        {/* Clean Air Commuter Sustainability Certificate */}
+        <EcoCertificateCard certificate={ecoCertificate} onShare={handleShareCertificate} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (

@@ -344,6 +344,27 @@ export interface StreakShieldSummary {
   accessibilityDescription: string;
 }
 
+export type EcoCertificateTier = 'provisional' | 'bronze' | 'silver' | 'gold' | 'diamond';
+
+export interface EcoCertificateSummary {
+  certificateId: string;
+  recipientName: string;
+  tier: EcoCertificateTier;
+  tierTitle: string;
+  tierMarathi: string;
+  totalCleanKm: number;
+  totalCo2PreventedKg: number;
+  totalPm25PreventedGrams: number;
+  fuelSavedLiters: number;
+  issueDateFormatted: string;
+  isEligibleForOfficialCert: boolean;
+  nextTierTargetKg: number;
+  progressToNextTierRatio: number;
+  shareableCertificateText: string;
+  accessibilityDescription: string;
+}
+
+
 
 
 
