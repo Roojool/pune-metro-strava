@@ -1,4 +1,4 @@
-# Contributing to the private sprint
+# Contributing to the public demo sprint
 
 Accept your GitHub invitation. Read README, AGENTS, TEAM_STATUS and your complete
 team-prompts file. Keep your assigned branch and only edit owned files.
@@ -43,4 +43,4 @@ gh api -X PUT repos/Roojool/pune-metro-strava/collaborators/USERNAME -f permissi
 ```
 
 Never create another repo just because authentication or a permission is missing.
-Keep the repository private. Real backend/security/moderation work is post-MVP.
+Repository is public by revised user instruction. Real backend/security/moderation work is post-MVP.

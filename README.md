@@ -1,8 +1,8 @@
 # MetroQuest · Pune
 
-**Make every ride count.** A polished local demo of a metro passport, journey
+**Make every ride count.** A Strava-inspired local demo of a metro passport, journey
 tracker, XP league and route community. One Expo SDK 57 application for web,
-Android and iOS. Private repository: https://github.com/Roojool/pune-metro-strava.
+Android and iOS. Public repository: https://github.com/Roojool/pune-metro-strava.
 
 ## Run
 
@@ -67,6 +67,10 @@ edits shared state/models, package configuration, root routes, shared UI or CI.
 All models/calculations are central; no feature implements another scoring or
 storage system. Contracts freeze at minute 20. Root routes re-export the owned
 feature screens, so contributors never need to edit navigation.
+
+The revised delivery window is **14:15–15:15 IST, 2026-10-24**. Route maps are
+schematic and display manually logged trips, approximate time/distance and XP;
+they are not GPS tracks. Orange activity accents pair with Purple/Aqua metro lines.
 
 AI coding helpers use **separate worktrees and ai/* branches**. Their feature
 reservations are recorded in [TEAM_STATUS.md](TEAM_STATUS.md); human owners wait
