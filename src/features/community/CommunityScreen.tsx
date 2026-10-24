@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, Share, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { useRouter } from 'expo-router';
 import { useApp } from '@/state/AppState';
 import { Action, Card, Heading, Icon, Page, Pill, Notice, SectionTitle, styles } from '@/components/UI';
 import type { MutationResult } from '@/domain/models';
 import { theme } from '@/theme';
+import { communityCardSummary, validateCommunityPost } from './community-card';
 
 export default function CommunityScreen() {
+  const router = useRouter();
   const { communities, posts, joined, user, totalJourneys, points, visitedIds, addPost, toggleLike, toggleCommunity, ready, storageError } = useApp();
   const wide = useWindowDimensions().width >= 1200;
   const [selected, setSelected] = useState('purple');
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [pending, setPending] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<MutationResult | null>(null);
-  const community = communities.find(c => c.id === selected)!;
+
+  if (!ready || storageError) {
+    return (
+      <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ flexGrow: 1 }}>
+        <Page>
+          <Heading eyebrow="THE GOOD PART OF GETTING THERE" title="Your people. Your line." subtitle="Little discoveries, shared routines, and a city that feels a bit closer." />
+          <Notice error={Boolean(storageError)}>{storageError || 'Loading community discussions…'}</Notice>
+          {storageError ? (
+            <Action label="Open profile for recovery options" secondary onPress={() => router.push('/profile')} />
+          ) : null}
+        </Page>
+      </ScrollView>
+    );
+  }
+
+  const community = communities.find(c => c.id === selected) ?? communities[0];
   const feed = posts.filter(p => p.communityId === selected);
   const draft = drafts[selected] ?? '';
   const color = selected === 'purple' ? theme.purple : selected === 'aqua' ? theme.aqua : theme.primary;
   const pale = selected === 'purple' ? theme.palePurple : selected === 'aqua' ? '#E9F6F7' : theme.paleMint;
   const disabled = !ready || !!storageError || pending !== null;
-  const cardSummary = `My MetroQuest commuter card\n${totalJourneys} self-reported rides · ${visitedIds.length} stations collected · ${points} XP\nPune Metro · local demo, not verified travel or a live ranking.`;
+  const cardSummary = communityCardSummary({ totalJourneys, stationsCount: visitedIds.length, points });
 
   async function perform(key: string, action: () => Promise<MutationResult>) {
     if (pending) return null;
@@ -37,16 +55,17 @@ export default function CommunityScreen() {
   }
 
   async function publish() {
-    const body = draft.trim();
-    if (!body || body.length > 500) {
-      setFeedback({ ok: false, message: 'Write a post between 1 and 500 characters.' });
+    const validation = validateCommunityPost(draft);
+    if (!validation.ok || !validation.cleanBody) {
+      setFeedback({ ok: false, message: validation.message ?? 'Write a post between 1 and 500 characters.' });
       return;
     }
-    const result = await perform('post', () => addPost(selected, body));
+    const result = await perform('post', () => addPost(selected, validation.cleanBody!));
     if (result?.ok) setDrafts(current => ({ ...current, [selected]: '' }));
   }
 
   async function shareCard() {
+    if (pending) return;
     setPending('share');
     setFeedback(null);
     try {
@@ -84,7 +103,7 @@ export default function CommunityScreen() {
         <Card style={{ gap: 15 }}>
           <View style={styles.row}><View style={[local.avatar, { backgroundColor: theme.paleMint }]}><Text style={[local.initial, { color: theme.primary }]}>{user.name.slice(0, 1).toUpperCase()}</Text></View><View style={{ flex: 1 }}><Text style={local.author}>{user.name}</Text><Text style={styles.muted}>Posting locally in {community.title}</Text></View><Icon name="lock" size={16} color={theme.muted} /></View>
           <TextInput accessibilityLabel="Write a community post" accessibilityHint="Write 1 to 500 characters. This post stays on your device." value={draft} onChangeText={text => setDrafts(current => ({ ...current, [selected]: text }))} editable={!disabled} multiline textAlignVertical="top" maxLength={500} placeholder="A station tip, a small win, or just a hello…" placeholderTextColor={theme.muted} style={[styles.input, { minHeight: 112, lineHeight: 22 }]} />
-          <View style={[styles.row, { justifyContent: 'space-between', flexWrap: 'wrap' }]}><Text style={styles.muted}>{draft.length}/500 · local only</Text><Action label={pending === 'post' ? 'Saving post…' : 'Post locally'} disabled={disabled || !draft.trim()} icon="send" onPress={() => { void publish(); }} /></View>
+          <View style={[styles.row, { justifyContent: 'space-between', flexWrap: 'wrap' }]}><Text style={styles.muted}>{draft.length}/500 · local only</Text><Action label={pending === 'post' ? 'Saving post…' : 'Post locally'} disabled={disabled || !draft.trim() || draft.trim().length > 500} icon="send" onPress={() => { void publish(); }} /></View>
         </Card>
         {feed.length === 0 ? <Card style={{ gap: 10 }}><Icon name="message-circle" color={color} size={28} /><Text style={styles.section}>Start a little conversation.</Text><Text style={styles.body}>Share a helpful tip or celebrate your next metro milestone.</Text></Card> : feed.map(post => <Card key={post.id} style={{ gap: 16 }}>
           <View style={[styles.row, { alignItems: 'flex-start' }]}><View style={[local.avatar, { backgroundColor: post.sample ? pale : theme.paleMint }]}><Text style={[local.initial, { color: post.sample ? color : theme.primary }]}>{post.author.slice(0, 1).toUpperCase()}</Text></View><View style={{ flex: 1, gap: 3 }}><Text style={local.author}>{post.author}</Text><Text style={styles.muted}>{post.sample ? 'Sample conversation · fictional profile' : `Your local post · ${new Date(post.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' })}`}</Text></View><Icon name={post.sample ? 'message-circle' : 'lock'} size={16} color={theme.muted} /></View>
