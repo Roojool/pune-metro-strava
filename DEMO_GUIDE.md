@@ -52,6 +52,12 @@ testing until a real iPhone has run the flow.
 
 ## Web deployment
 
+GitHub Pages is configured at https://roojool.github.io/pune-metro-strava/.
+The Publish web demo workflow tests and exports main with GITHUB_PAGES=true;
+app.config.js prefixes web assets/routes with /pune-metro-strava only for that
+build. Local Expo and native clients keep the normal root path. Deployment and
+browser verification status is recorded in TEAM_STATUS.md.
+
 npm run export:web produces dist/. Upload that folder to a static host (for
 example an existing authorized Vercel/Netlify project). No deployment credentials
 are required for the tested local demo. Use HTTPS for external sharing. Storage
