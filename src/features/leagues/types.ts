@@ -406,3 +406,36 @@ export interface TrophyCabinetSummary {
   accessibilityDescription: string;
 }
 
+export type TransitWindowId =
+  | 'early_bird'
+  | 'morning_rush'
+  | 'midday_offpeak'
+  | 'evening_rush'
+  | 'night_owl';
+
+export interface WindowDistribution {
+  id: TransitWindowId;
+  label: string;
+  hoursLabel: string;
+  count: number;
+  percent: number;
+  isPeak: boolean;
+  caloriesBurned: number;
+}
+
+export interface PeakFlowSummary {
+  totalRides: number;
+  peakRidesCount: number;
+  offPeakRidesCount: number;
+  peakRidesPercent: number;
+  offPeakRidesPercent: number;
+  crowdStaminaKcal: number;
+  gridBalancerPoints: number;
+  dominantPersona: string;
+  dominantPersonaMarathi: string;
+  windowBreakdown: WindowDistribution[];
+  efficiencyTip: string;
+  shareableFlowText: string;
+  accessibilityDescription: string;
+}
+

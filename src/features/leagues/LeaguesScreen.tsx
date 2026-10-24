@@ -56,6 +56,8 @@ import { ConcourseStepsCard } from './ConcourseStepsCard';
 import { calculateConcourseSteps } from './concourseSteps';
 import { TrophyCabinetCard } from './TrophyCabinetCard';
 import { calculateTrophyCabinet } from './trophyCabinet';
+import { PeakFlowCard } from './PeakFlowCard';
+import { calculatePeakFlow } from './peakFlow';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -152,6 +154,7 @@ export default function LeaguesScreen() {
   const ecoCertificate = generateEcoCertificate(relevantJourneys, user.name);
   const concourseSteps = calculateConcourseSteps(relevantJourneys);
   const trophyCabinet = calculateTrophyCabinet(journeys, streak, points);
+  const peakFlow = calculatePeakFlow(relevantJourneys);
 
   const handleShareCertificate = async (text: string) => {
     try {
@@ -354,6 +357,9 @@ export default function LeaguesScreen() {
 
         {/* Commuter Strava Trophy Cabinet & Accolades */}
         <TrophyCabinetCard summary={trophyCabinet} />
+
+        {/* Commute Transit Rhythm & Congestion Grid Balancer */}
+        <PeakFlowCard summary={peakFlow} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
