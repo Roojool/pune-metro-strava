@@ -234,3 +234,21 @@ export interface WeeklyConsistencyProfile {
   accessibilityDescription: string;
 }
 
+export type EcoTier = 'seedling' | 'sapling' | 'green_canopy' | 'forest_guardian';
+
+export interface CleanAirMetrics {
+  totalKm: number;
+  fuelSavedLiters: number;
+  fuelExpenseSavedRupees: number;
+  co2PreventedKg: number;
+  pm25PreventedGrams: number;
+  treesAbsorptionEquivalent: number;
+  roadMinutesSaved: number;
+  ecoTier: EcoTier;
+  ecoTierTitle: string;
+  ecoTierDescription: string;
+  topEcoCorridor: string;
+  accessibilitySummary: string;
+}
+
+

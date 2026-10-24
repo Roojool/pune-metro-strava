@@ -38,6 +38,8 @@ import { LeagueBadgesCard } from './LeagueBadgesCard';
 import { calculateLeagueBadges } from './leagueBadges';
 import { WeeklyConsistencyCard } from './WeeklyConsistencyCard';
 import { calculateWeeklyConsistency } from './weeklyConsistency';
+import { CleanAirSavingsCard } from './CleanAirSavingsCard';
+import { calculateCleanAirMetrics } from './cleanAirSavings';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -125,6 +127,7 @@ export default function LeaguesScreen() {
   const stationDensity = calculateStationDensity(relevantJourneys, scope === 'Route' ? line : undefined);
   const leagueBadges = calculateLeagueBadges(journeys);
   const weeklyConsistency = calculateWeeklyConsistency(relevantJourneys);
+  const cleanAirMetrics = calculateCleanAirMetrics(relevantJourneys);
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }}>
@@ -287,6 +290,9 @@ export default function LeaguesScreen() {
 
         {/* Pune Metro Commuter Mastery Badges */}
         <LeagueBadgesCard summary={leagueBadges} />
+
+        {/* Pune Clean Air Initiative & Eco Savings */}
+        <CleanAirSavingsCard metrics={cleanAirMetrics} />
 
         {/* Milestone Celebration Banner */}
         {unlocked > 0 ? (
