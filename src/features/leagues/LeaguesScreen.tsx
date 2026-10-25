@@ -18,6 +18,9 @@ import {
   rankByMetric,
 } from './scoring';
 import { WhoBurnedMoreCard } from './WhoBurnedMoreCard';
+import { calculatePuneMilestoneProgress } from './puneBurnEquivalents';
+import { PuneMilestonesCard } from './PuneMilestonesCard';
+import { filterJourneysByLine, getLineEmptyStateGuidance, sanitizeParticipantName } from './edgeCases';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -68,10 +71,10 @@ export default function LeaguesScreen() {
   }
 
   const selectedLine = LINES.find(l => l.id === line)!;
-  const routeIds = selectedLine.stationIds;
-  const routeJourneys = journeys.filter(j => j.stationIds.filter(id => routeIds.includes(id)).length >= 2);
+  const routeJourneys = filterJourneysByLine(journeys, line);
   const relevantJourneys = scope === 'Route' ? routeJourneys : journeys;
   const currentScore = scope === 'Route' ? leaderboardScore(routeJourneys) : points;
+  const lineGuidance = getLineEmptyStateGuidance(line);
 
   // Enriched sample competitors with active burn and eco metrics
   const allSampleEntries = getEnrichedSampleLeague();
@@ -82,7 +85,8 @@ export default function LeaguesScreen() {
       ? allSampleEntries.filter(e => e.line === line)
       : allSampleEntries;
 
-  const current = calculateUserEntry(user.name, currentScore, relevantJourneys, line);
+  const displayName = user.name.trim() ? sanitizeParticipantName(user.name) : 'You';
+  const current = calculateUserEntry(displayName, currentScore, relevantJourneys, line);
   const board = rankByMetric([...samples, current], metric);
   const rank = board.findIndex(e => e.id === 'you') + 1;
   const unlocked = achievements.filter(a => a.unlocked).length;
@@ -90,6 +94,7 @@ export default function LeaguesScreen() {
   const leagueTitle = scope === 'Route' ? `${selectedLine.name} league` : scope === 'Friends' ? 'Friends preview' : 'Pune explorers';
 
   const burnSummary = calculateBurnSummary(relevantJourneys);
+  const puneMilestoneProgress = calculatePuneMilestoneProgress(burnSummary.calories);
   const rivalMatchup = calculateRivalMatchup(current, board, metric);
   const levelProgress = calculateLevelProgress(points);
 
@@ -225,6 +230,12 @@ export default function LeaguesScreen() {
           rivalMatchup={rivalMatchup}
           metric={metric}
           onLogRide={() => router.push('/log')}
+        />
+
+        {/* Authentic Pune Cultural Burn Milestones */}
+        <PuneMilestonesCard
+          progress={puneMilestoneProgress}
+          totalCalories={burnSummary.calories}
         />
 
         {/* Milestone Celebration Banner */}
@@ -492,9 +503,17 @@ export default function LeaguesScreen() {
                   Your position: #{rank} of {board.length} · {currentScore} XP · {leagueTitle}.
                 </Text>
                 {scope === 'Route' && routeJourneys.length === 0 ? (
-                  <Text style={styles.body}>
-                    No rides on {selectedLine.name} yet. Log a journey using at least one segment of this line to start your route score.
-                  </Text>
+                  <View style={{ gap: 6, backgroundColor: '#17221A', padding: 12, borderRadius: 10, borderWidth: 1, borderColor: '#233829' }}>
+                    <Text style={styles.body}>
+                      No rides on {selectedLine.name} yet. Log a journey using at least one segment of this line to start your route score.
+                    </Text>
+                    <Text style={[styles.muted, { color: '#BCD5C7' }]}>
+                      {lineGuidance.guidance}
+                    </Text>
+                    <Text style={[styles.muted, { color: ACTIVITY_INK, fontWeight: '700' }]}>
+                      Key stations: {lineGuidance.suggestedStations.join(' · ')}
+                    </Text>
+                  </View>
                 ) : null}
                 <Text style={styles.muted}>
                   {scope === 'Route'
