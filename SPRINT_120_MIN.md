@@ -1,30 +1,37 @@
-# Sprint plan — revised one-hour delivery
+# Historical sprint plan and submission handoff
 
-Original sprint started **2026-10-24 13:58 IST**. At 14:15 the user revised the
-deadline to **15:15 IST**, made the repository public and requested Strava-style
-orange activity screens with map, duration and distance. Revised plan below
-supersedes the original phase times; completed baseline work is retained.
+The filename is retained for existing links. The original sprint began
+**2026-10-24 13:58 IST**; at 14:15 the user revised delivery to **14:15–15:15 IST**
+and made the repository public. These times are historical, not current task
+instructions. Shared contracts froze at **14:18 IST** and remain lead-controlled.
 
-| Minutes | Local time | Exit gate |
-| --- | --- | --- |
-| Completed baseline | 13:58–14:15 | Starter reused; runnable web, shared contracts, repo, invitations, prompts and branches |
-| 0–25 | 14:15–14:40 | Isolated feature work; orange activity UI, schematic map, time/distance |
-| 25–35 | 14:40–14:50 | Review feature PRs, typecheck/tests/export, sequential integration |
-| 35–55 | 14:50–15:10 | Optional scope frozen; browser critical flow/persistence/responsiveness |
-| 55–60 | 15:10–15:15 | Final docs/commit/push and demo tag only when checks pass |
+## Original revised phases
 
-Parallel task plans are the exactly five files in team-prompts/. README has the
-exclusive ownership matrix; TEAM_STATUS has live reservations, human handles,
-issue/PR links and outcomes. Shared contracts live in src/domain/models.ts and
-src/state/AppState.tsx. Lead owns all changes to those contracts.
+- **13:58–14:15:** baseline shell, contracts, repository, prompts and branches.
+- **14:15–14:40:** isolated features, activity UI, schematic routes and estimates.
+- **14:40–14:50:** review, typecheck/tests/export and sequential integration.
+- **14:50–15:10:** optional-scope freeze; browser, persistence and responsive QA.
+- **15:10–15:15:** docs/demo checkpoint, subject to actual passing checks.
 
-AI helpers are not human teammates. Each gets an isolated ai/* worktree and one
-feature reservation. Human owner can verify/review while reserved, and continues
-after integration. No worker edits a different feature or shared package files.
-Each role has a working fallback already committed. Failing optional work never
-replaces the last working screen. Merge only reviewable, passing changes.
+Follow-up work continued after that window. Leagues #16/#24/#31, screenshots #21,
+Journey #23, Passport #26 and Community #29 are merged. See
+[TEAM_STATUS.md](TEAM_STATUS.md) and [INTEGRATION_BOARD.md](INTEGRATION_BOARD.md)
+for the dated handoff and verification evidence.
 
-Critical flow: Home → PCMC → Civil Court → save → total rises → Passport endpoint
-stamps/statistics → Leagues XP/first achievement → Purple community → post →
-reload → persisted state. Fare must not be invented. Sample identities and local
-social simulation remain labeled. No signed store build is required.
+## DevDay Loops House / Urban Mobility readiness
+
+Demonstrate **Home → Log PCMC→Civil Court → Passport → Leagues → Community → reload**
+within a two-minute presentation budget, using [DEMO_GUIDE.md](DEMO_GUIDE.md) and
+[SUBMISSION.md](SUBMISSION.md). Supplied weights: Technical 30 / Innovation 25 /
+Track Fit 25 / Execution 20; code-contradicting claims face credibility caps.
+No fabricated metrics, verified-travel claims or unlabeled sample identities.
+
+Keep endpoint-only stamps and local social behavior explicit. Distance/time/
+savings/CO₂e are estimates; fare is unavailable. No backend, live competition or
+signed store build is implemented. Preserve the working baseline and frozen scope.
+
+The five [role prompts](team-prompts/) retain disjoint ownership. AI helpers use
+separate `ai/*` branches and worktrees; only the lead changes shared contracts.
+A bounded docs-only task ends at its requested PR URL. Assigned integration work
+uses the [continuation protocol](docs/TEAM_CONTINUATION.md) and requires actual
+`npm run verify:e2e` success after synchronization for an integrated E2E claim.
