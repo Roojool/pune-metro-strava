@@ -10,8 +10,10 @@ import type { LineId } from '@/domain/models';
 import { theme } from '@/theme';
 import type { LeagueScope, ScoringMetric } from './types';
 import {
+  calculateActiveBurnStreak,
   calculateBurnSummary,
   calculateLevelProgress,
+  calculateRivalDuel,
   calculateRivalMatchup,
   calculateUserEntry,
   calculateWeeklyBurnPacing,
@@ -26,6 +28,8 @@ import { filterJourneysByLine, getLineEmptyStateGuidance, sanitizeParticipantNam
 import { CorridorBurnCard } from './CorridorBurnCard';
 import { generateLeagueShareSummary, handleLeagueShare } from './share';
 import { RouteBurnSimulator } from './RouteBurnSimulator';
+import { BurnStreakMatrixCard } from './BurnStreakMatrixCard';
+import { RivalDuelCard } from './RivalDuelCard';
 
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -103,6 +107,7 @@ export default function LeaguesScreen() {
   const burnSummary = calculateBurnSummary(relevantJourneys);
   const burnTier = getCommuterBurnTier(burnSummary.calories);
   const weeklyPacing = calculateWeeklyBurnPacing(journeys);
+  const activeStreakSummary = calculateActiveBurnStreak(journeys);
   const puneMilestoneProgress = calculatePuneMilestoneProgress(burnSummary.calories);
   const rivalMatchup = calculateRivalMatchup(current, board, metric);
   const levelProgress = calculateLevelProgress(points);
@@ -243,6 +248,9 @@ export default function LeaguesScreen() {
           weeklyPacing={weeklyPacing}
           onLogRide={() => router.push('/log')}
         />
+
+        {/* 14-Day Commuter Burn Streak & Momentum Matrix */}
+        <BurnStreakMatrixCard summary={activeStreakSummary} />
 
         {/* Route Burn Estimator & Simulator */}
         <RouteBurnSimulator
@@ -625,6 +633,13 @@ export default function LeaguesScreen() {
                 </Card>
               );
             })}
+
+            {/* Head-to-Head Calorie Duel */}
+            <RivalDuelCard
+              currentUser={current}
+              rivals={board}
+              onLogRide={() => router.push('/log')}
+            />
 
             {/* Top Pune Metro Corridor Active Burn */}
             <CorridorBurnCard corridors={topCorridors} />

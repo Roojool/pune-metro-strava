@@ -90,3 +90,37 @@ export interface RouteBurnEstimate {
   stationCount: number;
 }
 
+export interface DailyBurnActivity {
+  dateKey: string;
+  dayName: string;
+  dayOfMonth: number;
+  calories: number;
+  ridesCount: number;
+  isActive: boolean;
+  isToday: boolean;
+}
+
+export interface ActiveBurnStreakSummary {
+  currentStreak: number;
+  longestStreak: number;
+  activeStreakDays: number;
+  twoWeekMatrix: DailyBurnActivity[];
+  shieldActive: boolean;
+  streakStatusText: string;
+}
+
+export interface RivalDuelComparison {
+  rivalId: string;
+  rivalName: string;
+  userScore: number;
+  rivalScore: number;
+  calorieGap: number;
+  userLeads: boolean;
+  stairFlightsToBridge: number;
+  kmToBridge: number;
+  userFavoriteCorridor?: string;
+  rivalFavoriteCorridor?: string;
+  duelInsight: string;
+}
+
+
