@@ -1,11 +1,16 @@
 import type { Journey, LineId } from '../../domain/models';
 import { SAMPLE_LEAGUE } from './sampleLeague';
+import { getStationName } from '../../data/pune';
+import { routeBetween } from '../../domain/metro';
 import type {
   BurnSummary,
+  CommuterBurnTier,
   EnrichedLeaderboardEntry,
   LevelProgress,
   RivalMatchup,
+  RouteBurnEstimate,
   ScoringMetric,
+  WeeklyBurnPacing,
 } from './types';
 
 /**
@@ -268,3 +273,242 @@ export function calculateLevelProgress(points: number): LevelProgress {
     title,
   };
 }
+
+/**
+ * Commuter Burn Tiers representing physical transit habit milestones.
+ */
+export const COMMUTER_BURN_TIERS: CommuterBurnTier[] = [
+  {
+    id: 'station-strider',
+    title: 'Station Strider',
+    minCalories: 0,
+    maxCalories: 250,
+    badge: '🚶 Platform Walker',
+    description: 'Beginning your active Pune Metro routine with steady station entry steps.',
+    perk: 'Base Active Habit',
+  },
+  {
+    id: 'elevated-climber',
+    title: 'Elevated Climber',
+    minCalories: 251,
+    maxCalories: 600,
+    badge: '🧗 Viaduct Ascender',
+    description: 'Scaling elevated station concourses and viaduct stairwells across Pune.',
+    perk: 'Stair Master Badge',
+  },
+  {
+    id: 'interchange-cruiser',
+    title: 'Interchange Cruiser',
+    minCalories: 601,
+    maxCalories: 1200,
+    badge: '⚡ Civil Court Navigator',
+    description: 'Tackling the multi-level transfer hub linking Purple and Aqua lines.',
+    perk: 'Interchange Velocity',
+  },
+  {
+    id: 'underground-pioneer',
+    title: 'Underground Pioneer',
+    minCalories: 1201,
+    maxCalories: 2500,
+    badge: '🚇 33m Depth Master',
+    description: 'Mastering the deep underground tunnels from Shivajinagar to Swargate.',
+    perk: 'Deep Corridor Stamina',
+  },
+  {
+    id: 'transit-legend',
+    title: 'Pune Transit Legend',
+    minCalories: 2501,
+    maxCalories: Infinity,
+    badge: '👑 Green Transit Champion',
+    description: 'Peak physical commuter endurance! Pune’s highest tier of active green transit.',
+    perk: 'All-City Hall of Fame',
+  },
+];
+
+/**
+ * Derives current commuter burn tier based on all-time active calories.
+ */
+export function getCommuterBurnTier(totalCalories: number): CommuterBurnTier {
+  const safeCalories = Math.max(0, Number.isFinite(totalCalories) ? totalCalories : 0);
+  for (let i = COMMUTER_BURN_TIERS.length - 1; i >= 0; i--) {
+    if (safeCalories >= COMMUTER_BURN_TIERS[i].minCalories) {
+      return COMMUTER_BURN_TIERS[i];
+    }
+  }
+  return COMMUTER_BURN_TIERS[0];
+}
+
+/**
+ * Computes weekly commuter calorie burn pacing against a target (default: 500 kcal).
+ * Aligns with the 7-day rolling window used for weekly challenges.
+ */
+export function calculateWeeklyBurnPacing(
+  journeys: Journey[],
+  now = new Date(),
+  targetKcal = 500
+): WeeklyBurnPacing {
+  const safeNow = Number.isFinite(now.getTime()) ? now.getTime() : Date.now();
+  const sevenDaysAgo = safeNow - 7 * 86_400_000;
+
+  const recentJourneys = journeys.filter(j => {
+    const time = Date.parse(j.at);
+    return Number.isFinite(time) && time >= sevenDaysAgo && time <= safeNow;
+  });
+
+  const burnedLast7DaysKcal = calculateTotalCalories(recentJourneys);
+  const remainingKcal = Math.max(0, targetKcal - burnedLast7DaysKcal);
+  const percent = Math.min(100, Math.round((burnedLast7DaysKcal / targetKcal) * 100));
+  const isTargetReached = burnedLast7DaysKcal >= targetKcal;
+
+  const daysInWindow = Math.max(1, (safeNow - sevenDaysAgo) / 86_400_000);
+  const dailyRate = burnedLast7DaysKcal / daysInWindow;
+  const projectedWeeklyKcal = Math.round(dailyRate * 7);
+
+  let pacingStatus: 'ahead' | 'on-track' | 'behind' = 'on-track';
+  if (burnedLast7DaysKcal >= targetKcal) {
+    pacingStatus = 'ahead';
+  } else if (projectedWeeklyKcal >= targetKcal * 0.8) {
+    pacingStatus = 'on-track';
+  } else {
+    pacingStatus = 'behind';
+  }
+
+  let summaryText = '';
+  if (isTargetReached) {
+    summaryText = `Goal crushed! You burned ${burnedLast7DaysKcal} kcal in the last 7 days (+${burnedLast7DaysKcal - targetKcal} kcal over target).`;
+  } else if (pacingStatus === 'on-track') {
+    summaryText = `${remainingKcal} kcal to reach your weekly ${targetKcal} kcal goal. You are right on track!`;
+  } else {
+    summaryText = `${remainingKcal} kcal remaining. Take a couple of brisk station stair climbs to catch up.`;
+  }
+
+  return {
+    weeklyTargetKcal: targetKcal,
+    burnedLast7DaysKcal,
+    remainingKcal,
+    percent,
+    isTargetReached,
+    projectedWeeklyKcal,
+    pacingStatus,
+    summaryText,
+  };
+}
+
+/**
+ * Predicts and simulates active commute calorie burn, stair climbing, and leaderboard impact
+ * for any planned route across the Pune Metro network.
+ */
+export function estimateRouteBurn(
+  from: string,
+  to: string,
+  currentRankedBoard?: EnrichedLeaderboardEntry[],
+  currentUser?: EnrichedLeaderboardEntry
+): RouteBurnEstimate {
+  const fromName = getStationName(from);
+  const toName = getStationName(to);
+
+  if (from === to || !from || !to) {
+    return {
+      from,
+      to,
+      fromName,
+      toName,
+      kilometers: 0,
+      minutes: 0,
+      calories: 0,
+      walkingKmEquivalent: 0,
+      flightOfStairsEquivalent: 0,
+      co2SavedKg: 0,
+      isInterchange: false,
+      interchangeBonusKcal: 0,
+      stationCount: 0,
+      overtakeNotice: 'Select two different stations along Pune Metro to simulate commute burn.',
+    };
+  }
+
+  try {
+    const route = routeBetween(from, to);
+    const stationList = route.stationIds;
+    const isInterchange =
+      stationList.includes('civil-court') &&
+      from !== 'civil-court' &&
+      to !== 'civil-court';
+    const interchangeBonusKcal = isInterchange ? 25 : 0;
+
+    const calories = calculateJourneyCalories({
+      kilometers: route.kilometers,
+      stationIds: route.stationIds,
+      from,
+      to,
+    });
+
+    const walkingKmEquivalent = Math.round((calories / 65) * 10) / 10;
+    const flightOfStairsEquivalent = Math.round(calories / 3.5);
+    const co2SavedKg = Math.round(route.kilometers * (0.12 - 0.04) * 100) / 100;
+
+    let projectedRank: number | undefined;
+    let overtakeNotice: string | undefined;
+
+    if (currentRankedBoard && currentUser) {
+      const simulatedUser: EnrichedLeaderboardEntry = {
+        ...currentUser,
+        caloriesBurned: currentUser.caloriesBurned + calories,
+        co2SavedKg: Math.round((currentUser.co2SavedKg + co2SavedKg) * 100) / 100,
+        ridesCount: currentUser.ridesCount + 1,
+      };
+
+      const otherEntries = currentRankedBoard.filter(e => e.id !== currentUser.id);
+      const simulatedBoard = rankByMetric([...otherEntries, simulatedUser], 'calories');
+      const newRank = simulatedBoard.findIndex(e => e.id === currentUser.id) + 1;
+      const currentRank = currentRankedBoard.findIndex(e => e.id === currentUser.id) + 1;
+
+      projectedRank = newRank;
+
+      if (newRank < currentRank) {
+        overtakeNotice = `🔥 Taking this ride will lift you from Rank #${currentRank} to Rank #${newRank} (+${calories} kcal)!`;
+      } else if (newRank === 1) {
+        overtakeNotice = `👑 Taking this ride widens your #1 league lead by +${calories} kcal!`;
+      } else {
+        const nextAbove = simulatedBoard[newRank - 2];
+        const deficit = nextAbove ? nextAbove.caloriesBurned - simulatedUser.caloriesBurned : 0;
+        overtakeNotice = `Takes you to ${simulatedUser.caloriesBurned} kcal (Rank #${newRank}). ${deficit > 0 ? `${deficit} kcal behind ${nextAbove.name}.` : ''}`;
+      }
+    }
+
+    return {
+      from,
+      to,
+      fromName,
+      toName,
+      kilometers: route.kilometers,
+      minutes: route.minutes,
+      calories,
+      walkingKmEquivalent,
+      flightOfStairsEquivalent,
+      co2SavedKg,
+      isInterchange,
+      interchangeBonusKcal,
+      projectedRank,
+      overtakeNotice,
+      stationCount: route.stationIds.length,
+    };
+  } catch {
+    return {
+      from,
+      to,
+      fromName,
+      toName,
+      kilometers: 0,
+      minutes: 0,
+      calories: 0,
+      walkingKmEquivalent: 0,
+      flightOfStairsEquivalent: 0,
+      co2SavedKg: 0,
+      isInterchange: false,
+      interchangeBonusKcal: 0,
+      stationCount: 0,
+      overtakeNotice: 'Unable to calculate route between these stations.',
+    };
+  }
+}
+
