@@ -1,46 +1,74 @@
-# Contributing to the public demo sprint
+# Contributing to MetroQuest Pune
 
-Accept your GitHub invitation. Read README, AGENTS, TEAM_STATUS and your complete
-team-prompts file. Keep your assigned branch and only edit owned files.
+The public [repository](https://github.com/Roojool/pune-metro-strava) prepares a
+**DevDay Loops House / Urban Mobility** submission. Read [README.md](README.md),
+[SPRINT_120_MIN.md](SPRINT_120_MIN.md), [AGENTS.md](AGENTS.md),
+[TEAM_STATUS.md](TEAM_STATUS.md), [INTEGRATION_BOARD.md](INTEGRATION_BOARD.md) and
+your exact [team prompt](team-prompts/) before editing. Submission claims in
+[SUBMISSION.md](SUBMISSION.md) must match code and recorded evidence.
+
+## Ownership and setup
+
+- Roojool: `feature/core-integration`, shared core/configuration/routes/CI/docs.
+- prathadox: `feature/journey-tracking`, only `src/features/journey/**`.
+- chetanpujari5105: `feature/passport-stats`, only `src/features/passport/**`.
+- mangeshraut712: `feature/gamification`, only `src/features/leagues/**`.
+- atharvamhaske: `feature/community-web`, only `src/features/community/**`.
+
+In your own checkout on the assigned branch, synchronize normally:
 
 ```sh
-git clone https://github.com/Roojool/pune-metro-strava.git
-cd pune-metro-strava
 git fetch origin
-git switch feature/YOUR-ASSIGNED-BRANCH
 git merge origin/main
 npm ci
 npm run web
 ```
 
-Only Developer 1 changes shared code, package configuration, routes and CI. Human
-feature owners and AI helpers never simultaneously own the same files. Check
-the active reservations in TEAM_STATUS before editing. Give every concurrent
-AI worker a separate worktree/branch and disjoint file list; do not reuse one
-working tree. AI branches are ai/*; humans keep feature/*.
+Use Node 24 to match CI. AI helpers require separate `ai/*` branches **and
+worktrees**, with disjoint named files. Never start a second editor/runner in an
+active checkout. Check reservations; a dated handoff cannot reveal unpublished
+changes. Never reset another person's work, force-push or push directly to main
+as a feature worker. Shared contracts froze at **14:18 IST on 2026-10-24** and
+remain lead-only. An explicitly assigned docs helper may edit authorized Markdown;
+that does not authorize application, package or contract changes.
 
-Await repository mutations; show errors. No direct AsyncStorage writes in
-features, duplicated domain models, secrets, real commute data in screenshots,
-fabricated verified travel or unlabeled sample profiles. No force pushes or
-direct main pushes by feature workers. Preserve validation and accessibility.
+## Implementation and claims
 
-Before a PR: npm run typecheck, npm test, npm run export:web. Record real results,
-affected demo flow and limitations. Commit only owned files. Push your feature
-branch and open a PR to main with --body-file for a multiline description.
-Lead reviews diffs/checks and squash merges sequentially. Do not bypass failures.
+Await mutations and surface failures. Import shared models/calculations and
+`useApp()`; only AppState writes AsyncStorage. Preserve accessible labels,
+readable responsive layouts and validation. Keep fixtures **SAMPLE / DEMO**.
+Manual rides are not verified travel; savings/CO₂e are not measured impact and
+comparison budgets are not fares. Never commit credentials, expose home/work
+schedules, request default background location or send location data to third parties.
 
-If blocked >5 minutes, report exact error/command/file and smallest requested
-shared change in your issue. Stop optional features at minute 70.
+Use **Home → Log PCMC→Civil Court → Passport → Leagues → Community → reload**.
+No invented metrics or production claims. Supplied judging weights are Technical
+30 / Innovation 25 / Track Fit 25 / Execution 20; claims contradicting code face
+credibility caps. See [SUBMISSION.md](SUBMISSION.md).
 
-## Four collaborators
-
-Assigned in supplied order: prathadox (2), chetanpujari5105 (3), mangeshraut712 (4),
-atharvamhaske (5). Invitations require acceptance by each user. If an invitation
-fails, a lead with repository admin access may retry:
+## Checks and PR delivery
 
 ```sh
-gh api -X PUT repos/Roojool/pune-metro-strava/collaborators/USERNAME -f permission=push
+npm run typecheck
+npm test
+npm run export:web
 ```
 
-Never create another repo just because authentication or a permission is missing.
-Repository is public by revised user instruction. Real backend/security/moderation work is post-MVP.
+Record actual outcomes, exact scope, affected flow and untested platforms. For
+docs, check local links and Markdown-only scope. Stage named owned files. Preserve
+requested Git authorship and omit unrequested co-author trailers. Push the assigned
+branch and open a PR to `main`; use a UTF-8 file with `gh pr create --body-file`.
+
+For integration assignments, a PR is a checkpoint: address concrete review/CI
+failures, synchronize after the lead merges and run `npm run verify:e2e` before
+claiming integrated E2E completion. The lead reviews exact commits and merges
+sequentially without bypassing checks. An explicitly **bounded docs-only run
+that stops at a PR URL** ends at that checkpoint; do not start a continuation
+runner or wait for merge.
+
+Report shared blockers with exact command/error and the smallest needed lead
+action. Stop on `insufficient_quota` or billing errors; do not retry in a loop.
+[docs/TEAM_CONTINUATION.md](docs/TEAM_CONTINUATION.md) describes optional bounded
+integration tooling. Original sprint times are historical. Verify access live;
+old invitation notes do not establish current permissions. Public visibility
+does not grant an open-source license; see [LICENSE-NOTE.md](LICENSE-NOTE.md).
