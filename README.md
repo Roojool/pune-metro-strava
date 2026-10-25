@@ -2,19 +2,84 @@
 
 **Make every ride count.** MetroQuest helps everyday Pune Metro commuters turn familiar journeys into visible progress. Log a ride, collect station stamps, earn XP and explore conversations around your metro line.
 
+A transit habit and exploration demo for **DevDay Loops House · Urban Mobility**.
+
 **[Open MetroQuest](https://roojool.github.io/pune-metro-strava/)** · [Pitch deck (PDF)](pitch/output/MetroQuest-Pitch-2026.pdf) · [Editable PowerPoint](pitch/output/MetroQuest-Pitch-2026.pptx)
 
-[Demo walkthrough](DEMO_GUIDE.md) · [Architecture](ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md) · [Five developer prompts](team-prompts/)
+[Ready-to-paste submission](SUBMISSION.md) · [Demo walkthrough](DEMO_GUIDE.md) · [Architecture](ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md) · [Limitations](KNOWN_LIMITATIONS.md) · [Verification evidence](TEAM_STATUS.md) · [Five developer prompts](team-prompts/)
 
-<div align="center">
+## Urban Mobility idea
 
-![Expo SDK 57](https://img.shields.io/badge/Expo-SDK%2057-000020?style=for-the-badge&logo=expo&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-6.0.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![React Native](https://img.shields.io/badge/React%20Native-Web%20%2B%20Native-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Pune Metro](https://img.shields.io/badge/Pune%20Metro-Purple%20%2B%20Aqua-7B2D8E?style=for-the-badge)
-[![Live demo](https://img.shields.io/badge/Live%20demo-GitHub%20Pages-2ea44f?style=for-the-badge&logo=github)](https://roojool.github.io/pune-metro-strava/)
+MetroQuest explores whether personal progress and station discovery can make
+metro travel more engaging. One Expo SDK 57, React Native, TypeScript and Expo
+Router application targets web, Android and iOS. The prototype demonstrates a
+connected local interaction loop; it does not establish increased ridership,
+retention, congestion reduction or measured environmental impact.
 
-</div>
+## Try it in two minutes
+
+**Home → Log PCMC→Civil Court → Passport → Leagues → Community → reload**
+
+1. Open the [live demo](https://roojool.github.io/pune-metro-strava/) on Home.
+2. Tap **Log a ride**, keep **PCMC → Civil Court**, and confirm once. The selector
+   names the interchange **Civil Court (District Court)**.
+3. Open **Passport**. In fresh local state, this gives **1 journey, 2 endpoint
+   stamps and 50 XP**: 10 for the ride plus 20 per new endpoint. Passed stations
+   are not collected.
+4. Open **Leagues** and **How XP works**. Your XP comes from local rides; other
+   identities and Pune/Friends/Route comparisons are **SAMPLE / DEMO**.
+5. Open **Community → Purple Line**, post “Demo: exploring Pune Metro”, and react.
+   The post and reaction stay in the local demo feed.
+6. Reload the same browser origin and inspect the saved ride, post and reaction.
+
+Two minutes is a presentation budget, not a measured human completion time.
+Fresh state starts at zero rides and XP. Existing data changes totals; Profile's
+two-step reset deletes local demo data. A one-minute cooldown and 10-ride
+**UTC-day** cap limit accidental duplicates, not fraudulent travel.
+
+## Real, sample and estimated
+
+- **Working local behavior:** manual journeys, endpoint stamps, derived XP,
+  achievements, posts, reactions, joins and profile preferences. Successful saves
+  persist through AsyncStorage on the same device/browser origin.
+- **SAMPLE / DEMO:** other league identities/ranks, Friends/Route scopes, seeded
+  community posts and their like counts. No live city board, real friend graph,
+  remote posting, accounts or cross-device sync.
+- **Estimates:** schematic routes, proportional distances, approximate times and
+  illustrative savings/CO₂e. Fare is unavailable; use the
+  [official fare checker](https://punemetrorail.org/fare_chart.aspx).
+- **Reference snapshot:** station data is based on the
+  [operator project profile](https://punemetrorail.org/project-profile), recorded
+  on 2026-10-24. Range Hill is unavailable in the app; this is not live service data.
+- **Privacy:** rides are self-reported, never independently verified. No background
+  GPS or location uploads. Optional sharing is user-initiated and aggregate-only;
+  local storage is unencrypted.
+
+No API keys, ticketing, operator affiliation or production readiness are claimed.
+The Supabase SQL is an unapplied draft. See [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
+
+## Run and verify
+
+Use Node 24, matching CI, and npm. No external API keys are required.
+
+```sh
+npm ci
+npm run web         # use the URL printed by Expo
+npm run typecheck
+npm test
+npm run export:web  # static build in dist/
+```
+
+`npm run verify:e2e` performs those three checks, serves a production export and
+runs the ride/passport/leagues/community/reload flow in a real browser. It needs
+a working Playwright CLI/browser setup and writes ignored `output/e2e-result.json`.
+A passing build alone does not establish browser or native runtime success.
+
+For native development, use `npm run start` with an SDK-57-compatible Expo Go
+client; consult [Expo's download page](https://expo.dev/go). The earlier Android
+API 36 / Expo Go 57.0.9 emulator pass is historical evidence. Physical phones,
+iOS runtime and native share completion remain untested in the recorded handoff.
+[TEAM_STATUS.md](TEAM_STATUS.md) identifies tested commits and platform limits.
 
 ## What you can do
 
@@ -35,6 +100,9 @@ and rankings are simulated. No external API keys are needed to try it.
 
 Actual captures of the updated interface after manually recording a presentation
 ride from PCMC to Civil Court. A new installation starts at **0 rides / 0 XP**.
+Earlier captures in merged [PR #21](https://github.com/Roojool/pune-metro-strava/pull/21)
+show the demo at that time; later fixes may differ. Images are not usage metrics
+or evidence of verified travel. Sample content stays labeled.
 
 <div align="center">
 
@@ -58,120 +126,35 @@ The latest visual update was checked on web at desktop and mobile widths.
 Earlier Android evidence: [emulator screenshot](docs/screenshots/android-home.png).
 See [verification history](TEAM_STATUS.md) and [known limitations](KNOWN_LIMITATIONS.md).
 
-## How to demo (≈2 minutes)
+## Team and ownership
 
-1. Open the [live demo](https://roojool.github.io/pune-metro-strava/) (or `npm run web` locally).
-2. Tap **Log a ride**. Default **PCMC → Civil Court** is ready; confirm.
-3. Check **Home** totals and **Passport** stamps (boarding + exit only; passed stations are not visits).
-4. Open **Leagues**: your XP updates; other riders are **sample** identities — not a live city board.
-5. Open **Community → Purple Line**: create a local post and react.
-6. Reload the same origin/device — journeys, posts, reactions and preferences persist via AsyncStorage.
+- **Roojool — lead**, `feature/core-integration`: app routes, shared core,
+  configuration, tests, CI, scripts, assets and documentation.
+- **prathadox — Journey**, `feature/journey-tracking`: `src/features/journey/**`.
+- **chetanpujari5105 — Passport**, `feature/passport-stats`: `src/features/passport/**`.
+- **mangeshraut712 — Leagues**, `feature/gamification`: `src/features/leagues/**`.
+- **atharvamhaske — Community**, `feature/community-web`: `src/features/community/**`.
 
-One-minute logging cooldown and a 10-ride/UTC-day cap reduce accidental duplicates. Use Profile’s two-step reset for a clean demo. Full walkthrough: [DEMO_GUIDE.md](DEMO_GUIDE.md).
+Leagues [#16](https://github.com/Roojool/pune-metro-strava/pull/16) and
+[#24](https://github.com/Roojool/pune-metro-strava/pull/24), habit/progress follow-up
+[#31](https://github.com/Roojool/pune-metro-strava/pull/31), screenshots
+[#21](https://github.com/Roojool/pune-metro-strava/pull/21), Journey #23, Passport
+#26 and Community follow-up #29 are merged. [TEAM_STATUS.md](TEAM_STATUS.md)
+distinguishes human ownership from helper contributions.
 
-## Real vs sample (honest limits)
+Only the lead changes shared contracts, frozen at **14:18 IST on 2026-10-24**.
+Feature workers use assigned folders; AI helpers use separate `ai/*` branches
+**and worktrees**. One editor per checkout, disjoint delegated files, no force
+pushes and no direct main pushes by feature workers.
 
-| In the demo | What it is |
-| --- | --- |
-| Your logged rides, XP, passport stamps, posts, likes | Real **local** state on this browser/device |
-| League board names / Friends / Route ranks | **SAMPLE / DEMO** — local simulation, not Pune rankings |
-| Sample community identities | Labeled fiction for the UI |
-| Station names & open status | Snapshot of the [official project profile](https://punemetrorail.org/project-profile) (checked 2026-10-24) |
-| Distance / time / CO₂e / “savings” | Estimates & illustrative assumptions — not fare or measured emissions |
-| Fare | **Unavailable** — use the [official fare checker](https://punemetrorail.org/fare_chart.aspx) |
+Read [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md),
+[ARCHITECTURE.md](ARCHITECTURE.md) and your [role prompt](team-prompts/).
+[INTEGRATION_BOARD.md](INTEGRATION_BOARD.md) is the dated handoff;
+[SPRINT_120_MIN.md](SPRINT_120_MIN.md) preserves the historical plan.
+The [continuation guide](docs/TEAM_CONTINUATION.md) applies to assigned integration
+work. A bounded docs-only assignment stops at its requested PR checkpoint and
+does not claim merged E2E completion.
 
-All journeys are **manually self-reported**. No background GPS, authentication, remote social network or ticketing. Range Hill is not selectable. Distances use proportional segments of the official 17.4 km Purple / 15.7 km Aqua corridors. Details: [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
-
-## Run
-
-Node 24 LTS and npm are recommended. **No external API keys required.**
-
-```sh
-npm ci
-npm run start       # Expo QR for Android/iOS (Expo Go matching SDK 57)
-npm run web         # Expo Web, normally http://localhost:8081
-npm run typecheck
-npm test
-npm run export:web  # static web build in dist/
-```
-
-Expo SDK 57 is deliberate during the SDK 58 transition. Install Expo Go matching SDK 57; see https://expo.dev/go. Android/iPhone steps and the exact demo scenario: [DEMO_GUIDE.md](DEMO_GUIDE.md). Windows cannot run the iOS simulator.
-
-## What the demo does
-
-Log PCMC → Civil Court in the quick ride screen. Shared state updates Home,
-endpoint station stamps, statistics, XP and achievements. Explore sample leagues,
-open a Purple Line discussion, create a local post and react. Journeys, posts,
-reactions, joined communities and profile preferences persist through reload on
-the same browser origin/device using AsyncStorage.
-
-First ride typically earns **50 XP** (10 ride + 20 for each new boarding/exit
-endpoint). Route maps are schematic; they are not GPS tracks. The interface uses
-a DevDay-inspired black, green and violet palette, consistent sans-serif
-typography and the Feather icon library.
-
-## Five humans, separate ownership
-
-The five prompts include a continuing integration protocol. Opening a PR is a
-checkpoint: verify while review is pending, address concrete failures, sync after
-merge, and finish only after a real integrated browser pass.
-
-After the current editing agent has stopped, its human can run this in that
-developer's own checkout (replace `journey` with `passport`, `leagues` or
-`community`):
-
-```sh
-git fetch origin
-git merge origin/main
-npm ci
-npm run team:continue -- journey --minutes 30
-```
-
-The runner requires authenticated Codex CLI and GitHub CLI. It uses one checkout
-lock, at most six agent calls, and a thirty-minute limit. It never self-merges or
-bypasses required checks. Install dependencies in each checkout. Do not run it
-alongside another editing agent. Existing active agents can instead read their
-updated prompt and follow the same protocol directly.
-
-`npm run verify:e2e` runs typecheck/tests/export, starts its own temporary static
-server and browser, and checks the full ride/passport/league/community/reload
-flow. Actual results are written to ignored `output/e2e-result.json`.
-See [the continuation guide](docs/TEAM_CONTINUATION.md) and
-[the shared integration board](INTEGRATION_BOARD.md).
-
-| Developer | GitHub | Branch | Exclusive files |
-| --- | --- | --- | --- |
-| 1 Lead | Roojool | feature/core-integration | app/**, shared core/config/tests/CI/docs |
-| 2 Journeys | prathadox | feature/journey-tracking | src/features/journey/** |
-| 3 Passport | chetanpujari5105 | feature/passport-stats | src/features/passport/** |
-| 4 Leagues | mangeshraut712 | feature/gamification | src/features/leagues/** |
-| 5 Community | atharvamhaske | feature/community-web | src/features/community/** |
-
-Copy your complete standalone prompt:
-
-1. [Lead / integration](team-prompts/01-lead-integration.md)
-2. [Journey tracking](team-prompts/02-journey-tracking.md)
-3. [Passport / statistics](team-prompts/03-passport-statistics.md)
-4. [Leagues / gamification](team-prompts/04-leaderboards-gamification.md)
-5. [Community / web](team-prompts/05-community-web.md)
-
-These plans are parallel and have no overlapping feature paths. Only the lead
-edits shared state/models, package configuration, root routes, shared UI or CI.
-All models/calculations are central; no feature implements another scoring or
-storage system. Contracts freeze at minute 20. Root routes re-export the owned
-feature screens, so contributors never need to edit navigation.
-
-The revised delivery window was **14:15–15:15 IST, 2026-10-24**. Continue from
-`main` after merges; pull before starting a lane.
-
-AI coding helpers use **separate worktrees and ai/* branches**. Their feature
-reservations are recorded in [TEAM_STATUS.md](TEAM_STATUS.md); human owners wait
-for handoff before changing an AI-reserved feature. Humans can independently
-inspect, test and review. Do not run two workers in one checkout or concurrently
-assign a file to a human and AI. Human accounts, invitations and branches remain
-separate from AI helpers. Lead reviews, checks and squash merges one PR at a time.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md), [ARCHITECTURE.md](ARCHITECTURE.md),
-[SPRINT_120_MIN.md](SPRINT_120_MIN.md), [TEAM_STATUS.md](TEAM_STATUS.md) and
-[AGENTS.md](AGENTS.md). License decision: [all rights reserved](LICENSE-NOTE.md).
-The Supabase SQL is an unapplied draft only.
+[Documentation inventory](docs/DOCUMENTATION_INVENTORY.md) ·
+[License note: all rights reserved](LICENSE-NOTE.md). Public visibility does not
+make the repository open source.
