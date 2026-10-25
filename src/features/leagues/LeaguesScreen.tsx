@@ -9,6 +9,7 @@ import { LINES, getStationName } from '@/data/pune';
 import type { LeaderboardEntry, LineId } from '@/domain/models';
 import { theme } from '@/theme';
 import { SAMPLE_LEAGUE } from './sampleLeague';
+import { useLeagueProgress } from './useLeagueProgress';
 type Scope = 'Pune' | 'Friends' | 'Route';
 const ACTIVITY_ORANGE = '#00CD6B';
 const ACTIVITY_INK = '#00CD6B'; // Readable orange text on the tinted activity cards.
@@ -26,7 +27,8 @@ function LabeledProgress({ label, value, valueText }: { label: string; value: nu
 
 export default function LeaguesScreen(){
   const router=useRouter();
-  const {points,achievements,challenges,journeys,user,streak,activeDays,ready,storageError}=useApp();
+  const {points,journeys,user,activeDays,ready,storageError}=useApp();
+  const {streak,achievements,challenges}=useLeagueProgress(journeys,ready && !storageError);
   const [scope,setScope]=useState<Scope>('Pune');const [line,setLine]=useState<LineId>('purple');
   const [showXpDetails,setShowXpDetails]=useState(false);
   const wide=useWindowDimensions().width>=1180;
